@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 import { CopyButton } from './copy-button';
 import { BackToTop, FooterShell } from './footer-modes';
-import { type NavGroup, TOOLS_NAV } from './nav';
+import { type NavGroup, DOCS_NAV, TOOLS_NAV } from './nav';
 import { Container } from './page';
 
 const linkClass =
@@ -147,10 +147,32 @@ export function SiteFooter({
             </div>
           ) : null}
 
+          {/* Public how-to — everyone. Owner workbench stays OwnerOnly below. */}
+          <nav aria-labelledby="footer-docs-title" className="flex flex-col gap-3">
+            <h2 id="footer-docs-title" className="text-sm font-medium">
+              Raisonne
+            </h2>
+            <ul className="flex flex-col gap-2">
+              <li>
+                <Link href={DOCS_NAV.href} className={linkClass}>
+                  {DOCS_NAV.label}
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/orkhan-art-web/raisonne-os"
+                  className={linkClass}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </nav>
+
           {/* The importer and the design system are the artist's own tools.
-              They were in the public footer of all seventy routes, which is
-              navigation pointing a collector at a page built for somebody
-              else. Shown to the owner session and to nobody else. */}
+              Shown to the owner session and to nobody else. */}
           {tools ? (
             <OwnerOnly>
               <nav aria-labelledby="footer-tools-title" className="flex flex-col gap-3">
@@ -218,7 +240,17 @@ export function SiteFooter({
               </Link>
             ) : null}
             {/* Plain text until the open-source repository has a public home. */}
-            <span>Built with Raisonne</span>
+            <Link href="/docs" className={linkClass}>
+              Docs
+            </Link>
+            <a
+              href="https://github.com/orkhan-art-web/raisonne-os"
+              className={linkClass}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Built with Raisonne
+            </a>
             <BackToTop className="-mr-2.5" />
           </div>
         </Container>

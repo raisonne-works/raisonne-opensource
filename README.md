@@ -2,7 +2,7 @@
 
 An open-source, self-hosted catalogue raisonne for artists who work on-chain.
 
-**[github.com/orkhan-art-web/raisonne-os](https://github.com/orkhan-art-web/raisonne-os)** · MIT · Demo data on a fresh clone
+**[github.com/orkhan-art-web/raisonne-os](https://github.com/orkhan-art-web/raisonne-os)** · MIT · Demo data on a fresh clone · **[Build guide](https://orkhan.design/open/raisonne)**
 
 One artist per install. The site reads that artist’s data, shows every series and work with the on-chain record behind it, and keeps the CV around the work. There is no multi-tenancy. Catalogue data is files (not a required database). Wallet sign-in, collectors, insights and a shop are optional modules — off until you configure them.
 
@@ -113,8 +113,8 @@ and serve them from your own origin, then take the gateway out of the data.
 
 | Variable | What it does |
 | --- | --- |
-| `RAISONNE_TOOLS` | `1` serves the artist's own tools, `/import` and `/design-system`. They are on in development and off in production unless this is set; `0` switches them off everywhere. When they are off, both routes answer 404. Their pages are prerendered, so set it for the build as well: `RAISONNE_TOOLS=1 pnpm build && RAISONNE_TOOLS=1 pnpm start`. **Setting this on a public host publishes both pages to anyone who types the address.** There is no password in front of them: `/import` replays your wallets and labels contracts "probably not yours", and `/design-system` is developer documentation. Switch it off again when the import is done. |
-| `RAISONNE_TOOLS_NAV` | `1` also links the tools from the footer. It is separate from `RAISONNE_TOOLS` on purpose: a footer is navigation, and an artist running the importer on a live install should not thereby advertise it to every visitor. On in development, off in production unless this says otherwise. |
+| `RAISONNE_TOOLS` | `1` serves the artist's workbench: `/import` and `/design-system`. They are on in development and off in production unless this is set; `0` switches them off everywhere. When they are off, those routes answer 404. Their pages are prerendered, so set it for the build as well: `RAISONNE_TOOLS=1 pnpm build && RAISONNE_TOOLS=1 pnpm start`. **Setting this on a public host publishes the workbench URLs to anyone who types them.** There is no password in front of them: `/import` replays your wallets and labels contracts "probably not yours", and `/design-system` is component documentation. Switch it off again when the import is done. **`/docs` is always public** — the how-to for building your own install. |
+| `RAISONNE_TOOLS_NAV` | Legacy. No longer read. Tool links appear in the footer for an owner session only. |
 | `RAISONNE_FIXTURES` | `demo` serves the demo artist even on an install that has its own `src/fixtures/local/site.json`, so you can see what a fresh clone shows without moving any files. Unset, the install's own data wins. |
 | `RAISONNE_IMAGE_HOSTS` | Extra image hosts, comma separated. |
 | `RAISONNE_SITE_URL` | The site's public address. Canonical URLs, the sitemap, robots.txt, structured data and share cards all start here. It overrides `settings.siteUrl` in the data, so a staging copy never advertises the live address. |
@@ -175,6 +175,7 @@ Three surfaces switch on with the `collectors`, `insights` and `store` modules i
 | `/works/[series]/[token]` | One work: the media large, the record, the provenance. |
 | `/cv` | Biography, statement, exhibitions, awards and press. Prints as a clean PDF. |
 | `/import` | The importer, replaying a recorded run. Artist's tool. |
+| `/docs` | How to build and run Raisonne: import, series, A–Z. **Public** (shareable). |
 | `/design-system` | Every component with its states. Artist's tool. |
 | `/update` | Keep this install on the latest Raisonne release. Owner only. |
 

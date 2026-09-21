@@ -48,3 +48,6 @@ src/fixtures/local/
 # orders and commission briefs written by the JSON store. They carry a name,
 # a postal address and an email, so they never belong in the repository.
 /.data/
+
+# Tutorial film media (exported parts; too large for git). Metadata lives in src.
+/public/docs/tutorial/

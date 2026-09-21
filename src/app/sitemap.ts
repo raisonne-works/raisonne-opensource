@@ -63,6 +63,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   add('/works', 0.9, 'weekly');
   add('/about', 0.8, 'monthly');
   add('/cv', 0.7, 'monthly');
+  // Public how-to for clones and shared links (not an owner tool).
+  add('/docs', 0.8, 'monthly');
 
   const installations = data.installations.length + data.immersives.length;
   if (installations) add('/installations', 0.8, 'monthly');

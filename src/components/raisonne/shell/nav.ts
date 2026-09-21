@@ -28,11 +28,14 @@ export interface NavGroup {
   items: NavItem[];
 }
 
-/** The artist's tools, shown in the footer when RAISONNE_TOOLS allows them. */
+/** Owner workbench links (import, design system). Docs is public — see DOCS_NAV. */
 export const TOOLS_NAV = [
   { href: '/import', label: 'Import' },
   { href: '/design-system', label: 'Design system' },
 ] as const;
+
+/** Always-on public how-to. Safe to show every visitor. */
+export const DOCS_NAV = { href: '/docs', label: 'Docs' } as const;
 
 /** A nav item is current on its own route and on every route below it. */
 export function isActivePath(pathname: string | null, href: string): boolean {
@@ -254,6 +257,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   terms: 'Terms',
   import: 'Import',
   'design-system': 'Design system',
+  docs: 'Docs',
   update: 'Update',
   // A breadcrumb should say what the page calls itself. These four used to
   // say something else: "Auth" over a page titled Sign in, "Signout" over

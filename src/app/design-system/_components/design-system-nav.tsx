@@ -14,11 +14,18 @@ export interface DesignSystemNavGroup {
 const ACTIVE_OFFSET = 140;
 
 /**
- * The design system's in-page navigation. Below lg it is a sticky bar that
- * scrolls sideways; from lg it is a sticky rail on the left that also lists
- * the foundations topics. The current section is tracked on scroll.
+ * Sticky in-page navigation for long tool pages (design system, docs).
+ * Below lg it is a sideways bar; from lg a left rail with nested topics.
+ * The current section is tracked on scroll.
  */
-export function DesignSystemNav({ groups }: { groups: readonly DesignSystemNavGroup[] }) {
+export function DesignSystemNav({
+  groups,
+  label = 'Design system',
+}: {
+  groups: readonly DesignSystemNavGroup[];
+  /** Accessible name for the nav landmark. */
+  label?: string;
+}) {
   const ids = useMemo(
     () => groups.flatMap(group => [group.id, ...(group.topics ?? []).map(topic => topic.id)]),
     [groups],
@@ -83,7 +90,7 @@ export function DesignSystemNav({ groups }: { groups: readonly DesignSystemNavGr
 
   return (
     <nav
-      aria-label="Design system"
+      aria-label={label}
       className="sticky top-14 z-30 -mx-4 border-b bg-background px-4 sm:-mx-6 sm:px-6 lg:top-20 lg:mx-0 lg:max-h-[calc(100svh-6rem)] lg:self-start lg:overflow-y-auto lg:border-0 lg:bg-transparent lg:px-0"
     >
       {/* Phones and tablets: one row of the four groups. */}
