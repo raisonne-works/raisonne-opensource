@@ -1,0 +1,60 @@
+/*
+ * Print styles for the CV page ("Download as PDF" opens the print dialog).
+ * Everything is scoped to a page that contains [data-print-root], so this
+ * sheet does nothing on other routes even after client navigation.
+ */
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  /* Print only the CV: hide every element that is not the root, not one of
+     its ancestors and not inside it (header, footer, skip link, toasts). */
+  body:has([data-print-root]) *:not([data-print-root]):not(:has([data-print-root])):not([data-print-root] *) {
+    display: none !important;
+  }
+
+  /* Paper is white: in dark mode, print with the light theme's tokens
+     (the same values as :root in globals.css). */
+  html.dark:has([data-print-root]) {
+    color-scheme: light;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+  }
+
+  html:has([data-print-root]) {
+    scroll-behavior: auto;
+  }
+
+  [data-print-root] a {
+    text-decoration: none;
+  }
+
+  [data-print-root] h1,
+  [data-print-root] h2,
+  [data-print-root] h3 {
+    break-after: avoid;
+  }
+
+  [data-print-root] li,
+  [data-print-root] p {
+    break-inside: avoid;
+    orphans: 3;
+    widows: 3;
+  }
+}

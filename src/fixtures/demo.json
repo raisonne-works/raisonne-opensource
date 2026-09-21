@@ -1,0 +1,4964 @@
+{
+  "artist": {
+    "name": "Demo Artist",
+    "tagline": "Visual artist working with pattern and print",
+    "statement": "This is placeholder text for the Raisonne demo. The demo artist is fictional: the name, the statement, the exhibitions and the on-chain records are made up so that a fresh install has something to show.\n\nReplace this with your own statement in your content, or run the importer with your wallets to build the catalogue from what you minted.",
+    "bio": "Demo Artist is a fictional artist used to demonstrate Raisonne, an open-source catalogue raisonne for on-chain artists. Their works on this demo site are public-domain decorative papers from The Metropolitan Museum of Art, shared under the Open Access (CC0) programme, standing in for artworks.\n\nEvery exhibition, award and press item listed here is invented, and every contract address is a placeholder that holds no tokens.",
+    "location": "Lisbon, Portugal",
+    "portrait": "https://images.metmuseum.org/CRDImages/ph/web-large/DP-30374-007.jpg",
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://example.com",
+        "kind": "site",
+        "icon": "Globe",
+        "handle": null
+      },
+      {
+        "label": "Newsletter",
+        "href": "https://example.com/newsletter",
+        "kind": "site",
+        "icon": "Mail",
+        "handle": null
+      },
+      {
+        "label": "Example Social",
+        "href": "https://example.com/@demoartist",
+        "kind": "social",
+        "icon": "AtSign",
+        "handle": "@demoartist"
+      },
+      {
+        "label": "Example Market",
+        "href": "https://example.com/market/demo-artist",
+        "kind": "marketplace",
+        "icon": "Store",
+        "handle": null
+      }
+    ],
+    "wallets": [
+      {
+        "address": "0x000000000000000000000000000000000000de01",
+        "chain": "ethereum",
+        "role": "primary"
+      },
+      {
+        "address": "0x000000000000000000000000000000000000de02",
+        "chain": "base",
+        "role": "primary"
+      }
+    ],
+    "description": "A studio practice in pattern, paste and print, kept as an open catalogue.",
+    "images": [
+      {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/ep/original/DP320098.jpg",
+        "poster": null,
+        "alt": "A painted interior of a studio, standing in for a photograph of the demo artist at work.",
+        "caption": "The Interior of a Woman Painter's Studio, 1789. The Metropolitan Museum of Art, accession 57.103, Open Access (CC0).",
+        "width": 3018,
+        "height": 3882
+      },
+      {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/aa/original/LC-25_135_175-001.jpg",
+        "poster": null,
+        "alt": "A drawing of an interior, standing in for a second studio photograph.",
+        "caption": "Architectural Drawing of the Interior of the Comte de Nieuwerkerke's House, ca. 1870. The Metropolitan Museum of Art, accession 25.135.175, Open Access (CC0).",
+        "width": 3157,
+        "height": 4000
+      }
+    ],
+    "email": "hello@example.com",
+    "securityNotice": "Never send funds to an address from a direct message. These are the only addresses this studio mints from.",
+    "researchAreas": [
+      {
+        "title": "Paste and pigment",
+        "description": "Hand-combed grounds, read as data: one sheet, one pass, no undo.",
+        "icon": "Layers"
+      },
+      {
+        "title": "Repeat and drift",
+        "description": "What a pattern keeps and what it loses when a machine repeats it.",
+        "icon": "Grid3x3"
+      },
+      {
+        "title": "Print as record",
+        "description": "Printing a token back onto paper, and what the paper then proves.",
+        "icon": "Printer"
+      }
+    ],
+    "partners": [
+      {
+        "category": "Museums and galleries",
+        "links": [
+          {
+            "label": "Example Gallery",
+            "href": "https://example.com/gallery",
+            "kind": "site"
+          },
+          {
+            "label": "Sample Kunsthalle",
+            "href": "https://example.com/kunsthalle",
+            "kind": "site"
+          },
+          {
+            "label": "Placeholder Hall",
+            "href": "https://example.com/hall",
+            "kind": "site"
+          }
+        ]
+      },
+      {
+        "category": "Studios and tools",
+        "links": [
+          {
+            "label": "Example Paper Mill",
+            "href": "https://example.com/paper-mill",
+            "kind": "site"
+          },
+          {
+            "label": "Sample Press",
+            "href": "https://example.com/press-shop",
+            "kind": "site"
+          }
+        ]
+      }
+    ],
+    "pressKit": {
+      "title": "Press kit",
+      "body": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "High-resolution images, a short biography and the studio logotype, for anyone writing about the work."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Please credit the images to The Metropolitan Museum of Art, Open Access (CC0), as this demo does."
+            }
+          ]
+        }
+      ],
+      "fileUrl": null
+    }
+  },
+  "series": [
+    {
+      "slug": "paste-grounds",
+      "name": "Paste Grounds",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "kind": "series",
+      "description": "A fictional series for the Raisonne demo. Brushed and combed colour fields, each a single sheet, minted as unique tokens. The images are 18th-century paste papers from The Met, shared under CC0.",
+      "year": 2025,
+      "workCount": 24,
+      "cover": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887095.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887095.jpg",
+        "animation": null,
+        "width": 3468,
+        "height": 2310
+      },
+      "evidence": [
+        {
+          "signal": "deployer",
+          "detail": "deployed by 0x0000…de01"
+        },
+        {
+          "signal": "owner",
+          "detail": "owner() = 0x0000…de01"
+        }
+      ],
+      "coAuthored": false,
+      "marketUrl": "https://example.com/market/paste-grounds",
+      "categories": [
+        "Printmaking",
+        "Pattern"
+      ],
+      "standard": "ERC721",
+      "editionSize": 24,
+      "platform": "Example Market",
+      "collectorCount": 18,
+      "featured": true,
+      "hidden": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "paste-grounds-synopsis",
+          "title": "About this series",
+          "columns": 2,
+          "body": "Twenty-four sheets, each combed once and photographed once. The series began as a way of asking what a printed ground still carries when it is minted, and what it quietly loses.",
+          "moreTitle": "The longer version",
+          "more": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "Paste paper is made by brushing coloured paste onto damp sheets and drawing a comb through it. Nothing can be corrected: the mark is the record of one pass of the hand."
+                }
+              ]
+            },
+            {
+              "type": "quote",
+              "children": [
+                {
+                  "text": "A ground is not a background. It is the first decision."
+                }
+              ]
+            }
+          ],
+          "cta": {
+            "label": "Read the essay",
+            "href": "https://example.com/essays/paste-grounds",
+            "kind": "site"
+          }
+        },
+        {
+          "type": "gallery",
+          "id": "paste-grounds-sheets",
+          "title": "Sheets",
+          "aside": "Studio documentation",
+          "items": [
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP887095.jpg",
+              "poster": null,
+              "alt": "A purple red paste paper sheet.",
+              "caption": "Purple red paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.83, Open Access (CC0).",
+              "width": 3468,
+              "height": 2310
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP887096.jpg",
+              "poster": null,
+              "alt": "A yellow paste paper sheet.",
+              "caption": "Yellow paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.48, Open Access (CC0).",
+              "width": 1151,
+              "height": 1726
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/is/original/DP230058.jpg",
+              "poster": null,
+              "alt": "A textile fragment with a repeating pattern.",
+              "caption": "Textile Fragment, mid-16th century. The Metropolitan Museum of Art, accession 52.20.22, Open Access (CC0).",
+              "width": 3957,
+              "height": 3640
+            }
+          ]
+        },
+        {
+          "type": "sketchbook",
+          "id": "paste-grounds-studies-sheets",
+          "title": "Studies",
+          "items": [
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP801907.jpg",
+              "poster": null,
+              "alt": "A sixteenth century architectural drawing.",
+              "caption": "Architectural Drawing, 16th century. The Metropolitan Museum of Art, accession 80.3.600, Open Access (CC0).",
+              "width": 2702,
+              "height": 3846
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP803148.jpg",
+              "poster": null,
+              "alt": "An eighteenth century architectural drawing.",
+              "caption": "Architectural Drawing, 18th century. The Metropolitan Museum of Art, accession 33.13a, Open Access (CC0).",
+              "width": 1771,
+              "height": 2444
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP808597.jpg",
+              "poster": null,
+              "alt": "An architectural drawing of a facade.",
+              "caption": "Architectural Drawing, 18th century. The Metropolitan Museum of Art, accession 49.50.145, Open Access (CC0).",
+              "width": 1996,
+              "height": 3736
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP104573.jpg",
+              "poster": null,
+              "alt": "A print of ornamental vases.",
+              "caption": "Mascarade à la Grecque; Suite des Vases; and [Cheminées], 1771, 1764. The Metropolitan Museum of Art, accession 40.59.1, Open Access (CC0).",
+              "width": 2618,
+              "height": 3861
+            }
+          ]
+        },
+        {
+          "type": "process",
+          "id": "paste-grounds-process",
+          "title": "How a sheet is made",
+          "steps": [
+            {
+              "title": "Mix",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "Pigment, rice paste and water, mixed thin enough to stay wet while the comb travels."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Comb",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "One pass, edge to edge. The hand decides the rhythm and the sheet keeps it."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Record",
+              "body": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "The dry sheet is photographed flat, then the file is minted against the sheet."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "asset": {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/dp/original/DP801907.jpg",
+            "poster": null,
+            "alt": "An architectural drawing of ruled lines.",
+            "caption": "Architectural Drawing, 16th century. The Metropolitan Museum of Art, accession 80.3.600, Open Access (CC0).",
+            "width": 2702,
+            "height": 3846
+          }
+        }
+      ],
+      "seo": {
+        "title": "Paste Grounds",
+        "description": "Twenty-four combed sheets, each minted against the paper it was made on.",
+        "image": null,
+        "keywords": []
+      }
+    },
+    {
+      "slug": "loose-fields",
+      "name": "Loose Fields",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "kind": "series",
+      "description": "A fictional edition series for the Raisonne demo. Splashed and marbled grounds released as open editions. The images are 19th-century decorative papers from The Met, shared under CC0.",
+      "year": 2024,
+      "workCount": 6,
+      "cover": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886622.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886622.jpg",
+        "animation": null,
+        "width": 2186,
+        "height": 2917
+      },
+      "evidence": [
+        {
+          "signal": "deployer",
+          "detail": "deployed by 0x0000…de02"
+        },
+        {
+          "signal": "owner",
+          "detail": "owner() = 0x0000…de02"
+        }
+      ],
+      "coAuthored": false,
+      "marketUrl": "https://example.com/market/loose-fields",
+      "categories": [
+        "Generative"
+      ],
+      "standard": "ERC721",
+      "editionSize": 6,
+      "platform": "Example Market",
+      "collectorCount": 5,
+      "featured": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "loose-fields-about",
+          "title": "About this series",
+          "columns": 1,
+          "body": "Six open fields, drawn by a small program that is allowed to wander off the grid once per sheet.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        },
+        {
+          "type": "media",
+          "id": "loose-fields-still",
+          "asset": {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/dp/original/DP823428.jpg",
+            "poster": null,
+            "alt": "An ornament print with scrolling forms.",
+            "caption": "Ornament Print with Schweifwerk and Two (Allegorical?) Figures, ca. 1615–20. The Metropolitan Museum of Art, accession 2012.55, Open Access (CC0).",
+            "width": 1694,
+            "height": 1426
+          }
+        }
+      ],
+      "seo": {
+        "title": "Loose Fields",
+        "description": "Six generative fields, one wandering line each.",
+        "image": null,
+        "keywords": []
+      }
+    },
+    {
+      "slug": "lattice",
+      "name": "Lattice",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "kind": "shared-platform",
+      "description": "Fictional one-of-one tokens the demo artist minted on a shared marketplace contract. Grids, zigzags and crosshatching from 19th-century decorative papers at The Met, shared under CC0.",
+      "year": 2023,
+      "workCount": 6,
+      "cover": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886578.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886578.jpg",
+        "animation": null,
+        "width": 2300,
+        "height": 2800
+      },
+      "evidence": [
+        {
+          "signal": "token-creator",
+          "detail": "tokenCreator(tokenId) = 0x0000…de01"
+        }
+      ],
+      "coAuthored": false,
+      "marketUrl": null,
+      "categories": [
+        "Pattern"
+      ],
+      "standard": "ERC721",
+      "platform": "Example Platform",
+      "collectorCount": 6,
+      "story": [
+        {
+          "type": "text",
+          "id": "lattice-about",
+          "title": "About this series",
+          "columns": 1,
+          "body": "Single works minted on a marketplace's shared contract, kept together here because they belong together.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        }
+      ],
+      "seo": {
+        "title": "Lattice",
+        "description": "Single works on a shared contract, kept together as a series.",
+        "image": null,
+        "keywords": []
+      }
+    },
+    {
+      "slug": "paste-grounds-studies",
+      "name": "Paste_Grounds_Studies_2025",
+      "displayTitle": "Paste Grounds: Studies",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000003",
+      "kind": "series",
+      "description": "Four studies made while the main series was drying. The contract carries the machine name; the catalogue prints the readable one.",
+      "year": 2025,
+      "workCount": 4,
+      "cover": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/is/web-large/DP230057.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/is/original/DP230057.jpg",
+        "animation": null,
+        "width": 2187,
+        "height": 3860
+      },
+      "evidence": [
+        {
+          "signal": "deployer",
+          "detail": "deployed by 0x0000…de01"
+        }
+      ],
+      "coAuthored": false,
+      "marketUrl": null,
+      "parentSlug": "paste-grounds",
+      "categories": [
+        "Printmaking"
+      ],
+      "standard": "ERC721",
+      "editionSize": 4,
+      "platform": "Example Market",
+      "collectorCount": 3,
+      "featured": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "studies-about",
+          "title": "About these studies",
+          "columns": 1,
+          "body": "Four sheets that did not make the series, kept because the comb slipped in a way worth keeping.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        }
+      ],
+      "seo": {
+        "title": "Paste Grounds: Studies",
+        "description": "Four studies from the making of Paste Grounds.",
+        "image": null,
+        "keywords": []
+      }
+    }
+  ],
+  "works": [
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000001:1",
+      "seriesSlug": "paste-grounds",
+      "title": "Ground I (Plum)",
+      "description": "Image: Purple red paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.83, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "tokenId": "1",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887095.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887095.jpg",
+        "animation": null,
+        "width": 3468,
+        "height": 2310
+      },
+      "mintedAt": "2025-03-02T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000001/1",
+      "marketUrl": null,
+      "editionSize": null,
+      "categories": [
+        "Printmaking",
+        "Pattern"
+      ],
+      "traits": [
+        {
+          "name": "Ground",
+          "value": "Plum"
+        },
+        {
+          "name": "Comb",
+          "value": "Wide"
+        },
+        {
+          "name": "Passes",
+          "value": "1"
+        }
+      ],
+      "file": {
+        "format": "image/jpeg",
+        "bytes": 4180000
+      },
+      "featured": true,
+      "platform": "Example Market"
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000001:2",
+      "seriesSlug": "paste-grounds",
+      "title": "Ground II (Ochre)",
+      "description": "Image: Yellow paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.48, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "tokenId": "2",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887096.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887096.jpg",
+        "animation": null,
+        "width": 1151,
+        "height": 1726
+      },
+      "mintedAt": "2025-03-02T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000001/2",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000001:3",
+      "seriesSlug": "paste-grounds",
+      "title": "Ground III (Cobalt)",
+      "description": "Image: Blue paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.68, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "tokenId": "3",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887086.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887086.jpg",
+        "animation": null,
+        "width": 3629,
+        "height": 2705
+      },
+      "mintedAt": "2025-03-09T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000001/3",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000001:4",
+      "seriesSlug": "paste-grounds",
+      "title": "Ground IV (Ash)",
+      "description": "Image: Gray paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.118, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "tokenId": "4",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887100.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887100.jpg",
+        "animation": null,
+        "width": 2952,
+        "height": 2080
+      },
+      "mintedAt": "2025-03-09T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000001/4",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000001:5",
+      "seriesSlug": "paste-grounds",
+      "title": "Ground V (Moss)",
+      "description": "Image: Green paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.157, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "tokenId": "5",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887089.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887089.jpg",
+        "animation": null,
+        "width": 1796,
+        "height": 2714
+      },
+      "mintedAt": "2025-03-16T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000001/5",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000001:6",
+      "seriesSlug": "paste-grounds",
+      "title": "Ground VI (Rust)",
+      "description": "Image: Reddish brown paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.181, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000001",
+      "tokenId": "6",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887094.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP887094.jpg",
+        "animation": null,
+        "width": 2150,
+        "height": 2101
+      },
+      "mintedAt": "2025-03-16T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000001/6",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "base:0x00000000000000000000000000000000de000002:1",
+      "seriesSlug": "loose-fields",
+      "title": "Field 01",
+      "description": "Image: Sheet with overall splotchy pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.107, Open Access (CC0).",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "tokenId": "1",
+      "standard": "ERC1155",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886622.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886622.jpg",
+        "animation": null,
+        "width": 2186,
+        "height": 2917
+      },
+      "mintedAt": "2024-06-12T12:00:00.000Z",
+      "explorerUrl": "https://basescan.org/nft/0x00000000000000000000000000000000de000002/1",
+      "marketUrl": null,
+      "editionSize": 25
+    },
+    {
+      "id": "base:0x00000000000000000000000000000000de000002:2",
+      "seriesSlug": "loose-fields",
+      "title": "Field 02",
+      "description": "Image: Sheet with overall splotchy pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.173, Open Access (CC0).",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "tokenId": "2",
+      "standard": "ERC1155",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886621.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886621.jpg",
+        "animation": null,
+        "width": 1297,
+        "height": 1610
+      },
+      "mintedAt": "2024-06-12T12:00:00.000Z",
+      "explorerUrl": "https://basescan.org/nft/0x00000000000000000000000000000000de000002/2",
+      "marketUrl": null,
+      "editionSize": 25
+    },
+    {
+      "id": "base:0x00000000000000000000000000000000de000002:3",
+      "seriesSlug": "loose-fields",
+      "title": "Field 03",
+      "description": "Image: Sheet with overall splotchy pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.108, Open Access (CC0).",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "tokenId": "3",
+      "standard": "ERC1155",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886625.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886625.jpg",
+        "animation": null,
+        "width": 2637,
+        "height": 1534
+      },
+      "mintedAt": "2024-06-19T12:00:00.000Z",
+      "explorerUrl": "https://basescan.org/nft/0x00000000000000000000000000000000de000002/3",
+      "marketUrl": null,
+      "editionSize": 50
+    },
+    {
+      "id": "base:0x00000000000000000000000000000000de000002:4",
+      "seriesSlug": "loose-fields",
+      "title": "Field 04 (Marbled)",
+      "description": "Image: Sheet with marbled pattern, 19th century. The Metropolitan Museum of Art, accession 48.142.130, Open Access (CC0).",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "tokenId": "4",
+      "standard": "ERC1155",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886478.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886478.jpg",
+        "animation": null,
+        "width": 1881,
+        "height": 3137
+      },
+      "mintedAt": "2024-06-19T12:00:00.000Z",
+      "explorerUrl": "https://basescan.org/nft/0x00000000000000000000000000000000de000002/4",
+      "marketUrl": null,
+      "editionSize": 10
+    },
+    {
+      "id": "base:0x00000000000000000000000000000000de000002:5",
+      "seriesSlug": "loose-fields",
+      "title": "Field 05",
+      "description": "Image: Sheet with overall splotchy pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.297, Open Access (CC0).",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "tokenId": "5",
+      "standard": "ERC1155",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886559.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886559.jpg",
+        "animation": null,
+        "width": 2802,
+        "height": 3652
+      },
+      "mintedAt": "2024-06-26T12:00:00.000Z",
+      "explorerUrl": "https://basescan.org/nft/0x00000000000000000000000000000000de000002/5",
+      "marketUrl": null,
+      "editionSize": 50
+    },
+    {
+      "id": "base:0x00000000000000000000000000000000de000002:6",
+      "seriesSlug": "loose-fields",
+      "title": "Field 06 (Serpent)",
+      "description": "Image: Sheet with abstract pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.138, Open Access (CC0).",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000002",
+      "tokenId": "6",
+      "standard": "ERC1155",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886573.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886573.jpg",
+        "animation": null,
+        "width": 1027,
+        "height": 1520
+      },
+      "mintedAt": "2024-06-26T12:00:00.000Z",
+      "explorerUrl": "https://basescan.org/nft/0x00000000000000000000000000000000de000002/6",
+      "marketUrl": null,
+      "editionSize": 100
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de00c0de:40100",
+      "seriesSlug": "lattice",
+      "title": "Lattice (Rose)",
+      "description": "Image: Sheet with crisscross pattern, 19th century. The Metropolitan Museum of Art, accession 48.142.121, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "tokenId": "40100",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886578.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886578.jpg",
+        "animation": null,
+        "width": 2300,
+        "height": 2800
+      },
+      "mintedAt": "2023-09-04T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de00c0de/40100",
+      "marketUrl": null,
+      "editionSize": null,
+      "oneOfOne": true,
+      "platform": "Example Platform",
+      "categories": [
+        "Pattern"
+      ]
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de00c0de:40107",
+      "seriesSlug": "lattice",
+      "title": "Lattice (Dice)",
+      "description": "Image: Sheet with overall geometric pattern, 19th century. The Metropolitan Museum of Art, accession 48.142.88, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "tokenId": "40107",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886436.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886436.jpg",
+        "animation": null,
+        "width": 1285,
+        "height": 2056
+      },
+      "mintedAt": "2023-09-11T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de00c0de/40107",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de00c0de:40114",
+      "seriesSlug": "lattice",
+      "title": "Lattice (Hem)",
+      "description": "Image: Sheet with overall geometric pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.35, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "tokenId": "40114",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886648.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886648.jpg",
+        "animation": null,
+        "width": 3536,
+        "height": 2356
+      },
+      "mintedAt": "2023-09-18T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de00c0de/40114",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de00c0de:40121",
+      "seriesSlug": "lattice",
+      "title": "Lattice (Chevron)",
+      "description": "Image: Sheet with overall zigzag pattern, 19th century. The Metropolitan Museum of Art, accession 39.13.209, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "tokenId": "40121",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886587.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886587.jpg",
+        "animation": null,
+        "width": 2116,
+        "height": 3629
+      },
+      "mintedAt": "2023-10-02T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de00c0de/40121",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de00c0de:40128",
+      "seriesSlug": "lattice",
+      "title": "Lattice (Teeth)",
+      "description": "Image: Sheet with pattern of triangles, 19th century. The Metropolitan Museum of Art, accession 40.21.85, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "tokenId": "40128",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886591.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886591.jpg",
+        "animation": null,
+        "width": 1871,
+        "height": 3661
+      },
+      "mintedAt": "2023-10-09T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de00c0de/40128",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de00c0de:40135",
+      "seriesSlug": "lattice",
+      "title": "Lattice (Check)",
+      "description": "Image: Sheet with overall crisscross pattern, 19th century. The Metropolitan Museum of Art, accession 48.142.77, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de00c0de",
+      "tokenId": "40135",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886563.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/dp/original/DP886563.jpg",
+        "animation": null,
+        "width": 3572,
+        "height": 2464
+      },
+      "mintedAt": "2023-10-16T12:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de00c0de/40135",
+      "marketUrl": null,
+      "editionSize": null
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000003:1",
+      "seriesSlug": "paste-grounds-studies",
+      "title": "Paste_Grounds_Studies_2025_001",
+      "displayTitle": "Study 1",
+      "description": "Image: Fragmentary Loom Width with Wavy-Vine Pattern, ca. 1565–80. The Metropolitan Museum of Art, accession 52.20.21, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000003",
+      "tokenId": "1",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/is/web-large/DP230057.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/is/original/DP230057.jpg",
+        "animation": null,
+        "width": 2187,
+        "height": 3860
+      },
+      "mintedAt": "2025-04-11T10:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000003/1",
+      "marketUrl": null,
+      "editionSize": null,
+      "categories": [
+        "Printmaking"
+      ],
+      "traits": [
+        {
+          "name": "Ground",
+          "value": "Plum"
+        },
+        {
+          "name": "Comb",
+          "value": "Wide"
+        },
+        {
+          "name": "Passes",
+          "value": "1"
+        }
+      ],
+      "file": {
+        "format": "image/jpeg",
+        "bytes": 2400000
+      }
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000003:2",
+      "seriesSlug": "paste-grounds-studies",
+      "title": "Paste_Grounds_Studies_2025_002",
+      "displayTitle": "Study 2",
+      "description": "Image: Rectangular Silk Fragment, last quarter 16th century. The Metropolitan Museum of Art, accession 52.20.20, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000003",
+      "tokenId": "2",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/is/web-large/wb-52.20.20.JPG",
+        "full": "https://images.metmuseum.org/CRDImages/is/original/wb-52.20.20.JPG",
+        "animation": null,
+        "width": 1536,
+        "height": 2048
+      },
+      "mintedAt": "2025-05-11T10:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000003/2",
+      "marketUrl": null,
+      "editionSize": null,
+      "categories": [
+        "Printmaking"
+      ],
+      "traits": [
+        {
+          "name": "Ground",
+          "value": "Ochre"
+        },
+        {
+          "name": "Comb",
+          "value": "Fine"
+        },
+        {
+          "name": "Passes",
+          "value": "2"
+        }
+      ],
+      "file": {
+        "format": "image/jpeg",
+        "bytes": 2490000
+      }
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000003:3",
+      "seriesSlug": "paste-grounds-studies",
+      "title": "Paste_Grounds_Studies_2025_003",
+      "displayTitle": "Study 3",
+      "description": "Image: Kesa (Buddhist priest's robe), late 19th to early 20th century. The Metropolitan Museum of Art, accession 1975.1.1934, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000003",
+      "tokenId": "3",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/rl/web-large/DP265189.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/rl/original/DP265189.jpg",
+        "animation": null,
+        "width": 1159,
+        "height": 1963
+      },
+      "mintedAt": "2025-06-11T10:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000003/3",
+      "marketUrl": null,
+      "editionSize": null,
+      "categories": [
+        "Printmaking"
+      ],
+      "traits": [
+        {
+          "name": "Ground",
+          "value": "Indigo"
+        },
+        {
+          "name": "Comb",
+          "value": "Wide"
+        },
+        {
+          "name": "Passes",
+          "value": "3"
+        }
+      ],
+      "file": {
+        "format": "image/jpeg",
+        "bytes": 2580000
+      }
+    },
+    {
+      "id": "ethereum:0x00000000000000000000000000000000de000003:4",
+      "seriesSlug": "paste-grounds-studies",
+      "title": "Paste_Grounds_Studies_2025_004",
+      "displayTitle": "Study 4",
+      "description": "Image: Shirt, 500–850 CE. The Metropolitan Museum of Art, accession 1987.394.706, Open Access (CC0).",
+      "chain": "ethereum",
+      "contract": "0x00000000000000000000000000000000de000003",
+      "tokenId": "4",
+      "standard": "ERC721",
+      "media": {
+        "kind": "image",
+        "still": "https://images.metmuseum.org/CRDImages/ao/web-large/DT1269.jpg",
+        "full": "https://images.metmuseum.org/CRDImages/ao/original/DT1269.jpg",
+        "animation": null,
+        "width": 3811,
+        "height": 3049
+      },
+      "mintedAt": "2025-07-11T10:00:00.000Z",
+      "explorerUrl": "https://etherscan.io/nft/0x00000000000000000000000000000000de000003/4",
+      "marketUrl": null,
+      "editionSize": null,
+      "categories": [
+        "Printmaking"
+      ],
+      "traits": [
+        {
+          "name": "Ground",
+          "value": "Bone"
+        },
+        {
+          "name": "Comb",
+          "value": "Fine"
+        },
+        {
+          "name": "Passes",
+          "value": "4"
+        }
+      ],
+      "file": {
+        "format": "image/jpeg",
+        "bytes": 2670000
+      }
+    }
+  ],
+  "exhibitions": [
+    {
+      "id": "paste-grounds-2025",
+      "year": 2025,
+      "title": "Paste Grounds",
+      "venue": "Example Gallery",
+      "city": "Lisbon",
+      "country": "Portugal",
+      "kind": "solo",
+      "url": "https://example.com/exhibitions/paste-grounds",
+      "slug": "paste-grounds-2025",
+      "featured": true,
+      "startDate": "2025-04-11T00:00:00.000Z",
+      "endDate": "2025-06-08T00:00:00.000Z",
+      "format": "Solo exhibition",
+      "curator": "A. Placeholder",
+      "description": "Twenty-four sheets and the room they were combed in.",
+      "aboutTitle": "Curatorial note",
+      "about": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The show hung the sheets in the order they were made, which is the only order that means anything here."
+            }
+          ]
+        }
+      ],
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/DP887096.jpg",
+        "poster": null,
+        "alt": "A yellow paste paper sheet.",
+        "caption": "Yellow paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.48, Open Access (CC0).",
+        "width": 1151,
+        "height": 1726
+      },
+      "tags": [
+        "Solo"
+      ],
+      "virtualTourUrl": "https://example.com/tours/paste-grounds",
+      "pressKitUrl": null,
+      "highlights": [
+        "24 sheets",
+        "One room",
+        "Rehung weekly"
+      ],
+      "story": [
+        {
+          "type": "gallery",
+          "id": "paste-grounds-2025-views",
+          "title": "Installation views",
+          "aside": "Example Gallery, Lisbon",
+          "items": [
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/dp/original/DP887095.jpg",
+              "poster": null,
+              "alt": "A purple red paste paper sheet.",
+              "caption": "Purple red paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.83, Open Access (CC0).",
+              "width": 3468,
+              "height": 2310
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/is/original/DP230058.jpg",
+              "poster": null,
+              "alt": "A textile fragment with a repeating pattern.",
+              "caption": "Textile Fragment, mid-16th century. The Metropolitan Museum of Art, accession 52.20.22, Open Access (CC0).",
+              "width": 3957,
+              "height": 3640
+            }
+          ]
+        },
+        {
+          "type": "related",
+          "id": "paste-grounds-2025-works",
+          "title": "What was shown",
+          "intro": [],
+          "refs": [
+            {
+              "type": "series",
+              "key": "paste-grounds"
+            },
+            {
+              "type": "installation",
+              "key": "combed-room"
+            }
+          ]
+        }
+      ],
+      "seo": {
+        "title": "Paste Grounds, Example Gallery",
+        "description": "Twenty-four sheets and the room they were combed in.",
+        "image": null,
+        "keywords": []
+      }
+    },
+    {
+      "id": "printed-matter-repeated-2024",
+      "year": 2024,
+      "title": "Printed Matter, Repeated",
+      "venue": "Sample Kunsthalle",
+      "city": "Rotterdam",
+      "country": "Netherlands",
+      "kind": "group",
+      "url": null,
+      "startDate": "2024-09-06T00:00:00.000Z",
+      "endDate": "2024-11-17T00:00:00.000Z",
+      "format": "Group exhibition",
+      "description": "Six artists on the printed repeat.",
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/MM4935.jpg",
+        "poster": null,
+        "alt": "An ornament print panel.",
+        "caption": "Ornament Print Panel, early 16th century. The Metropolitan Museum of Art, accession 17.3.1116, Open Access (CC0).",
+        "width": 2965,
+        "height": 4000
+      },
+      "tags": [
+        "Group"
+      ]
+    },
+    {
+      "id": "pattern-week-2024",
+      "year": 2024,
+      "title": "Pattern Week",
+      "venue": "Placeholder Hall",
+      "city": "Porto",
+      "country": "Portugal",
+      "kind": "festival",
+      "url": "https://example.com/exhibitions/pattern-week",
+      "startDate": "2024-05-13T00:00:00.000Z",
+      "endDate": "2024-05-19T00:00:00.000Z",
+      "format": "Festival",
+      "description": "A week of talks and open studios.",
+      "tags": [
+        "Festival"
+      ]
+    },
+    {
+      "id": "demo-art-fair-2023",
+      "year": 2023,
+      "title": "Demo Art Fair",
+      "venue": "Example Gallery booth",
+      "city": "Madrid",
+      "country": "Spain",
+      "kind": "fair",
+      "url": null
+    },
+    {
+      "id": "biennial-of-examples-2023",
+      "year": 2023,
+      "title": "Biennial of Examples",
+      "venue": "Sample Pavilion",
+      "city": "Athens",
+      "country": "Greece",
+      "kind": "biennale",
+      "url": null,
+      "slug": "biennial-of-examples-2023",
+      "featured": true,
+      "startDate": "2023-05-20T00:00:00.000Z",
+      "endDate": "2023-11-26T00:00:00.000Z",
+      "format": "Biennale",
+      "event": "Biennial of Examples, 4th edition",
+      "curator": "B. Example",
+      "description": "A pavilion given over to one wall of paper.",
+      "aboutTitle": "About the pavilion",
+      "about": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The pavilion showed Paper Wall for six months, rehung every morning by the invigilators."
+            }
+          ]
+        }
+      ],
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/eg/original/17.10.1a.jpg",
+        "poster": null,
+        "alt": "A reconstruction of a geometric ceiling decoration.",
+        "caption": "Reconstruction of  Geometric Decoration, ca. 1386–1347 BCE. The Metropolitan Museum of Art, accession 17.10.1a, Open Access (CC0).",
+        "width": 2989,
+        "height": 4000
+      },
+      "tags": [
+        "Biennale"
+      ],
+      "highlights": [
+        "Six months",
+        "90 sheets",
+        "Rehung 184 times"
+      ],
+      "story": [
+        {
+          "type": "chapter",
+          "id": "biennial-2023-chapter",
+          "title": "One wall, six months",
+          "text": "The pavilion was given over to a single wall of paper, rehung every morning by whoever opened the room.",
+          "background": {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/ao/original/DT1269.jpg",
+            "poster": null,
+            "alt": "A woven shirt with a repeating pattern.",
+            "caption": "Shirt, 500–850 CE. The Metropolitan Museum of Art, accession 1987.394.706, Open Access (CC0).",
+            "width": 3811,
+            "height": 3049
+          },
+          "labels": [
+            {
+              "label": "Athens",
+              "href": "https://example.com/biennial",
+              "kind": "site"
+            },
+            {
+              "label": "2023",
+              "href": "https://example.com/biennial/2023",
+              "kind": "site"
+            }
+          ]
+        },
+        {
+          "type": "related",
+          "id": "biennial-2023-works",
+          "title": "What was shown",
+          "intro": [],
+          "refs": [
+            {
+              "type": "installation",
+              "key": "paper-wall"
+            }
+          ]
+        }
+      ],
+      "seo": {
+        "title": "Biennial of Examples",
+        "description": "A pavilion given over to one wall of paper.",
+        "image": null,
+        "keywords": []
+      }
+    },
+    {
+      "id": "open-studio-2022",
+      "year": 2022,
+      "title": "Open Studio",
+      "venue": "The artist's studio",
+      "city": "Lisbon",
+      "country": "Portugal",
+      "kind": "other",
+      "url": null
+    }
+  ],
+  "awards": [
+    {
+      "id": "example-print-prize-2025",
+      "year": 2025,
+      "title": "Example Print Prize",
+      "organization": "Example Foundation",
+      "result": "Winner",
+      "url": null,
+      "slug": "example-print-prize-2025",
+      "description": "Given each year to one printed series.",
+      "category": "Printmaking",
+      "prize": "Winner",
+      "ceremonyLocation": "Lisbon",
+      "pressReleaseUrl": null,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/gr/original/DP142874.jpg",
+        "poster": null,
+        "alt": "A steatite octagonal seal.",
+        "caption": "Steatite octagonal seal, 8th century BCE. The Metropolitan Museum of Art, accession 41.160.479, Open Access (CC0).",
+        "width": 3000,
+        "height": 4000
+      },
+      "project": {
+        "type": "series",
+        "key": "paste-grounds"
+      },
+      "story": [
+        {
+          "type": "text",
+          "id": "print-prize-about",
+          "title": "About the prize",
+          "columns": 1,
+          "body": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        }
+      ],
+      "seo": {
+        "title": "Example Print Prize",
+        "description": "Given each year to one printed series.",
+        "image": null,
+        "keywords": []
+      }
+    },
+    {
+      "id": "placeholder-pattern-award-2024",
+      "year": 2024,
+      "title": "Placeholder Award for Pattern",
+      "organization": "Sample Society of Printmakers",
+      "result": "Shortlist",
+      "url": null,
+      "description": "A shortlist of eight, announced in spring.",
+      "category": "Pattern",
+      "prize": "Shortlist"
+    },
+    {
+      "id": "demo-studio-grant-2023",
+      "year": 2023,
+      "title": "Demo Studio Grant",
+      "organization": "Fictional Arts Council",
+      "result": "Recipient",
+      "url": "https://example.com/awards/studio-grant"
+    }
+  ],
+  "press": [
+    {
+      "id": "example-review-2025",
+      "year": 2025,
+      "date": "2025-04-18",
+      "title": "Paste, comb and repeat: a demo artist looks at colour",
+      "outlet": "Example Review",
+      "url": "https://example.com/press/paste-comb-repeat",
+      "slug": "example-review-2025",
+      "kind": "article",
+      "category": "Review",
+      "description": "A long look at the first series, and at what a combed sheet proves.",
+      "image": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/DP887095.jpg",
+        "poster": null,
+        "alt": "A purple red paste paper sheet.",
+        "caption": "Purple red paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.83, Open Access (CC0).",
+        "width": 3468,
+        "height": 2310
+      },
+      "author": "R. Example",
+      "minutes": 8,
+      "featured": true,
+      "tags": [
+        "Review"
+      ],
+      "relatedSeries": [
+        "paste-grounds"
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The review argues that the sheets are the work and the tokens are the receipt, then spends four pages disagreeing with itself."
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "children": [
+            {
+              "text": "The comb is the only signature here, and it cannot be forged twice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sample-magazine-2024",
+      "year": 2024,
+      "date": "2024-07-02",
+      "title": "Loose Fields and the open edition",
+      "outlet": "Sample Magazine",
+      "url": "https://example.com/press/loose-fields",
+      "slug": "sample-magazine-2024",
+      "kind": "article",
+      "category": "Feature",
+      "description": "On open editions, and closing them on time.",
+      "author": "S. Sample",
+      "minutes": 5,
+      "tags": [
+        "Feature"
+      ],
+      "relatedSeries": [
+        "loose-fields"
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A feature on the second series, written before the drop closed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "placeholder-daily-2024",
+      "year": 2024,
+      "date": "2024-05-21",
+      "title": "Five artists at Pattern Week",
+      "outlet": "Placeholder Daily",
+      "url": "https://example.com/press/pattern-week"
+    },
+    {
+      "id": "demo-journal-2023",
+      "year": 2023,
+      "date": null,
+      "title": "In the studio with Demo Artist",
+      "outlet": "Demo Journal",
+      "url": null,
+      "kind": "article",
+      "category": "Interview",
+      "description": "A studio visit, transcribed.",
+      "author": "D. Demo",
+      "minutes": 12
+    },
+    {
+      "id": "fictional-weekly-2023",
+      "year": 2023,
+      "date": "2023-10-20",
+      "title": "Grids that refuse to sit still",
+      "outlet": "The Fictional Weekly",
+      "url": "https://example.com/press/grids"
+    },
+    {
+      "id": "example-broadcast-2025",
+      "year": 2025,
+      "date": "2025-09-02",
+      "title": "Ten minutes in the studio",
+      "outlet": "Example Broadcast",
+      "url": "https://example.com/press/ten-minutes",
+      "slug": "example-broadcast-2025",
+      "kind": "video",
+      "category": "Interview",
+      "description": "A short film made in the studio, with the comb in shot.",
+      "image": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/ep/original/DP320098.jpg",
+        "poster": null,
+        "alt": "A painted interior of a studio.",
+        "caption": "The Interior of a Woman Painter's Studio, 1789. The Metropolitan Museum of Art, accession 57.103, Open Access (CC0).",
+        "width": 3018,
+        "height": 3882
+      },
+      "author": null,
+      "minutes": 10,
+      "body": null,
+      "embedUrl": "https://example.com/watch/ten-minutes",
+      "mediaUrl": null,
+      "featured": true,
+      "tags": [
+        "Video"
+      ],
+      "relatedSeries": [
+        "paste-grounds"
+      ]
+    },
+    {
+      "id": "placeholder-podcast-2024",
+      "year": 2024,
+      "date": "2024-03-14",
+      "title": "Episode 42: pattern, paste and proof",
+      "outlet": "The Placeholder Podcast",
+      "url": "https://example.com/press/episode-42",
+      "slug": "placeholder-podcast-2024",
+      "kind": "podcast",
+      "category": "Interview",
+      "description": "An hour on catalogues, contracts and why a sheet is easier to trust than a file.",
+      "image": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/is/original/wb-40.181.13.JPG",
+        "poster": null,
+        "alt": "A tile with a floral motif.",
+        "caption": "Tile, early 14th century. The Metropolitan Museum of Art, accession 40.181.13, Open Access (CC0).",
+        "width": 1693,
+        "height": 1452
+      },
+      "author": "P. Placeholder",
+      "minutes": 58,
+      "body": null,
+      "embedUrl": null,
+      "mediaUrl": null,
+      "featured": false,
+      "tags": [
+        "Podcast"
+      ],
+      "relatedSeries": []
+    }
+  ],
+  "installations": [
+    {
+      "slug": "combed-room",
+      "title": "Combed Room",
+      "subtitle": "A room printed in one pass",
+      "description": "A four-wall projection that combs a single ground across the room over twenty minutes, so the pattern is never seen whole.",
+      "year": 2025,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/is/original/DP231236.jpg",
+        "poster": null,
+        "alt": "A glazed tile with a repeating motif.",
+        "caption": "Tile, late 15th century. The Metropolitan Museum of Art, accession 2008.462, Open Access (CC0).",
+        "width": 4000,
+        "height": 2995
+      },
+      "tags": [
+        "Projection",
+        "Pattern"
+      ],
+      "featured": true,
+      "story": [
+        {
+          "type": "text",
+          "id": "combed-room-about",
+          "title": "About the work",
+          "columns": 2,
+          "body": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art.",
+          "moreTitle": "Notes",
+          "more": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "The room was built for a demo. So was the museum."
+                }
+              ]
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                [
+                  {
+                    "text": "Four walls"
+                  }
+                ],
+                [
+                  {
+                    "text": "One ground"
+                  }
+                ],
+                [
+                  {
+                    "text": "Twenty minutes"
+                  }
+                ]
+              ]
+            }
+          ],
+          "cta": null
+        },
+        {
+          "type": "gallery",
+          "id": "combed-room-photos",
+          "title": "Installation views",
+          "aside": "Sample Kunsthalle, 2025",
+          "items": [
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/is/original/AD-94.4.394a.JPG",
+              "poster": null,
+              "alt": "A tile with a geometric motif.",
+              "caption": "Tile, second half 15th century. The Metropolitan Museum of Art, accession 94.4.394, Open Access (CC0).",
+              "width": 2560,
+              "height": 1920
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/is/original/wb-40.181.13.JPG",
+              "poster": null,
+              "alt": "A tile with a floral motif.",
+              "caption": "Tile, early 14th century. The Metropolitan Museum of Art, accession 40.181.13, Open Access (CC0).",
+              "width": 1693,
+              "height": 1452
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/ad/original/L.2009.22.4.jpg",
+              "poster": null,
+              "alt": "A late nineteenth century tile.",
+              "caption": "Tile, 1884. The Metropolitan Museum of Art, accession 2018.294.11, Open Access (CC0).",
+              "width": 4000,
+              "height": 2698
+            }
+          ]
+        },
+        {
+          "type": "press",
+          "id": "combed-room-press",
+          "title": "Written about",
+          "pressIds": [
+            "example-review-2025",
+            "example-broadcast-2025"
+          ]
+        },
+        {
+          "type": "related",
+          "id": "combed-room-related",
+          "title": "Made from",
+          "intro": [
+            {
+              "title": "Source",
+              "text": "The room reads one sheet from Paste Grounds and repeats it."
+            }
+          ],
+          "refs": [
+            {
+              "type": "series",
+              "key": "paste-grounds"
+            }
+          ]
+        }
+      ],
+      "seo": {
+        "title": "Combed Room",
+        "description": "A four-wall projection that combs one ground across a room.",
+        "image": null,
+        "keywords": []
+      },
+      "medium": "Four-channel projection, sound",
+      "dimensions": "8 x 6 x 4 m",
+      "materials": [
+        "Projection",
+        "Sound",
+        "Paper"
+      ],
+      "location": "Sample Kunsthalle, Rotterdam",
+      "curator": "A. Placeholder",
+      "photos": [
+        {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/is/original/AD-94.4.394a.JPG",
+          "poster": null,
+          "alt": "A tile with a geometric motif.",
+          "caption": "Tile, second half 15th century. The Metropolitan Museum of Art, accession 94.4.394, Open Access (CC0).",
+          "width": 2560,
+          "height": 1920
+        },
+        {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/is/original/wb-40.181.13.JPG",
+          "poster": null,
+          "alt": "A tile with a floral motif.",
+          "caption": "Tile, early 14th century. The Metropolitan Museum of Art, accession 40.181.13, Open Access (CC0).",
+          "width": 1693,
+          "height": 1452
+        }
+      ],
+      "videos": []
+    },
+    {
+      "slug": "paper-wall",
+      "title": "Paper Wall",
+      "subtitle": null,
+      "description": "Ninety printed sheets pinned edge to edge, rehung each morning by whoever opens the gallery.",
+      "year": 2024,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/eg/original/17.10.1a.jpg",
+        "poster": null,
+        "alt": "A reconstruction of a geometric ceiling decoration.",
+        "caption": "Reconstruction of  Geometric Decoration, ca. 1386–1347 BCE. The Metropolitan Museum of Art, accession 17.10.1a, Open Access (CC0).",
+        "width": 2989,
+        "height": 4000
+      },
+      "tags": [
+        "Print",
+        "Participatory"
+      ],
+      "featured": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "paper-wall-about",
+          "title": "About the work",
+          "columns": 1,
+          "body": "The wall is never the same twice, because the order is never written down.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        },
+        {
+          "type": "media",
+          "id": "paper-wall-view",
+          "asset": {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/dp/original/MM4935.jpg",
+            "poster": null,
+            "alt": "An ornament print panel.",
+            "caption": "Ornament Print Panel, early 16th century. The Metropolitan Museum of Art, accession 17.3.1116, Open Access (CC0).",
+            "width": 2965,
+            "height": 4000
+          }
+        }
+      ],
+      "seo": {
+        "title": "Paper Wall",
+        "description": "Ninety printed sheets, rehung every morning.",
+        "image": null,
+        "keywords": []
+      },
+      "medium": "Pigment prints, pins",
+      "dimensions": "4 x 3 m",
+      "materials": [
+        "Paper",
+        "Pigment"
+      ],
+      "location": "Placeholder Hall, Porto",
+      "curator": null,
+      "photos": [
+        {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/original/MM4935.jpg",
+          "poster": null,
+          "alt": "An ornament print panel.",
+          "caption": "Ornament Print Panel, early 16th century. The Metropolitan Museum of Art, accession 17.3.1116, Open Access (CC0).",
+          "width": 2965,
+          "height": 4000
+        }
+      ],
+      "videos": []
+    }
+  ],
+  "immersives": [
+    {
+      "slug": "lattice-walk",
+      "title": "Lattice Walk",
+      "subtitle": "A walk through a repeating room",
+      "description": "A twelve-minute walk through a lattice that closes behind the visitor.",
+      "year": 2024,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/eg/original/EG14.108.JPG",
+        "poster": null,
+        "alt": "An architectural drawing of a garden.",
+        "caption": "Architectural Drawing of a Garden, ca. 1550–1300 BCE. The Metropolitan Museum of Art, accession 14.108, Open Access (CC0).",
+        "width": 650,
+        "height": 470
+      },
+      "tags": [
+        "Immersive"
+      ],
+      "featured": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "lattice-walk-about",
+          "title": "About the experience",
+          "columns": 1,
+          "body": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        },
+        {
+          "type": "media",
+          "id": "lattice-walk-still",
+          "asset": {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/dp/original/DP104573.jpg",
+            "poster": null,
+            "alt": "A print of ornamental vases.",
+            "caption": "Mascarade à la Grecque; Suite des Vases; and [Cheminées], 1771, 1764. The Metropolitan Museum of Art, accession 40.59.1, Open Access (CC0).",
+            "width": 2618,
+            "height": 3861
+          }
+        }
+      ],
+      "seo": {
+        "title": "Lattice Walk",
+        "description": "A twelve-minute walk through a repeating room.",
+        "image": null,
+        "keywords": []
+      },
+      "platform": "Example VR",
+      "duration": "12 min",
+      "status": "Touring",
+      "date": "2024-09-12T00:00:00.000Z",
+      "curator": "B. Example",
+      "experienceUrl": "https://example.com/experiences/lattice-walk",
+      "requirements": "A browser, or a headset if you have one",
+      "photos": [
+        {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/original/DP104573.jpg",
+          "poster": null,
+          "alt": "A print of ornamental vases.",
+          "caption": "Mascarade à la Grecque; Suite des Vases; and [Cheminées], 1771, 1764. The Metropolitan Museum of Art, accession 40.59.1, Open Access (CC0).",
+          "width": 2618,
+          "height": 3861
+        }
+      ],
+      "videos": []
+    }
+  ],
+  "physicalWorks": [
+    {
+      "slug": "ground-i-plum-pressed",
+      "title": "Ground I (Plum), pressed",
+      "subtitle": "The sheet behind the token",
+      "description": "The paper the first token was made from, framed and kept with its certificate.",
+      "year": 2025,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/DP887095.jpg",
+        "poster": null,
+        "alt": "A purple red paste paper sheet.",
+        "caption": "Purple red paste paper, 18th century. The Metropolitan Museum of Art, accession 39.13.83, Open Access (CC0).",
+        "width": 3468,
+        "height": 2310
+      },
+      "tags": [
+        "Paper"
+      ],
+      "featured": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "ground-i-about",
+          "title": "About the object",
+          "columns": 1,
+          "body": "A physical work in the catalogue is the other half of a digital one: same ground, one copy, no file.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        }
+      ],
+      "seo": {
+        "title": "Ground I (Plum), pressed",
+        "description": "The sheet the first token was made from.",
+        "image": null,
+        "keywords": []
+      },
+      "medium": "Paste paper, framed",
+      "dimensions": "70 x 50 cm",
+      "materials": [
+        "Paper",
+        "Pigment",
+        "Rice paste"
+      ],
+      "location": "Lisbon",
+      "availability": "Private collection",
+      "seriesSlug": "paste-grounds",
+      "workIds": [
+        "ethereum:0x00000000000000000000000000000000de000001:1"
+      ]
+    }
+  ],
+  "collaborations": [
+    {
+      "slug": "example-paper-mill",
+      "title": "Example Paper Mill",
+      "subtitle": "A paper made for one series",
+      "description": "A mill and a studio making a sheet that takes paste without cockling.",
+      "year": 2025,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/is/original/DP230058.jpg",
+        "poster": null,
+        "alt": "A textile fragment with a repeating pattern.",
+        "caption": "Textile Fragment, mid-16th century. The Metropolitan Museum of Art, accession 52.20.22, Open Access (CC0).",
+        "width": 3957,
+        "height": 3640
+      },
+      "tags": [
+        "Brand"
+      ],
+      "featured": true,
+      "story": [
+        {
+          "type": "text",
+          "id": "paper-mill-about",
+          "title": "About the project",
+          "columns": 2,
+          "body": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art.",
+          "moreTitle": null,
+          "more": null,
+          "cta": {
+            "label": "See the paper",
+            "href": "https://example.com/paper-mill/sheet",
+            "kind": "site"
+          }
+        },
+        {
+          "type": "embed",
+          "id": "paper-mill-film",
+          "provider": "link",
+          "url": "https://example.com/watch/the-fourth-batch",
+          "title": "The fourth batch",
+          "context": "Four minutes on the mill floor, filmed on the day the sheet worked.",
+          "attribution": "Example Paper Mill, 2025",
+          "poster": {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/is/original/DP230057.jpg",
+            "poster": null,
+            "alt": "A fragment of loom width with a wavy vine pattern.",
+            "caption": "Fragmentary Loom Width with Wavy-Vine Pattern, ca. 1565–80. The Metropolitan Museum of Art, accession 52.20.21, Open Access (CC0).",
+            "width": 2187,
+            "height": 3860
+          }
+        },
+        {
+          "type": "gallery",
+          "id": "paper-mill-gallery",
+          "title": "Test sheets",
+          "aside": null,
+          "items": [
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/is/original/wb-52.20.20.JPG",
+              "poster": null,
+              "alt": "A rectangular silk fragment.",
+              "caption": "Rectangular Silk Fragment, last quarter 16th century. The Metropolitan Museum of Art, accession 52.20.20, Open Access (CC0).",
+              "width": 1536,
+              "height": 2048
+            },
+            {
+              "kind": "image",
+              "src": "https://images.metmuseum.org/CRDImages/is/original/DP230057.jpg",
+              "poster": null,
+              "alt": "A fragment of loom width with a wavy vine pattern.",
+              "caption": "Fragmentary Loom Width with Wavy-Vine Pattern, ca. 1565–80. The Metropolitan Museum of Art, accession 52.20.21, Open Access (CC0).",
+              "width": 2187,
+              "height": 3860
+            }
+          ]
+        }
+      ],
+      "seo": {
+        "title": "Example Paper Mill",
+        "description": "A paper made for one series.",
+        "image": null,
+        "keywords": []
+      },
+      "kind": "Brand",
+      "status": "Shipped",
+      "date": "2025-06-02T00:00:00.000Z",
+      "partners": [
+        {
+          "name": "Example Paper Mill",
+          "role": "Manufacturer",
+          "url": "https://example.com/paper-mill"
+        },
+        {
+          "name": "Sample Press",
+          "role": "Printer",
+          "url": null
+        }
+      ],
+      "highlights": [
+        "One sheet size, made twice",
+        "Four test batches",
+        "Sold only with a work"
+      ],
+      "projectUrl": "https://example.com/paper-mill",
+      "about": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The mill agreed to run four batches until a sheet took paste without cockling."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The fourth batch is the one the series is printed on."
+            }
+          ]
+        }
+      ],
+      "photos": [
+        {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/is/original/wb-52.20.20.JPG",
+          "poster": null,
+          "alt": "A rectangular silk fragment.",
+          "caption": "Rectangular Silk Fragment, last quarter 16th century. The Metropolitan Museum of Art, accession 52.20.20, Open Access (CC0).",
+          "width": 1536,
+          "height": 2048
+        }
+      ],
+      "videos": []
+    },
+    {
+      "slug": "sample-museum-lab",
+      "title": "Sample Museum Lab",
+      "subtitle": null,
+      "description": "A residency reading a museum pattern archive with a small model.",
+      "year": 2024,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/rl/original/DP265189.jpg",
+        "poster": null,
+        "alt": "A Buddhist priest's robe with a patched pattern.",
+        "caption": "Kesa (Buddhist priest's robe), late 19th to early 20th century. The Metropolitan Museum of Art, accession 1975.1.1934, Open Access (CC0).",
+        "width": 1159,
+        "height": 1963
+      },
+      "tags": [
+        "Institution"
+      ],
+      "featured": false,
+      "story": [
+        {
+          "type": "text",
+          "id": "museum-lab-about",
+          "title": "About the residency",
+          "columns": 1,
+          "body": "Six weeks in a collection, and a model small enough to explain on one page.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        }
+      ],
+      "seo": {
+        "title": "Sample Museum Lab",
+        "description": "A residency in a museum pattern archive.",
+        "image": null,
+        "keywords": []
+      },
+      "kind": "Institution",
+      "status": "Ongoing",
+      "date": "2024-02-05T00:00:00.000Z",
+      "partners": [
+        {
+          "name": "Sample Museum",
+          "role": "Host",
+          "url": "https://example.com/museum"
+        }
+      ],
+      "highlights": [
+        "Six weeks",
+        "One model",
+        "Everything published"
+      ],
+      "projectUrl": null,
+      "about": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The residency published its notes rather than its weights, which is the part that lasts."
+            }
+          ]
+        }
+      ],
+      "photos": [],
+      "videos": []
+    }
+  ],
+  "writings": [
+    {
+      "slug": "notes-on-paste-and-pattern",
+      "title": "Notes on paste and pattern",
+      "subtitle": null,
+      "description": "What a combed ground keeps when it is scanned, and what it drops.",
+      "year": 2025,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/DP803148.jpg",
+        "poster": null,
+        "alt": "An eighteenth century architectural drawing.",
+        "caption": "Architectural Drawing, 18th century. The Metropolitan Museum of Art, accession 33.13a, Open Access (CC0).",
+        "width": 1771,
+        "height": 2444
+      },
+      "tags": [
+        "Essay"
+      ],
+      "featured": true,
+      "story": [],
+      "seo": {
+        "title": "Notes on paste and pattern",
+        "description": "What a combed ground keeps when it is scanned.",
+        "image": null,
+        "keywords": []
+      },
+      "authors": [
+        "Demo Artist"
+      ],
+      "abstract": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A short essay on the difference between a pattern that repeats and a pattern that is repeated."
+            }
+          ]
+        }
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "children": [
+            {
+              "text": "The ground"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A ground is made in one pass. A scan of a ground is made in one pass too, but the passes are not the same kind of pass."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "The comb leaves a rhythm"
+              }
+            ],
+            [
+              {
+                "text": "The scanner leaves a grid"
+              }
+            ],
+            [
+              {
+                "text": "Only one of them can be undone"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "children": [
+            {
+              "text": "The repeat"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "children": [
+            {
+              "text": "A repeat is a promise that nothing new will happen."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The plates in this essay are "
+            },
+            {
+              "text": "Open Access images from The Met",
+              "href": "https://www.metmuseum.org/art/collection"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "publishedIn": "Journal of Example Studies",
+      "publishedAt": "2025-05-20T00:00:00.000Z",
+      "category": "Essay",
+      "doi": null,
+      "pdfUrl": null,
+      "originalUrl": "https://example.com/writing/notes-on-paste-and-pattern",
+      "references": [
+        "Example, A. (2024). On grounds. Sample Press.",
+        "Placeholder, B. (2023). Pattern and repeat. Demo Books.",
+        "Fictional, C. (2022). The scanned hand. Example Review, 12(2)."
+      ]
+    },
+    {
+      "slug": "a-grammar-of-grids",
+      "title": "A grammar of grids",
+      "subtitle": null,
+      "description": "A short talk, written up, on why a grid is easier to break than to leave.",
+      "year": 2023,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/DP808597.jpg",
+        "poster": null,
+        "alt": "An architectural drawing of a facade.",
+        "caption": "Architectural Drawing, 18th century. The Metropolitan Museum of Art, accession 49.50.145, Open Access (CC0).",
+        "width": 1996,
+        "height": 3736
+      },
+      "tags": [
+        "Talk"
+      ],
+      "featured": false,
+      "story": [],
+      "seo": {
+        "title": "A grammar of grids",
+        "description": "Why a grid is easier to break than to leave.",
+        "image": null,
+        "keywords": []
+      },
+      "authors": [
+        "Demo Artist",
+        "C. Fictional"
+      ],
+      "abstract": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A talk given at a conference that does not exist, written up for one that does not either."
+            }
+          ]
+        }
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The argument is small: a grid is a grammar, and a grammar is only interesting where it fails."
+            }
+          ]
+        }
+      ],
+      "publishedIn": "Proceedings of the Example Conference",
+      "publishedAt": "2023-11-02T00:00:00.000Z",
+      "category": "Paper",
+      "doi": "10.0000/example.2023.0002",
+      "pdfUrl": null,
+      "originalUrl": null,
+      "references": [
+        "Example, A. (2021). Grammar and grid. Sample Press."
+      ]
+    }
+  ],
+  "drops": [
+    {
+      "slug": "loose-fields-second-pass",
+      "title": "Loose Fields: Second Pass",
+      "subtitle": "One hundred sheets, one week",
+      "description": "An open edition that closes after a week, whatever the count has reached.",
+      "year": 2026,
+      "cover": {
+        "kind": "image",
+        "src": "https://images.metmuseum.org/CRDImages/dp/original/DP823428.jpg",
+        "poster": null,
+        "alt": "An ornament print with scrolling forms.",
+        "caption": "Ornament Print with Schweifwerk and Two (Allegorical?) Figures, ca. 1615–20. The Metropolitan Museum of Art, accession 2012.55, Open Access (CC0).",
+        "width": 1694,
+        "height": 1426
+      },
+      "tags": [
+        "Open edition"
+      ],
+      "featured": true,
+      "story": [
+        {
+          "type": "text",
+          "id": "second-pass-about",
+          "title": "About the drop",
+          "columns": 1,
+          "body": "Everything on this page is placeholder text for the Raisonne demo. The artist, the venues and the dates are invented; the images are public-domain works from The Metropolitan Museum of Art.",
+          "moreTitle": null,
+          "more": null,
+          "cta": null
+        }
+      ],
+      "seo": {
+        "title": "Loose Fields: Second Pass",
+        "description": "An open edition that closes after a week.",
+        "image": null,
+        "keywords": []
+      },
+      "seriesSlug": "loose-fields",
+      "kind": "Open edition",
+      "startsAt": "2026-12-01T17:00:00.000Z",
+      "endsAt": "2026-12-08T17:00:00.000Z",
+      "chain": "base",
+      "contract": "0x00000000000000000000000000000000de000004",
+      "standard": "ERC721",
+      "editionSize": 100,
+      "platform": "Example Market",
+      "marketUrl": "https://example.com/market/loose-fields-second-pass",
+      "mintUrl": "https://example.com/mint/loose-fields-second-pass",
+      "phases": [
+        {
+          "name": "Holders",
+          "startsAt": "2026-12-01T17:00:00.000Z",
+          "supply": 40,
+          "price": {
+            "amount": 0.03,
+            "currency": "ETH"
+          },
+          "audience": "Anyone holding a work from Paste Grounds"
+        },
+        {
+          "name": "Open",
+          "startsAt": "2026-12-02T17:00:00.000Z",
+          "supply": 60,
+          "price": {
+            "amount": 0.05,
+            "currency": "ETH"
+          },
+          "audience": "Anyone"
+        }
+      ],
+      "perks": [
+        "A printed sheet for the first forty",
+        "The studio notes as a PDF",
+        "A seat at the closing call"
+      ],
+      "notify": true
+    }
+  ],
+  "commissions": {
+    "title": "Commissions",
+    "description": "The studio takes on two or three commissions a year, usually where a pattern has to hold up in a room.",
+    "cta": {
+      "label": "Start a project",
+      "href": "mailto:hello@example.com",
+      "kind": "email"
+    },
+    "featured": [
+      "example-paper-mill"
+    ],
+    "clients": [
+      {
+        "name": "Example Paper Mill",
+        "logo": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/gr/original/DP142874.jpg",
+          "poster": null,
+          "alt": "A carved seal, standing in for a logotype.",
+          "caption": null,
+          "width": 3000,
+          "height": 4000
+        },
+        "url": "https://example.com/paper-mill"
+      },
+      {
+        "name": "Sample Museum",
+        "logo": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/is/original/wb-40.181.13.JPG",
+          "poster": null,
+          "alt": "A tile, standing in for a logotype.",
+          "caption": null,
+          "width": 1693,
+          "height": 1452
+        },
+        "url": "https://example.com/museum"
+      },
+      {
+        "name": "Placeholder Hall",
+        "logo": null,
+        "url": "https://example.com/hall"
+      },
+      {
+        "name": "Demo Foundation",
+        "logo": null,
+        "url": null
+      },
+      {
+        "name": "Fictional Arts Council",
+        "logo": null,
+        "url": "https://example.com/council"
+      }
+    ],
+    "services": [
+      {
+        "title": "Pattern systems",
+        "description": "A pattern that survives being printed, projected and cut.",
+        "items": [
+          "Motif and repeat",
+          "Colourways",
+          "Production files"
+        ]
+      },
+      {
+        "title": "Rooms and walls",
+        "description": "Work made for one wall, one room or one week.",
+        "items": [
+          "Site visit",
+          "Prototype",
+          "Install and strike"
+        ]
+      },
+      {
+        "title": "Editions",
+        "description": "An edition planned so the numbers still make sense in five years.",
+        "items": [
+          "Edition plan",
+          "Contract and metadata",
+          "Certificates"
+        ]
+      }
+    ]
+  },
+  "cv": {
+    "experience": [
+      {
+        "title": "Studio practice",
+        "organization": "Independent",
+        "location": "Lisbon, Portugal",
+        "startDate": "2019-01-01T00:00:00.000Z",
+        "endDate": null,
+        "description": "Pattern, paste and print, shown as an open catalogue.",
+        "highlights": [
+          "Four series",
+          "Two installations",
+          "One paper made to order"
+        ]
+      },
+      {
+        "title": "Artist in residence",
+        "organization": "Sample Museum",
+        "location": "Rotterdam, Netherlands",
+        "startDate": "2024-02-01T00:00:00.000Z",
+        "endDate": "2024-03-15T00:00:00.000Z",
+        "description": "Six weeks in a pattern archive.",
+        "highlights": []
+      },
+      {
+        "title": "Print technician",
+        "organization": "Sample Press",
+        "location": "Porto, Portugal",
+        "startDate": "2016-09-01T00:00:00.000Z",
+        "endDate": "2018-12-01T00:00:00.000Z",
+        "description": null,
+        "highlights": []
+      }
+    ],
+    "education": [
+      {
+        "title": "MA, Printmaking",
+        "institution": "Example School of Art",
+        "location": "Lisbon, Portugal",
+        "startDate": "2014-09-01T00:00:00.000Z",
+        "endDate": "2016-06-01T00:00:00.000Z",
+        "description": null
+      },
+      {
+        "title": "BA, Visual Arts",
+        "institution": "Sample University",
+        "location": "Porto, Portugal",
+        "startDate": "2010-09-01T00:00:00.000Z",
+        "endDate": "2014-06-01T00:00:00.000Z",
+        "description": null
+      }
+    ],
+    "skills": [
+      {
+        "name": "Paste paper",
+        "category": "artistic"
+      },
+      {
+        "name": "Screen printing",
+        "category": "artistic"
+      },
+      {
+        "name": "Colour separation",
+        "category": "technical"
+      },
+      {
+        "name": "Generative drawing",
+        "category": "technical"
+      },
+      {
+        "name": "Edition planning",
+        "category": "conceptual"
+      },
+      {
+        "name": "Image editing",
+        "category": "software"
+      },
+      {
+        "name": "Vector drawing",
+        "category": "software"
+      },
+      {
+        "name": "Archive research",
+        "category": "other"
+      }
+    ],
+    "updatedAt": "2026-01-15T00:00:00.000Z",
+    "pdfUrl": null
+  },
+  "landing": {
+    "sections": [
+      {
+        "id": "hero",
+        "title": null,
+        "enabled": true
+      },
+      {
+        "id": "showreel",
+        "title": null,
+        "enabled": false
+      },
+      {
+        "id": "stats",
+        "title": null,
+        "enabled": true
+      },
+      {
+        "id": "featured",
+        "title": null,
+        "enabled": true
+      },
+      {
+        "id": "catalogue",
+        "title": null,
+        "enabled": true
+      },
+      {
+        "id": "partners",
+        "title": null,
+        "enabled": true
+      },
+      {
+        "id": "news",
+        "title": null,
+        "enabled": true
+      }
+    ],
+    "hero": {
+      "eyebrow": "Artist, Lisbon",
+      "headline": "Pattern, paste and print,\nkept as one catalogue",
+      "subtitle": "Every sheet, every edition and every room, in one place, with the record attached.",
+      "primaryCta": {
+        "label": "View the catalogue",
+        "href": "/works",
+        "kind": "site"
+      },
+      "secondaryCta": {
+        "label": "Let's work together",
+        "href": "/commissions",
+        "kind": "site"
+      }
+    },
+    "ticker": {
+      "timezone": "Europe/Lisbon",
+      "city": "Lisbon",
+      "coordinates": "38.72 N, 9.14 W",
+      "phrases": [
+        "Paste paper",
+        "Repeat and drift",
+        "One pass, no undo",
+        "Print as record"
+      ]
+    },
+    "showreel": null,
+    "stats": [
+      {
+        "label": "Works",
+        "value": "{{artworks}}",
+        "description": "Sheets and editions in the catalogue"
+      },
+      {
+        "label": "Series",
+        "value": "{{series}}",
+        "description": "Bodies of work, including one set of studies"
+      },
+      {
+        "label": "Exhibitions",
+        "value": "{{exhibitions}}",
+        "description": "Solo and group, since 2022"
+      },
+      {
+        "label": "Years",
+        "value": "7",
+        "description": "In the studio"
+      }
+    ],
+    "featured": [
+      {
+        "type": "series",
+        "key": "paste-grounds"
+      },
+      {
+        "type": "installation",
+        "key": "combed-room"
+      },
+      {
+        "type": "work",
+        "key": "ethereum:0x00000000000000000000000000000000de000001:1"
+      },
+      {
+        "type": "exhibition",
+        "key": "paste-grounds-2025"
+      },
+      {
+        "type": "collaboration",
+        "key": "example-paper-mill"
+      },
+      {
+        "type": "writing",
+        "key": "notes-on-paste-and-pattern"
+      }
+    ],
+    "partners": [
+      {
+        "name": "Example Paper Mill",
+        "logo": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/gr/original/DP142874.jpg",
+          "poster": null,
+          "alt": "A carved seal, standing in for a logotype.",
+          "caption": null,
+          "width": 3000,
+          "height": 4000
+        },
+        "url": "https://example.com/paper-mill"
+      },
+      {
+        "name": "Sample Museum",
+        "logo": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/is/original/wb-40.181.13.JPG",
+          "poster": null,
+          "alt": "A tile, standing in for a logotype.",
+          "caption": null,
+          "width": 1693,
+          "height": 1452
+        },
+        "url": "https://example.com/museum"
+      },
+      {
+        "name": "Placeholder Hall",
+        "logo": null,
+        "url": "https://example.com/hall"
+      }
+    ],
+    "announcements": [
+      {
+        "id": "announcement-second-pass",
+        "title": "Loose Fields: Second Pass opens in December",
+        "description": "One hundred sheets, open for a week, with forty held back for holders.",
+        "date": "2026-11-02T00:00:00.000Z",
+        "image": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/original/DP823428.jpg",
+          "poster": null,
+          "alt": "An ornament print with scrolling forms.",
+          "caption": "Ornament Print with Schweifwerk and Two (Allegorical?) Figures, ca. 1615–20. The Metropolitan Museum of Art, accession 2012.55, Open Access (CC0).",
+          "width": 1694,
+          "height": 1426
+        },
+        "url": "/drops/loose-fields-second-pass"
+      },
+      {
+        "id": "announcement-paper",
+        "title": "The mill has agreed to a second run",
+        "description": "The sheet the series is printed on will be made once more, in the spring.",
+        "date": "2026-08-14T00:00:00.000Z",
+        "image": null,
+        "url": null
+      }
+    ],
+    "events": [
+      {
+        "id": "event-open-studio",
+        "title": "Open studio",
+        "description": "Two afternoons, sheets on the wall, nothing for sale.",
+        "location": "Lisbon, Portugal",
+        "startDate": "2026-10-24T10:00:00.000Z",
+        "endDate": "2026-10-25T18:00:00.000Z",
+        "image": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/aa/original/LC-25_135_175-001.jpg",
+          "poster": null,
+          "alt": "A drawing of an interior.",
+          "caption": "Architectural Drawing of the Interior of the Comte de Nieuwerkerke's House, ca. 1870. The Metropolitan Museum of Art, accession 25.135.175, Open Access (CC0).",
+          "width": 3157,
+          "height": 4000
+        },
+        "url": "https://example.com/events/open-studio"
+      },
+      {
+        "id": "event-talk",
+        "title": "Talk: a grammar of grids",
+        "description": "Forty minutes on why a grid is easier to break than to leave.",
+        "location": "Rotterdam, Netherlands",
+        "startDate": "2026-12-11T18:00:00.000Z",
+        "endDate": null,
+        "image": null,
+        "url": "https://example.com/events/grammar-of-grids"
+      }
+    ],
+    "newsletter": {
+      "title": "Hear about new work",
+      "description": "One note a month, and a note before a drop. Nothing else."
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Demo Artist",
+      "description": "Pattern, paste and print, kept as one catalogue.",
+      "image": null,
+      "keywords": []
+    },
+    "works": {
+      "title": "Catalogue",
+      "description": "Every series, work, installation and show in one index.",
+      "image": null,
+      "keywords": []
+    },
+    "about": {
+      "title": "About",
+      "description": "A studio practice in pattern, paste and print.",
+      "image": null,
+      "keywords": []
+    },
+    "cv": {
+      "title": "CV",
+      "description": "Exhibitions, awards, press and the rest of the record.",
+      "image": null,
+      "keywords": []
+    },
+    "press": {
+      "title": "Press",
+      "description": "Reviews, features, interviews and broadcasts.",
+      "image": null,
+      "keywords": []
+    },
+    "exhibitions": {
+      "title": "Exhibitions",
+      "description": "Solo and group exhibitions since 2022.",
+      "image": null,
+      "keywords": []
+    },
+    "installations": {
+      "title": "Installations",
+      "description": "Rooms, walls and immersive work.",
+      "image": null,
+      "keywords": []
+    },
+    "physical-works": {
+      "title": "Physical works",
+      "description": "The sheets and objects behind the files.",
+      "image": null,
+      "keywords": []
+    },
+    "collaborations": {
+      "title": "Collaborations",
+      "description": "Projects made with mills, museums and presses.",
+      "image": null,
+      "keywords": []
+    },
+    "awards": {
+      "title": "Awards",
+      "description": "Prizes, shortlists and grants.",
+      "image": null,
+      "keywords": []
+    },
+    "writings": {
+      "title": "Writings",
+      "description": "Essays and talks from the studio.",
+      "image": null,
+      "keywords": []
+    },
+    "commissions": {
+      "title": "Commissions",
+      "description": "Two or three commissions a year.",
+      "image": null,
+      "keywords": []
+    }
+  },
+  "settings": {
+    "siteUrl": "https://demo.example",
+    "timezone": "Europe/Lisbon",
+    "modules": {
+      "showreel": false,
+      "ticker": true,
+      "partners": true,
+      "news": true,
+      "newsletter": true,
+      "drops": true,
+      "commissions": true,
+      "writings": true,
+      "immersive-rooms": false,
+      "collectors": true,
+      "insights": true,
+      "store": true
+    },
+    "liveHtml": false,
+    "showOwners": false,
+    "analytics": {
+      "provider": "none",
+      "id": null
+    },
+    "maintenance": {
+      "enabled": false,
+      "message": null
+    },
+    "allowAiCrawlers": true,
+    "redirects": [
+      {
+        "from": "/contact",
+        "to": "/commissions",
+        "permanent": true
+      }
+    ],
+    "legal": {
+      "privacy": [
+        {
+          "type": "heading",
+          "level": 2,
+          "children": [
+            {
+              "text": "What this demo collects"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Nothing. The demo artist is fictional and this install has no analytics, no cookies and no sign-up."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Replace this text with your own privacy policy before you put a site online."
+            }
+          ]
+        }
+      ],
+      "terms": [
+        {
+          "type": "heading",
+          "level": 2,
+          "children": [
+            {
+              "text": "Using this site"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The images in this demo are public-domain works from The Metropolitan Museum of Art, shared under Open Access (CC0)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The text is placeholder copy. Replace it with your own terms before you put a site online."
+            }
+          ]
+        }
+      ],
+      "updatedAt": "2026-01-15T00:00:00.000Z"
+    }
+  },
+  "chain": {
+    "computedAt": "2026-09-01T00:00:00.000Z",
+    "contracts": [
+      {
+        "chain": "ethereum",
+        "address": "0x00000000000000000000000000000000de000001",
+        "seriesSlug": "paste-grounds",
+        "toBlock": 19011800,
+        "truncated": false
+      },
+      {
+        "chain": "base",
+        "address": "0x00000000000000000000000000000000de000002",
+        "seriesSlug": "loose-fields",
+        "toBlock": 19011800,
+        "truncated": false
+      },
+      {
+        "chain": "ethereum",
+        "address": "0x00000000000000000000000000000000de00c0de",
+        "seriesSlug": "lattice",
+        "toBlock": 19011800,
+        "truncated": false
+      },
+      {
+        "chain": "ethereum",
+        "address": "0x00000000000000000000000000000000de000003",
+        "seriesSlug": "paste-grounds-studies",
+        "toBlock": 19011800,
+        "truncated": false
+      }
+    ],
+    "holders": [
+      {
+        "address": "0x000000000000000000000000000000000000c001",
+        "ens": "grainstore.eth",
+        "holdings": [
+          {
+            "workId": "base:0x00000000000000000000000000000000de000002:3",
+            "chain": "base",
+            "contract": "0x00000000000000000000000000000000de000002",
+            "tokenId": "3",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "loose-fields",
+            "unlisted": false,
+            "acquiredAt": "2024-06-19T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000646"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000001:1",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000001",
+            "tokenId": "1",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds",
+            "unlisted": false,
+            "acquiredAt": "2025-03-02T12:00:00.000Z",
+            "acquiredTx": "0x000000000000000000000000000000000000000000000000000000000000064a"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000001:2",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000001",
+            "tokenId": "2",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds",
+            "unlisted": false,
+            "acquiredAt": "2025-03-02T12:00:00.000Z",
+            "acquiredTx": "0x000000000000000000000000000000000000000000000000000000000000064b"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000001:5",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000001",
+            "tokenId": "5",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds",
+            "unlisted": false,
+            "acquiredAt": "2025-03-16T12:00:00.000Z",
+            "acquiredTx": "0x000000000000000000000000000000000000000000000000000000000000064e"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40114",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de00c0de",
+            "tokenId": "40114",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "lattice",
+            "unlisted": false,
+            "acquiredAt": "2023-09-11T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000643"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c002",
+        "ens": "paperfold.eth",
+        "holdings": [
+          {
+            "workId": "base:0x00000000000000000000000000000000de000002:1",
+            "chain": "base",
+            "contract": "0x00000000000000000000000000000000de000002",
+            "tokenId": "1",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "loose-fields",
+            "unlisted": false,
+            "acquiredAt": "2024-06-12T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000644"
+          },
+          {
+            "workId": "base:0x00000000000000000000000000000000de000002:5",
+            "chain": "base",
+            "contract": "0x00000000000000000000000000000000de000002",
+            "tokenId": "5",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "loose-fields",
+            "unlisted": false,
+            "acquiredAt": "2024-06-26T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000648"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000001:3",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000001",
+            "tokenId": "3",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds",
+            "unlisted": false,
+            "acquiredAt": "2025-08-14T15:20:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000651"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c003",
+        "ens": null,
+        "holdings": [
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000001:4",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000001",
+            "tokenId": "4",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds",
+            "unlisted": false,
+            "acquiredAt": "2026-02-11T09:05:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000658"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000003:1",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000003",
+            "tokenId": "1",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds-studies",
+            "unlisted": false,
+            "acquiredAt": "2025-11-20T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000653"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000003:2",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000003",
+            "tokenId": "2",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds-studies",
+            "unlisted": false,
+            "acquiredAt": "2025-11-20T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000654"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000003:3",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000003",
+            "tokenId": "3",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds-studies",
+            "unlisted": false,
+            "acquiredAt": "2025-11-20T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000655"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000003:4",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000003",
+            "tokenId": "4",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds-studies",
+            "unlisted": false,
+            "acquiredAt": "2025-11-20T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000656"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c004",
+        "ens": "nine.lattice.eth",
+        "holdings": [
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de000001:6",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de000001",
+            "tokenId": "6",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "paste-grounds",
+            "unlisted": false,
+            "acquiredAt": "2025-11-03T15:20:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000652"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40100",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de00c0de",
+            "tokenId": "40100",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "lattice",
+            "unlisted": false,
+            "acquiredAt": "2023-09-04T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000641"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c005",
+        "ens": null,
+        "holdings": [
+          {
+            "workId": "base:0x00000000000000000000000000000000de000002:2",
+            "chain": "base",
+            "contract": "0x00000000000000000000000000000000de000002",
+            "tokenId": "2",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "loose-fields",
+            "unlisted": false,
+            "acquiredAt": "2024-06-12T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000645"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c006",
+        "ens": "quiet.eth",
+        "holdings": [
+          {
+            "workId": "base:0x00000000000000000000000000000000de000002:4",
+            "chain": "base",
+            "contract": "0x00000000000000000000000000000000de000002",
+            "tokenId": "4",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "loose-fields",
+            "unlisted": false,
+            "acquiredAt": "2026-01-19T15:20:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000657"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c007",
+        "ens": null,
+        "holdings": [
+          {
+            "workId": "base:0x00000000000000000000000000000000de000002:6",
+            "chain": "base",
+            "contract": "0x00000000000000000000000000000000de000002",
+            "tokenId": "6",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "loose-fields",
+            "unlisted": false,
+            "acquiredAt": "2026-06-22T15:20:00.000Z",
+            "acquiredTx": "0x000000000000000000000000000000000000000000000000000000000000065a"
+          }
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c008",
+        "ens": "marbled.eth",
+        "holdings": [
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40107",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de00c0de",
+            "tokenId": "40107",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "lattice",
+            "unlisted": false,
+            "acquiredAt": "2023-09-11T12:00:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000642"
+          },
+          {
+            "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40121",
+            "chain": "ethereum",
+            "contract": "0x00000000000000000000000000000000de00c0de",
+            "tokenId": "40121",
+            "standard": "ERC721",
+            "balance": 1,
+            "seriesSlug": "lattice",
+            "unlisted": false,
+            "acquiredAt": "2026-04-08T15:20:00.000Z",
+            "acquiredTx": "0x0000000000000000000000000000000000000000000000000000000000000659"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000065a:0:6",
+        "type": "sale",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "6",
+        "workId": "base:0x00000000000000000000000000000000de000002:6",
+        "seriesSlug": "loose-fields",
+        "from": "0x000000000000000000000000000000000000c002",
+        "to": "0x000000000000000000000000000000000000c007",
+        "quantity": 1,
+        "at": "2026-06-22T15:20:00.000Z",
+        "blockNumber": 19007500,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000065a",
+        "price": {
+          "raw": "330000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000659:0:40121",
+        "type": "sale",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de00c0de",
+        "tokenId": "40121",
+        "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40121",
+        "seriesSlug": "lattice",
+        "from": "0x000000000000000000000000000000000000c003",
+        "to": "0x000000000000000000000000000000000000c008",
+        "quantity": 1,
+        "at": "2026-04-08T15:20:00.000Z",
+        "blockNumber": 19003200,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000659",
+        "price": {
+          "raw": "1150000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000658:0:4",
+        "type": "transfer",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "4",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:4",
+        "seriesSlug": "paste-grounds",
+        "from": "0x000000000000000000000000000000000000c002",
+        "to": "0x000000000000000000000000000000000000c003",
+        "quantity": 1,
+        "at": "2026-02-11T09:05:00.000Z",
+        "blockNumber": 18998900,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000658",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000657:0:4",
+        "type": "sale",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "4",
+        "workId": "base:0x00000000000000000000000000000000de000002:4",
+        "seriesSlug": "loose-fields",
+        "from": "0x000000000000000000000000000000000000c004",
+        "to": "0x000000000000000000000000000000000000c006",
+        "quantity": 1,
+        "at": "2026-01-19T15:20:00.000Z",
+        "blockNumber": 18994600,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000657",
+        "price": {
+          "raw": "280000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000656:0:4",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000003",
+        "tokenId": "4",
+        "workId": "ethereum:0x00000000000000000000000000000000de000003:4",
+        "seriesSlug": "paste-grounds-studies",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c003",
+        "quantity": 1,
+        "at": "2025-11-20T12:00:00.000Z",
+        "blockNumber": 18990300,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000656",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000655:0:3",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000003",
+        "tokenId": "3",
+        "workId": "ethereum:0x00000000000000000000000000000000de000003:3",
+        "seriesSlug": "paste-grounds-studies",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c003",
+        "quantity": 1,
+        "at": "2025-11-20T12:00:00.000Z",
+        "blockNumber": 18986000,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000655",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000654:0:2",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000003",
+        "tokenId": "2",
+        "workId": "ethereum:0x00000000000000000000000000000000de000003:2",
+        "seriesSlug": "paste-grounds-studies",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c003",
+        "quantity": 1,
+        "at": "2025-11-20T12:00:00.000Z",
+        "blockNumber": 18981700,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000654",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000653:0:1",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000003",
+        "tokenId": "1",
+        "workId": "ethereum:0x00000000000000000000000000000000de000003:1",
+        "seriesSlug": "paste-grounds-studies",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c003",
+        "quantity": 1,
+        "at": "2025-11-20T12:00:00.000Z",
+        "blockNumber": 18977400,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000653",
+        "price": {
+          "raw": "50000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000652:0:6",
+        "type": "sale",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "6",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:6",
+        "seriesSlug": "paste-grounds",
+        "from": "0x000000000000000000000000000000000000c008",
+        "to": "0x000000000000000000000000000000000000c004",
+        "quantity": 1,
+        "at": "2025-11-03T15:20:00.000Z",
+        "blockNumber": 18973100,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000652",
+        "price": {
+          "raw": "610000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000651:0:3",
+        "type": "sale",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "3",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:3",
+        "seriesSlug": "paste-grounds",
+        "from": "0x000000000000000000000000000000000000c007",
+        "to": "0x000000000000000000000000000000000000c002",
+        "quantity": 1,
+        "at": "2025-08-14T15:20:00.000Z",
+        "blockNumber": 18968800,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000651",
+        "price": {
+          "raw": "440000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000650:0:40121",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de00c0de",
+        "tokenId": "40121",
+        "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40121",
+        "seriesSlug": "lattice",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c003",
+        "quantity": 1,
+        "at": "2025-06-10T12:00:00.000Z",
+        "blockNumber": 18964500,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000650",
+        "price": null
+      },
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000064f:0:6",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "6",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:6",
+        "seriesSlug": "paste-grounds",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c008",
+        "quantity": 1,
+        "at": "2025-03-16T12:00:00.000Z",
+        "blockNumber": 18960200,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000064f",
+        "price": null
+      },
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000064e:0:5",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "5",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:5",
+        "seriesSlug": "paste-grounds",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c001",
+        "quantity": 1,
+        "at": "2025-03-16T12:00:00.000Z",
+        "blockNumber": 18955900,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000064e",
+        "price": null
+      },
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000064d:0:4",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "4",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:4",
+        "seriesSlug": "paste-grounds",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c002",
+        "quantity": 1,
+        "at": "2025-03-09T12:00:00.000Z",
+        "blockNumber": 18951600,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000064d",
+        "price": null
+      },
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000064c:0:3",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "3",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:3",
+        "seriesSlug": "paste-grounds",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c007",
+        "quantity": 1,
+        "at": "2025-03-09T12:00:00.000Z",
+        "blockNumber": 18947300,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000064c",
+        "price": {
+          "raw": "200000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000064b:0:2",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "2",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:2",
+        "seriesSlug": "paste-grounds",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c001",
+        "quantity": 1,
+        "at": "2025-03-02T12:00:00.000Z",
+        "blockNumber": 18943000,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000064b",
+        "price": null
+      },
+      {
+        "id": "0x000000000000000000000000000000000000000000000000000000000000064a:0:1",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de000001",
+        "tokenId": "1",
+        "workId": "ethereum:0x00000000000000000000000000000000de000001:1",
+        "seriesSlug": "paste-grounds",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c001",
+        "quantity": 1,
+        "at": "2025-03-02T12:00:00.000Z",
+        "blockNumber": 18938700,
+        "txHash": "0x000000000000000000000000000000000000000000000000000000000000064a",
+        "price": {
+          "raw": "200000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000649:0:6",
+        "type": "mint",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "6",
+        "workId": "base:0x00000000000000000000000000000000de000002:6",
+        "seriesSlug": "loose-fields",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c002",
+        "quantity": 1,
+        "at": "2024-06-26T12:00:00.000Z",
+        "blockNumber": 18934400,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000649",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000648:0:5",
+        "type": "mint",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "5",
+        "workId": "base:0x00000000000000000000000000000000de000002:5",
+        "seriesSlug": "loose-fields",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c002",
+        "quantity": 1,
+        "at": "2024-06-26T12:00:00.000Z",
+        "blockNumber": 18930100,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000648",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000647:0:4",
+        "type": "mint",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "4",
+        "workId": "base:0x00000000000000000000000000000000de000002:4",
+        "seriesSlug": "loose-fields",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c004",
+        "quantity": 1,
+        "at": "2024-06-19T12:00:00.000Z",
+        "blockNumber": 18925800,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000647",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000646:0:3",
+        "type": "mint",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "3",
+        "workId": "base:0x00000000000000000000000000000000de000002:3",
+        "seriesSlug": "loose-fields",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c001",
+        "quantity": 1,
+        "at": "2024-06-19T12:00:00.000Z",
+        "blockNumber": 18921500,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000646",
+        "price": {
+          "raw": "200000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000645:0:2",
+        "type": "mint",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "2",
+        "workId": "base:0x00000000000000000000000000000000de000002:2",
+        "seriesSlug": "loose-fields",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c005",
+        "quantity": 1,
+        "at": "2024-06-12T12:00:00.000Z",
+        "blockNumber": 18917200,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000645",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000644:0:1",
+        "type": "mint",
+        "chain": "base",
+        "contract": "0x00000000000000000000000000000000de000002",
+        "tokenId": "1",
+        "workId": "base:0x00000000000000000000000000000000de000002:1",
+        "seriesSlug": "loose-fields",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c002",
+        "quantity": 1,
+        "at": "2024-06-12T12:00:00.000Z",
+        "blockNumber": 18912900,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000644",
+        "price": {
+          "raw": "200000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000643:0:40114",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de00c0de",
+        "tokenId": "40114",
+        "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40114",
+        "seriesSlug": "lattice",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c001",
+        "quantity": 1,
+        "at": "2023-09-11T12:00:00.000Z",
+        "blockNumber": 18908600,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000643",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000642:0:40107",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de00c0de",
+        "tokenId": "40107",
+        "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40107",
+        "seriesSlug": "lattice",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c008",
+        "quantity": 1,
+        "at": "2023-09-11T12:00:00.000Z",
+        "blockNumber": 18904300,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000642",
+        "price": null
+      },
+      {
+        "id": "0x0000000000000000000000000000000000000000000000000000000000000641:0:40100",
+        "type": "mint",
+        "chain": "ethereum",
+        "contract": "0x00000000000000000000000000000000de00c0de",
+        "tokenId": "40100",
+        "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40100",
+        "seriesSlug": "lattice",
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0x000000000000000000000000000000000000c004",
+        "quantity": 1,
+        "at": "2023-09-04T12:00:00.000Z",
+        "blockNumber": 18900000,
+        "txHash": "0x0000000000000000000000000000000000000000000000000000000000000641",
+        "price": {
+          "raw": "200000000000000000",
+          "decimals": 18,
+          "symbol": "ETH"
+        }
+      }
+    ],
+    "leaderboard": [
+      {
+        "address": "0x000000000000000000000000000000000000c001",
+        "ens": "grainstore.eth",
+        "label": null,
+        "worksOwned": 5,
+        "seriesCount": 3,
+        "firstAcquiredAt": "2023-09-11T12:00:00.000Z",
+        "lastAcquiredAt": "2025-03-16T12:00:00.000Z",
+        "score": null,
+        "rank": 1,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c003",
+        "ens": null,
+        "label": null,
+        "worksOwned": 5,
+        "seriesCount": 2,
+        "firstAcquiredAt": "2025-06-10T12:00:00.000Z",
+        "lastAcquiredAt": "2026-04-08T15:20:00.000Z",
+        "score": null,
+        "rank": 2,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c002",
+        "ens": "paperfold.eth",
+        "label": null,
+        "worksOwned": 3,
+        "seriesCount": 2,
+        "firstAcquiredAt": "2024-06-12T12:00:00.000Z",
+        "lastAcquiredAt": "2026-06-22T15:20:00.000Z",
+        "score": null,
+        "rank": 3,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c004",
+        "ens": "nine.lattice.eth",
+        "label": null,
+        "worksOwned": 2,
+        "seriesCount": 2,
+        "firstAcquiredAt": "2023-09-04T12:00:00.000Z",
+        "lastAcquiredAt": "2026-01-19T15:20:00.000Z",
+        "score": null,
+        "rank": 4,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c008",
+        "ens": "marbled.eth",
+        "label": null,
+        "worksOwned": 2,
+        "seriesCount": 1,
+        "firstAcquiredAt": "2023-09-11T12:00:00.000Z",
+        "lastAcquiredAt": "2026-04-08T15:20:00.000Z",
+        "score": null,
+        "rank": 5,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c005",
+        "ens": null,
+        "label": null,
+        "worksOwned": 1,
+        "seriesCount": 1,
+        "firstAcquiredAt": "2024-06-12T12:00:00.000Z",
+        "lastAcquiredAt": "2024-06-12T12:00:00.000Z",
+        "score": null,
+        "rank": 6,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c007",
+        "ens": null,
+        "label": null,
+        "worksOwned": 1,
+        "seriesCount": 1,
+        "firstAcquiredAt": "2025-03-09T12:00:00.000Z",
+        "lastAcquiredAt": "2026-06-22T15:20:00.000Z",
+        "score": null,
+        "rank": 7,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      },
+      {
+        "address": "0x000000000000000000000000000000000000c006",
+        "ens": "quiet.eth",
+        "label": null,
+        "worksOwned": 1,
+        "seriesCount": 1,
+        "firstAcquiredAt": "2026-01-19T15:20:00.000Z",
+        "lastAcquiredAt": "2026-01-19T15:20:00.000Z",
+        "score": null,
+        "rank": 8,
+        "badgeIds": [
+          "first-week",
+          "held-a-year"
+        ]
+      }
+    ],
+    "insights": {
+      "computedAt": "2026-09-01T00:00:00.000Z",
+      "collectors": 8,
+      "allTimeCollectors": 8,
+      "works": 20,
+      "series": 4,
+      "sales": 5,
+      "mints": 20,
+      "transfers": 1,
+      "volume": {
+        "raw": "2810000000000000000",
+        "decimals": 18,
+        "symbol": "ETH"
+      },
+      "bySeries": [
+        {
+          "seriesSlug": "paste-grounds",
+          "holders": 4,
+          "tokens": 6,
+          "sales": 2,
+          "transfers": 1,
+          "mints": 6,
+          "volume": {
+            "raw": "1050000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "low": {
+            "raw": "440000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "high": {
+            "raw": "610000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "firstEventAt": "2025-03-02T12:00:00.000Z",
+          "lastEventAt": "2026-02-11T09:05:00.000Z"
+        },
+        {
+          "seriesSlug": "loose-fields",
+          "holders": 5,
+          "tokens": 6,
+          "sales": 2,
+          "transfers": 0,
+          "mints": 6,
+          "volume": {
+            "raw": "610000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "low": {
+            "raw": "280000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "high": {
+            "raw": "330000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "firstEventAt": "2024-06-12T12:00:00.000Z",
+          "lastEventAt": "2026-06-22T15:20:00.000Z"
+        },
+        {
+          "seriesSlug": "lattice",
+          "holders": 3,
+          "tokens": 4,
+          "sales": 1,
+          "transfers": 0,
+          "mints": 4,
+          "volume": {
+            "raw": "1150000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "low": {
+            "raw": "1150000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "high": {
+            "raw": "1150000000000000000",
+            "decimals": 18,
+            "symbol": "ETH"
+          },
+          "firstEventAt": "2023-09-04T12:00:00.000Z",
+          "lastEventAt": "2026-04-08T15:20:00.000Z"
+        },
+        {
+          "seriesSlug": "paste-grounds-studies",
+          "holders": 1,
+          "tokens": 4,
+          "sales": 0,
+          "transfers": 0,
+          "mints": 4,
+          "volume": null,
+          "low": null,
+          "high": null,
+          "firstEventAt": "2025-11-20T12:00:00.000Z",
+          "lastEventAt": "2025-11-20T12:00:00.000Z"
+        }
+      ],
+      "mostTraded": [
+        {
+          "workId": "base:0x00000000000000000000000000000000de000002:6",
+          "seriesSlug": "loose-fields",
+          "tokenId": "6",
+          "events": 2,
+          "sales": 1
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40121",
+          "seriesSlug": "lattice",
+          "tokenId": "40121",
+          "events": 2,
+          "sales": 1
+        },
+        {
+          "workId": "base:0x00000000000000000000000000000000de000002:4",
+          "seriesSlug": "loose-fields",
+          "tokenId": "4",
+          "events": 2,
+          "sales": 1
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000001:6",
+          "seriesSlug": "paste-grounds",
+          "tokenId": "6",
+          "events": 2,
+          "sales": 1
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000001:3",
+          "seriesSlug": "paste-grounds",
+          "tokenId": "3",
+          "events": 2,
+          "sales": 1
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000001:4",
+          "seriesSlug": "paste-grounds",
+          "tokenId": "4",
+          "events": 2,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000003:4",
+          "seriesSlug": "paste-grounds-studies",
+          "tokenId": "4",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000003:3",
+          "seriesSlug": "paste-grounds-studies",
+          "tokenId": "3",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000003:2",
+          "seriesSlug": "paste-grounds-studies",
+          "tokenId": "2",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000003:1",
+          "seriesSlug": "paste-grounds-studies",
+          "tokenId": "1",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000001:5",
+          "seriesSlug": "paste-grounds",
+          "tokenId": "5",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000001:2",
+          "seriesSlug": "paste-grounds",
+          "tokenId": "2",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de000001:1",
+          "seriesSlug": "paste-grounds",
+          "tokenId": "1",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "base:0x00000000000000000000000000000000de000002:5",
+          "seriesSlug": "loose-fields",
+          "tokenId": "5",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "base:0x00000000000000000000000000000000de000002:3",
+          "seriesSlug": "loose-fields",
+          "tokenId": "3",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "base:0x00000000000000000000000000000000de000002:2",
+          "seriesSlug": "loose-fields",
+          "tokenId": "2",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "base:0x00000000000000000000000000000000de000002:1",
+          "seriesSlug": "loose-fields",
+          "tokenId": "1",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40114",
+          "seriesSlug": "lattice",
+          "tokenId": "40114",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40107",
+          "seriesSlug": "lattice",
+          "tokenId": "40107",
+          "events": 1,
+          "sales": 0
+        },
+        {
+          "workId": "ethereum:0x00000000000000000000000000000000de00c0de:40100",
+          "seriesSlug": "lattice",
+          "tokenId": "40100",
+          "events": 1,
+          "sales": 0
+        }
+      ],
+      "holdingDistribution": [
+        {
+          "bucket": "1",
+          "wallets": 3
+        },
+        {
+          "bucket": "2 to 5",
+          "wallets": 5
+        },
+        {
+          "bucket": "6 to 20",
+          "wallets": 0
+        },
+        {
+          "bucket": "21 or more",
+          "wallets": 0
+        }
+      ],
+      "monthly": [
+        {
+          "month": "2023-09",
+          "sales": 0,
+          "mints": 3,
+          "transfers": 0
+        },
+        {
+          "month": "2024-06",
+          "sales": 0,
+          "mints": 6,
+          "transfers": 0
+        },
+        {
+          "month": "2025-03",
+          "sales": 0,
+          "mints": 6,
+          "transfers": 0
+        },
+        {
+          "month": "2025-06",
+          "sales": 0,
+          "mints": 1,
+          "transfers": 0
+        },
+        {
+          "month": "2025-08",
+          "sales": 1,
+          "mints": 0,
+          "transfers": 0
+        },
+        {
+          "month": "2025-11",
+          "sales": 1,
+          "mints": 4,
+          "transfers": 0
+        },
+        {
+          "month": "2026-01",
+          "sales": 1,
+          "mints": 0,
+          "transfers": 0
+        },
+        {
+          "month": "2026-02",
+          "sales": 0,
+          "mints": 0,
+          "transfers": 1
+        },
+        {
+          "month": "2026-04",
+          "sales": 1,
+          "mints": 0,
+          "transfers": 0
+        },
+        {
+          "month": "2026-06",
+          "sales": 1,
+          "mints": 0,
+          "transfers": 0
+        }
+      ],
+      "gaps": [
+        "Sales settled in WETH or on a marketplace contract carry no value in the transaction, so they are counted as transfers, not sales.",
+        "This demo set is fictional: the addresses, prices and dates are made up to show every surface."
+      ]
+    }
+  },
+  "guild": {
+    "title": "The guild",
+    "description": "How the studio keeps track of who holds the work, and what that gets them.",
+    "intro": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "text": "Everything here is worked out from the chain. There is nothing to sign up for and nothing to claim: hold a work and the tier follows."
+          }
+        ]
+      }
+    ],
+    "tiers": [
+      {
+        "id": "patron",
+        "name": "Patron",
+        "description": "The collectors who hold most of the work, across more than one series.",
+        "color": "chart-1",
+        "icon": "crown",
+        "minPercentile": 80,
+        "maxPercentile": 100,
+        "requirements": "Top fifth of holders by works held",
+        "benefits": [
+          "First sight of a new series",
+          "An invitation to the studio visit",
+          "Name on the catalogue colophon"
+        ],
+        "earlyAccess": "48 hours before a drop opens",
+        "order": 3
+      },
+      {
+        "id": "keeper",
+        "name": "Keeper",
+        "description": "Holders who have kept a work through at least one series since.",
+        "color": "chart-2",
+        "icon": "anchor",
+        "minPercentile": 40,
+        "maxPercentile": 79.999,
+        "requirements": "Middle of the holder list, holding for over a year",
+        "benefits": [
+          "Early access to a drop",
+          "The studio letter"
+        ],
+        "earlyAccess": "24 hours before a drop opens",
+        "order": 2
+      },
+      {
+        "id": "reader",
+        "name": "Reader",
+        "description": "Everyone holding a work.",
+        "color": "chart-3",
+        "icon": "book-open",
+        "minPercentile": 0,
+        "maxPercentile": 39.999,
+        "requirements": "Hold one work",
+        "benefits": [
+          "The studio letter"
+        ],
+        "earlyAccess": null,
+        "order": 1
+      }
+    ],
+    "badges": [
+      {
+        "id": "first-week",
+        "name": "First week",
+        "description": "Collected a work in the week its series opened.",
+        "key": "early-supporter",
+        "categoryId": "timing",
+        "icon": "sunrise",
+        "color": "chart-1",
+        "positive": true,
+        "howItWorks": "Awarded from the mint date in the chain snapshot. Nothing to claim."
+      },
+      {
+        "id": "held-a-year",
+        "name": "Held a year",
+        "description": "Still holds a work bought more than a year ago.",
+        "key": "holding-duration",
+        "categoryId": "timing",
+        "icon": "hourglass",
+        "color": "chart-2",
+        "positive": true,
+        "howItWorks": "Computed from the acquisition date of the works still held."
+      },
+      {
+        "id": "across-series",
+        "name": "Across series",
+        "description": "Holds work from three or more series.",
+        "key": "collection-breadth",
+        "categoryId": "breadth",
+        "icon": "layers",
+        "color": "chart-4",
+        "positive": true,
+        "howItWorks": "Counted from the holdings in the chain snapshot."
+      }
+    ],
+    "badgeCategories": [
+      {
+        "id": "timing",
+        "name": "Timing",
+        "description": "When a work was collected.",
+        "order": 1
+      },
+      {
+        "id": "breadth",
+        "name": "Breadth",
+        "description": "How much of the catalogue a wallet holds.",
+        "order": 2
+      }
+    ],
+    "howItWorks": [
+      {
+        "title": "Read from the chain",
+        "description": "Holdings come from the contracts, refreshed when the studio takes a snapshot."
+      },
+      {
+        "title": "No points for trading",
+        "description": "Ranking counts what is held and how long, not how often it changed hands."
+      },
+      {
+        "title": "Nothing is private",
+        "description": "Only public on-chain facts are used. No email, no name, nothing you did not publish by holding."
+      }
+    ],
+    "scoring": true
+  },
+  "collectorUpdates": [
+    {
+      "id": "update-lattice-open",
+      "title": "Lattice opens to holders on 4 October",
+      "body": "Holders of Paste Grounds see it first. The general opening is two days later.",
+      "date": "2026-09-12",
+      "url": null,
+      "seriesSlug": "lattice"
+    },
+    {
+      "id": "update-studio-letter",
+      "title": "Studio letter: what the loom taught the plotter",
+      "body": "A short note on where the Loose Fields plots came from, with two of the failed runs.",
+      "date": "2026-07-30",
+      "url": null,
+      "seriesSlug": null
+    }
+  ],
+  "store": {
+    "currency": "USD",
+    "page": {
+      "title": "Store",
+      "description": "Prints and objects made in the studio, in small numbered runs.",
+      "featured": [
+        "ground-i-print"
+      ]
+    },
+    "categories": [
+      {
+        "slug": "prints",
+        "name": "Prints",
+        "description": "Pigment prints on cotton rag, numbered and signed.",
+        "cover": null,
+        "parentSlug": null,
+        "featured": true
+      },
+      {
+        "slug": "objects",
+        "name": "Objects",
+        "description": "Things made in the studio that are not flat.",
+        "cover": null,
+        "parentSlug": null,
+        "featured": false
+      },
+      {
+        "slug": "books",
+        "name": "Books",
+        "description": "Printed matter.",
+        "cover": null,
+        "parentSlug": null,
+        "featured": false
+      }
+    ],
+    "collections": [
+      {
+        "slug": "paste-grounds-editions",
+        "name": "Paste Grounds editions",
+        "description": "Six prints from the first series, made at the size the plates were drawn.",
+        "cover": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887095.jpg",
+          "poster": null,
+          "alt": "A plum paste paper ground",
+          "caption": null,
+          "width": 1600,
+          "height": 1067
+        },
+        "statement": "The plates were drawn at 50 by 70 centimetres and the prints are made at that size. Nothing is scaled.",
+        "vision": "A print that sits at the size the hand worked at.",
+        "process": "Pigment on 310 gsm cotton rag, printed in the studio, numbered on the reverse.",
+        "year": 2025,
+        "medium": "Pigment print",
+        "featured": true
+      }
+    ],
+    "products": [
+      {
+        "slug": "ground-i-print",
+        "title": "Ground I (Plum), print",
+        "subtitle": "Edition of 25",
+        "description": "A pigment print of the first work in Paste Grounds, numbered and signed on the reverse.",
+        "body": null,
+        "categorySlug": "prints",
+        "collectionSlug": "paste-grounds-editions",
+        "cover": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887095.jpg",
+          "poster": null,
+          "alt": "A plum paste paper ground",
+          "caption": null,
+          "width": 1600,
+          "height": 1067
+        },
+        "gallery": [
+          {
+            "kind": "image",
+            "src": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887096.jpg",
+            "poster": null,
+            "alt": "An ochre ground, for scale",
+            "caption": null,
+            "width": 1600,
+            "height": 1067
+          }
+        ],
+        "variants": [
+          {
+            "id": "ground-i-50x70",
+            "name": "50 x 70 cm, unframed",
+            "options": {
+              "Size": "50 x 70 cm",
+              "Frame": "None"
+            },
+            "price": {
+              "amount": 24000,
+              "currency": "USD"
+            },
+            "sku": "PG-I-5070",
+            "stock": 18,
+            "lowStockAt": 5,
+            "weight": 900,
+            "dimensions": {
+              "length": 760,
+              "width": 560,
+              "height": 60
+            },
+            "available": true
+          },
+          {
+            "id": "ground-i-50x70-oak",
+            "name": "50 x 70 cm, oak frame",
+            "options": {
+              "Size": "50 x 70 cm",
+              "Frame": "Oak"
+            },
+            "price": {
+              "amount": 39000,
+              "currency": "USD"
+            },
+            "compareAtPrice": {
+              "amount": 44000,
+              "currency": "USD"
+            },
+            "sku": "PG-I-5070-OAK",
+            "stock": 4,
+            "lowStockAt": 5,
+            "weight": 3200,
+            "dimensions": {
+              "length": 780,
+              "width": 580,
+              "height": 90
+            },
+            "available": true
+          }
+        ],
+        "fulfilment": "ship",
+        "work": {
+          "type": "work",
+          "key": "ethereum:0x00000000000000000000000000000000de000001:1"
+        },
+        "edition": {
+          "total": 25,
+          "numbered": true,
+          "certificate": true,
+          "signed": true
+        },
+        "specs": [
+          {
+            "label": "Paper",
+            "value": "Hahnemuhle Photo Rag, 310 gsm"
+          },
+          {
+            "label": "Ink",
+            "value": "Pigment, twelve colour"
+          },
+          {
+            "label": "Image size",
+            "value": "46 x 66 cm"
+          }
+        ],
+        "highlights": [
+          "Numbered and signed on the reverse",
+          "Certificate in the box",
+          "Ships flat, not rolled"
+        ],
+        "materials": "Cotton rag, pigment ink",
+        "year": 2025,
+        "leadTime": "Made to order, ships in 7 to 10 days",
+        "shippingNote": "Flat packed. Framed prints go by courier.",
+        "featured": true,
+        "tags": [
+          "print",
+          "paste-grounds"
+        ],
+        "seo": null
+      },
+      {
+        "slug": "field-04-print",
+        "title": "Field 04 (Marbled), print",
+        "subtitle": "Open edition",
+        "description": "A pigment print from Loose Fields, at two sizes.",
+        "body": null,
+        "categorySlug": "prints",
+        "collectionSlug": null,
+        "cover": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886478.jpg",
+          "poster": null,
+          "alt": "A marbled field",
+          "caption": null,
+          "width": 1600,
+          "height": 1067
+        },
+        "gallery": [],
+        "variants": [
+          {
+            "id": "field-04-a3",
+            "name": "30 x 42 cm",
+            "options": {
+              "Size": "30 x 42 cm"
+            },
+            "price": {
+              "amount": 12000,
+              "currency": "USD"
+            },
+            "sku": "LF-04-A3",
+            "stock": null,
+            "weight": 400,
+            "podSku": "GLOBAL-FAP-A3-HEM",
+            "available": true
+          },
+          {
+            "id": "field-04-a2",
+            "name": "42 x 59 cm",
+            "options": {
+              "Size": "42 x 59 cm"
+            },
+            "price": {
+              "amount": 18000,
+              "currency": "USD"
+            },
+            "sku": "LF-04-A2",
+            "stock": null,
+            "weight": 650,
+            "podSku": "GLOBAL-FAP-A2-HEM",
+            "available": true
+          }
+        ],
+        "fulfilment": "pod",
+        "work": {
+          "type": "work",
+          "key": "base:0x00000000000000000000000000000000de000002:4"
+        },
+        "edition": null,
+        "specs": [
+          {
+            "label": "Paper",
+            "value": "Fine art, 200 gsm"
+          },
+          {
+            "label": "Printed by",
+            "value": "A print partner near the delivery address"
+          }
+        ],
+        "highlights": [
+          "Printed on demand, near you",
+          "No minimum"
+        ],
+        "materials": "Fine art paper, pigment ink",
+        "year": 2026,
+        "leadTime": "Printed to order, 5 to 8 days",
+        "shippingNote": null,
+        "featured": false,
+        "tags": [
+          "print",
+          "loose-fields"
+        ],
+        "seo": null
+      },
+      {
+        "slug": "paste-grounds-book",
+        "title": "Paste Grounds, the book",
+        "subtitle": "96 pages, smyth sewn",
+        "description": "Every work in the series, with the plates and the notes that made them.",
+        "body": null,
+        "categorySlug": "books",
+        "collectionSlug": "paste-grounds-editions",
+        "cover": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/web-large/DP887089.jpg",
+          "poster": null,
+          "alt": "A moss ground",
+          "caption": null,
+          "width": 1600,
+          "height": 1067
+        },
+        "gallery": [],
+        "variants": [
+          {
+            "id": "book-standard",
+            "name": "Standard",
+            "price": {
+              "amount": 4500,
+              "currency": "USD"
+            },
+            "sku": "PG-BOOK",
+            "stock": 120,
+            "lowStockAt": 20,
+            "weight": 700,
+            "available": true
+          },
+          {
+            "id": "book-signed",
+            "name": "Signed",
+            "price": {
+              "amount": 6500,
+              "currency": "USD"
+            },
+            "sku": "PG-BOOK-S",
+            "stock": 0,
+            "lowStockAt": 5,
+            "weight": 700,
+            "available": true
+          }
+        ],
+        "fulfilment": "ship",
+        "work": null,
+        "edition": {
+          "total": null,
+          "numbered": false,
+          "certificate": false,
+          "signed": false
+        },
+        "specs": [
+          {
+            "label": "Pages",
+            "value": "96"
+          },
+          {
+            "label": "Binding",
+            "value": "Smyth sewn, softcover"
+          }
+        ],
+        "highlights": [],
+        "materials": "Munken Pure",
+        "year": 2025,
+        "leadTime": "Ships in 2 days",
+        "shippingNote": null,
+        "featured": false,
+        "tags": [
+          "book"
+        ],
+        "seo": null
+      }
+    ],
+    "phygitals": [
+      {
+        "slug": "plotter-drawing-of-your-work",
+        "title": "Plotter drawing of a work you hold",
+        "subtitle": "One per token",
+        "description": "A pen plot of a work from your own wallet, drawn on the studio plotter and signed.",
+        "body": null,
+        "categorySlug": "objects",
+        "collectionSlug": null,
+        "cover": {
+          "kind": "image",
+          "src": "https://images.metmuseum.org/CRDImages/dp/web-large/DP886573.jpg",
+          "poster": null,
+          "alt": "A serpentine field",
+          "caption": null,
+          "width": 1600,
+          "height": 1067
+        },
+        "gallery": [],
+        "variants": [
+          {
+            "id": "plot-a2-unframed",
+            "name": "A2, unframed",
+            "options": {
+              "Size": "42 x 59 cm",
+              "Frame": "None"
+            },
+            "price": {
+              "amount": 32000,
+              "currency": "USD"
+            },
+            "sku": "PLOT-A2",
+            "stock": 6,
+            "lowStockAt": 3,
+            "weight": 500,
+            "available": true
+          },
+          {
+            "id": "plot-a2-oak",
+            "name": "A2, oak frame",
+            "options": {
+              "Size": "42 x 59 cm",
+              "Frame": "Oak"
+            },
+            "price": {
+              "amount": 47000,
+              "currency": "USD"
+            },
+            "sku": "PLOT-A2-OAK",
+            "stock": 3,
+            "lowStockAt": 3,
+            "weight": 2600,
+            "available": true
+          }
+        ],
+        "fulfilment": "ship",
+        "work": null,
+        "edition": {
+          "total": null,
+          "numbered": true,
+          "certificate": true,
+          "signed": true
+        },
+        "specs": [
+          {
+            "label": "Pen",
+            "value": "Pigment liner, 0.3 mm"
+          }
+        ],
+        "highlights": [
+          "Made from a token in your own wallet",
+          "Signed and numbered to the token"
+        ],
+        "materials": "Ink on cotton rag",
+        "year": 2026,
+        "leadTime": "Drawn to order, 3 weeks",
+        "shippingNote": null,
+        "featured": false,
+        "tags": [
+          "object"
+        ],
+        "seo": null,
+        "requiresSeriesSlugs": [
+          "paste-grounds",
+          "loose-fields"
+        ],
+        "pickWork": true
+      }
+    ],
+    "shippingMethods": [
+      {
+        "id": "standard",
+        "name": "Standard",
+        "description": "Tracked, 5 to 8 working days.",
+        "price": {
+          "amount": 1500,
+          "currency": "USD"
+        },
+        "freeAbove": {
+          "amount": 20000,
+          "currency": "USD"
+        },
+        "estimatedDays": {
+          "min": 5,
+          "max": 8
+        },
+        "countries": [],
+        "maxWeight": 5000,
+        "order": 1
+      },
+      {
+        "id": "express",
+        "name": "Express",
+        "description": "Courier, 2 to 3 working days.",
+        "price": {
+          "amount": 4500,
+          "currency": "USD"
+        },
+        "freeAbove": null,
+        "estimatedDays": {
+          "min": 2,
+          "max": 3
+        },
+        "countries": [],
+        "maxWeight": 10000,
+        "order": 2
+      },
+      {
+        "id": "collect",
+        "name": "Collect from the studio",
+        "description": "By arrangement, in Lisbon.",
+        "price": {
+          "amount": 0,
+          "currency": "USD"
+        },
+        "freeAbove": null,
+        "estimatedDays": null,
+        "countries": [
+          "PT"
+        ],
+        "maxWeight": null,
+        "order": 3
+      }
+    ],
+    "podProviders": [
+      {
+        "id": "prodigi",
+        "name": "Prodigi",
+        "apiBaseUrl": "https://api.prodigi.com/v4.0",
+        "priority": 1,
+        "enabled": false,
+        "capabilities": [
+          "Fine art prints",
+          "Framing"
+        ]
+      }
+    ],
+    "commissionForm": {
+      "kinds": [
+        {
+          "kind": "digital",
+          "title": "Commission a new work",
+          "description": "A new piece made for you, in one of the studio’s working methods.",
+          "artefacts": [
+            "Generative still",
+            "Plotter drawing",
+            "Short film"
+          ]
+        },
+        {
+          "kind": "phygital",
+          "title": "An object from a work you hold",
+          "description": "A physical version of a token already in your wallet.",
+          "artefacts": [
+            "Pigment print",
+            "Plotter drawing",
+            "Framed panel"
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "scale",
+          "label": "How large should it be?",
+          "help": "Roughly is fine.",
+          "required": true
+        },
+        {
+          "id": "where",
+          "label": "Where will it live?",
+          "help": "A wall, a screen, a book.",
+          "required": false
+        },
+        {
+          "id": "when",
+          "label": "Is there a date it has to be ready by?",
+          "help": null,
+          "required": false
+        }
+      ]
+    }
+  }
+}

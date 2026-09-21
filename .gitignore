@@ -32,6 +32,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# except the documented example, which carries no values
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# the artist's own fixture data (built locally, never in the public repo)
+src/fixtures/local/
+
+# orders and commission briefs written by the JSON store. They carry a name,
+# a postal address and an email, so they never belong in the repository.
+/.data/

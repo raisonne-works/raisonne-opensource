@@ -1,26 +1,194 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Literal family names: @theme inline resolves at build time, so the
+     runtime --font-geist-* variables from next/font cannot be referenced. */
+  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-heading: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-accent: var(--chart-accent);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Two breakpoints past Tailwind's 2xl (96rem), so media grids keep using the
+   width on large displays: 3xl at 1920 px (5 columns), 4xl at 2560 px (6). */
+@theme {
+  --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 160rem;
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  /* A card and the page behind it are both white here, so the hairline
+     between them is the only thing saying "these tiles are a group". At
+     0.922 it measured 1.24:1 against the page and a grid of thirteen tiles
+     read as loose text. */
+  --border: oklch(0.87 0 0);
+  --input: oklch(0.87 0 0);
+  --ring: oklch(0.708 0 0);
+  /* The one accent. It names the series a chart is actually about; every
+     other series stays grey, and grey means context. */
+  --chart-accent: oklch(0.52 0.16 255);
+  --chart-1: var(--chart-accent);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  /* Raised from 0.205, where the card measured 1.10:1 against the page and
+     a dashboard of tiles had no visible grouping at all. */
+  --card: oklch(0.235 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.235 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 22%);
+  --input: oklch(1 0 0 / 24%);
+  --ring: oklch(0.556 0 0);
+  /* Lighter than its light-mode twin, because it has to carry against
+     #0a0a0a rather than against white. */
+  --chart-accent: oklch(0.74 0.14 255);
+  --chart-1: var(--chart-accent);
+  --chart-2: oklch(0.72 0 0);
+  --chart-3: oklch(0.556 0 0);
+  --chart-4: oklch(0.439 0 0);
+  --chart-5: oklch(0.371 0 0);
+  --sidebar: oklch(0.235 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 22%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+/**
+ * The frame a work page shows its media in.
+ *
+ * The stage takes the work's own proportions at every width, and is capped
+ * by height rather than stretched to the column: a portrait work gets a
+ * portrait stage rather than a wide grey box with the art marooned in the
+ * middle of it, and a landscape work grows until the column runs out. The
+ * width cap is the height cap multiplied by the work's ratio, which is why
+ * the ratio arrives as two plain numbers a calc() can divide.
+ *
+ * --stage-w and --stage-h are set per work; 1/1 is only the fallback for a
+ * still whose size is not recorded yet and has not finished loading.
+ */
+@utility work-stage {
+  --stage-w: 1;
+  --stage-h: 1;
+  --stage-height: min(72svh, 900px);
+  aspect-ratio: var(--stage-w) / var(--stage-h);
+  width: 100%;
+  max-width: calc(var(--stage-w) / var(--stage-h) * var(--stage-height));
+  margin-inline: auto;
+}
+
+/**
+ * The scrim behind a sheet.
+ *
+ * The shared component blurs the page behind it, which is the glassmorphism
+ * this theme does without, and a 10% wash left the drawer's edge weak. A
+ * scrim is a shadow cast over the page, so it is the same plain black in
+ * both themes and the drawer sits clearly in front of it.
+ */
+[data-slot='sheet-overlay'] {
+  background-color: oklch(0 0 0 / 50%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
