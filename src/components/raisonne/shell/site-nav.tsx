@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MenuIcon } from 'lucide-react';
@@ -30,10 +30,16 @@ import { ThemeToggle } from './theme-toggle';
  */
 export function MainNav({ groups, className }: { groups: NavGroup[]; className?: string }) {
   const pathname = usePathname();
+  const [value, setValue] = useState<string | null>(null);
+
+  useEffect(() => {
+    setValue(null);
+  }, [pathname]);
+
   if (groups.length === 0) return null;
 
   return (
-    <NavigationMenu className={className} aria-label="Main">
+    <NavigationMenu className={className} aria-label="Main" value={value} onValueChange={setValue}>
       <NavigationMenuList className="gap-0.5">
         {groups.map(group => {
           const single = group.items.length === 1 ? group.items[0] : null;
@@ -57,8 +63,11 @@ export function MainNav({ groups, className }: { groups: NavGroup[]; className?:
           }
 
           return (
-            <NavigationMenuItem key={group.id}>
-              <NavigationMenuTrigger className={cn('text-muted-foreground', active && 'text-foreground')}>
+            <NavigationMenuItem key={group.id} value={group.id}>
+              <NavigationMenuTrigger
+                className={cn('text-muted-foreground', active && 'text-foreground')}
+                onClick={() => setValue(current => (current === group.id ? null : group.id))}
+              >
                 {group.label}
               </NavigationMenuTrigger>
               <NavigationMenuContent>

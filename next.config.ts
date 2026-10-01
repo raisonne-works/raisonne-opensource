@@ -205,6 +205,9 @@ function redirects() {
 }
 
 const nextConfig: NextConfig = {
+  // The desktop preview opens 127.0.0.1. Without this, dev blocks the
+  // client bundle and the header menus never attach.
+  allowedDevOrigins: ['127.0.0.1'],
   images: {
     remotePatterns: remotePatterns(),
   },
