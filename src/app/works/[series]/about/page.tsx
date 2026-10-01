@@ -9,6 +9,7 @@ import { SeriesHero } from '@/components/raisonne/works/series-hero';
 import { getChildSeries, getSeries, getSiteData, getWorksForSeries } from '@/fixtures';
 import { seoMetadata } from '@/lib/seo/metadata';
 import type { Series, StoryBlock } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 type Params = Promise<{ series: string }>;
 
@@ -48,6 +49,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function SeriesAboutPage({ params }: { params: Params }) {
+  slot('series');
   const slug = decodeParam((await params).series);
   const series = getSeries(slug);
   if (!series) notFound();

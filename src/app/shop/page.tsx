@@ -13,6 +13,7 @@ import { CollectionStrip, FeaturedProduct } from '@/components/raisonne/store/st
 import { getProduct, getProductCategories, getProducts, getSiteData, getStore, getStoreCollections } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
 import type { Product } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 /**
  * The shop front: one product given room, the collections the artist made,
@@ -46,6 +47,7 @@ function featuredProduct(products: Product[], featured: string[]): Product | nul
 }
 
 export default async function ShopPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('shop');
   const params = await searchParams;
   const sort = sortFrom(params.sort);
 

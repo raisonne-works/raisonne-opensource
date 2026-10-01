@@ -8,6 +8,7 @@ import { storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { getSiteData } from '@/fixtures';
 import { isModuleEnabled } from '@/lib/records';
 import { NO_INDEX, pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * Papers and essays by the artist. An optional module: an install that
@@ -33,6 +34,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function WritingsPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('writings');
   const params = await searchParams;
   const data = getSiteData();
   if (!isModuleEnabled(data.settings, 'writings')) notFound();

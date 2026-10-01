@@ -17,6 +17,7 @@ import { getChainSnapshot, getSeries, getSettings, getTiers } from '@/fixtures';
 import { loadDirectory } from '@/lib/collectors';
 import { ENV_DOCS, isConfigured, surfaceRequirements, surfaceState } from '@/lib/config';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * Everyone holding the artist's work, from the install's own chain snapshot.
@@ -46,6 +47,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function CollectorsPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('collectors');
   const settings = getSettings();
   const state = surfaceState(settings, 'collectors');
   if (state === 'off') notFound();

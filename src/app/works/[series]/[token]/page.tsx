@@ -18,6 +18,7 @@ import { plainText } from '@/lib/markdown';
 import { breadcrumbJsonLd, graph, visualArtworkJsonLd } from '@/lib/seo/json-ld';
 import { seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 type Params = Promise<{ series: string; token: string }>;
 
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function WorkPage({ params }: { params: Params }) {
+  slot('work');
   const { series, work } = await resolve(params);
   if (!series || !work) notFound();
 

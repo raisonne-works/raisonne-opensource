@@ -18,6 +18,7 @@ import { imageGalleryJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
 import type { Asset, Immersive, Installation } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 /**
  * One installation, or one immersive experience.
@@ -64,6 +65,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function InstallationPage({ params }: { params: Params }) {
+  slot('installation');
   const found = await resolve(params);
   if (!found) notFound();
 

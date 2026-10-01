@@ -29,6 +29,7 @@ import { isModuleEnabled } from '@/lib/records';
 import { breadcrumbJsonLd, graph, nftCollectionJsonLd } from '@/lib/seo/json-ld';
 import { seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 type Params = Promise<{ series: string }>;
 
@@ -80,6 +81,7 @@ function pageNumber(value: string | string[] | undefined, pages: number): number
  * parent's, so a visitor who lands on one still reads what it is about.
  */
 export default async function SeriesPage({ params, searchParams }: { params: Params; searchParams: Search }) {
+  slot('series');
   const slug = decodeParam((await params).series);
   const series = getSeries(slug);
   if (!series) notFound();

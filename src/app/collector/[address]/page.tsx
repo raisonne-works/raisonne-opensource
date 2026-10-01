@@ -22,6 +22,7 @@ import { chainDataState, getLeaderboard } from '@/lib/chain/holdings';
 import { loadPublicProfile } from '@/lib/collectors';
 import { ENV_DOCS, isConfigured, surfaceState } from '@/lib/config';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * A collector's public page.
@@ -98,6 +99,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function CollectorProfilePage({ params }: PageProps) {
+  slot('collector');
   const { address } = await params;
   const owner = normalizeAddress(address);
   if (!owner) notFound();

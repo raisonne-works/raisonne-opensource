@@ -1,4 +1,5 @@
 import type { Composition } from './composition';
+import type { FeatureId } from './features';
 
 /** The frame an install wears when no pack is selected. Not a second site. */
 export const SKIN_ZERO: Composition = {
@@ -40,4 +41,9 @@ export const SKIN_ZERO: Composition = {
  */
 export function getWornPackId(): 'skin-zero' {
   return 'skin-zero';
+}
+
+/** The layout this page renders. Skin zero only has the default. */
+export function slot(id: FeatureId): 'default' {
+  return SKIN_ZERO.slots[id].variant;
 }

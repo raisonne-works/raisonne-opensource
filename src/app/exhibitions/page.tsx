@@ -13,6 +13,7 @@ import { storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { Section } from '@/components/raisonne/shell/page';
 import { getExhibitions, getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * Every show twice, and each show once in each: the searchable grid, where
@@ -37,6 +38,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function ExhibitionsPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('exhibitions');
   const params = await searchParams;
   const data = getSiteData();
   const exhibitions = getExhibitions();

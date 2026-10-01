@@ -4,6 +4,7 @@ import { PressFeatured, PressKit, PressPodcasts, PressTable, PressVideos } from 
 import { Container, PageHeader, Section } from '@/components/raisonne/shell/page';
 import { getPress, getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * The press page: the pieces the artist leads with, then the interviews on
@@ -24,6 +25,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function PressPage() {
+  slot('press');
   const { artist } = getSiteData();
   const press = getPress();
 

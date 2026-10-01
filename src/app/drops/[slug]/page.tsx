@@ -14,6 +14,7 @@ import { getDrop, getDrops, getSeries, getSettings } from '@/fixtures';
 import { newsletterState } from '@/lib/newsletter';
 import { isModuleEnabled } from '@/lib/records';
 import { seoMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 type Params = Promise<{ slug: string }>;
 
@@ -51,6 +52,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function DropPage({ params }: { params: Params }) {
+  slot('drops');
   const settings = getSettings();
   const signUp = newsletterState(settings);
   if (!isModuleEnabled(settings, 'drops')) notFound();

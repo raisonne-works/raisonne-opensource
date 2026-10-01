@@ -45,6 +45,7 @@ import { pageMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
 import type { Asset, PhygitalProduct, Product, Series } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { slot } from '@/lib/theme';
 
 /**
  * One product: its pictures, what it is, what it costs, and the way to buy
@@ -100,6 +101,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function ProductPage({ params }: { params: Params }) {
+  slot('product');
   const product = await resolve(params);
   if (!product) notFound();
 

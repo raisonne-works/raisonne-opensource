@@ -23,6 +23,7 @@ import { pageMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
 import { isModuleEnabled } from '@/lib/records';
 import type { Landing, LandingSectionId, Series } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 export function generateMetadata(): Metadata {
   const { artist } = getSiteData();
@@ -91,6 +92,7 @@ function HeroWork({ series }: { series: Series }) {
  * way into the catalogue, which is what the page is for.
  */
 export default function HomePage() {
+  slot('home');
   const data = getSiteData();
   const { artist, series, landing, settings } = data;
   const counts = getCounts();

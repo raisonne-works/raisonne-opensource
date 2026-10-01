@@ -29,6 +29,7 @@ import {
   snapshotInsights,
   snapshotMeta,
 } from './_data';
+import { slot } from '@/lib/theme';
 
 /**
  * What the public record says about this body of work: how much of it there
@@ -75,6 +76,7 @@ const WORKS_SHOWN = 10;
 const EVENTS_SHOWN = 8;
 
 export default function InsightsPage() {
+  slot('insights');
   const settings = getSettings();
   if (surfaceState(settings, 'insights') === 'off') notFound();
 

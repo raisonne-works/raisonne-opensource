@@ -14,6 +14,7 @@ import { decodeParam } from '@/components/raisonne/works/lib';
 import { Badge } from '@/components/ui/badge';
 import { getAward, getAwards } from '@/fixtures';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * One award: the prize, the category, where it was given, and the work it
@@ -54,6 +55,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function AwardPage({ params }: { params: Params }) {
+  slot('award');
   const award = await resolve(params);
   if (!award) notFound();
 

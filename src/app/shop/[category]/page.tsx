@@ -29,6 +29,7 @@ import {
 import { StoreSetupNotice } from '@/components/raisonne/store/setup-panel';
 import { storeIsConfigured } from '@/components/raisonne/store/setup';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * One category of the shop: prints, books, objects, whatever this artist
@@ -74,6 +75,7 @@ export default async function ShopCategoryPage({
   params: Params;
   searchParams: Promise<RawSearchParams>;
 }) {
+  slot('shop');
   const category = await resolve(params);
   if (!category) notFound();
 

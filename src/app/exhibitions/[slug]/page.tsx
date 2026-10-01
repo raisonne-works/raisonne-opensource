@@ -18,6 +18,7 @@ import { exhibitionStatus } from '@/lib/records';
 import { exhibitionJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 /**
  * One exhibition: what it was, where and when, who curated it, and the
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function ExhibitionPage({ params }: { params: Params }) {
+  slot('exhibition');
   const exhibition = await resolve(params);
   if (!exhibition) notFound();
 

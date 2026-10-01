@@ -17,6 +17,7 @@ import { formatCount } from '@/components/raisonne/works/lib';
 import { catalogueCounts, isModuleEnabled } from '@/lib/records';
 import type { SiteData } from '@/lib/types';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * The whole catalogue in one index: every kind of record, searchable,
@@ -60,6 +61,7 @@ function typeOptions(data: SiteData): { value: CatalogueTypeFilter | ''; label: 
 }
 
 export default async function WorksPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('works');
   const params = await searchParams;
   const data = getSiteData();
 

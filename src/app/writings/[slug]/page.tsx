@@ -12,6 +12,7 @@ import { isModuleEnabled } from '@/lib/records';
 import { articleJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 /**
  * One paper or essay. Writings are an optional module: an install that has
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function WritingPage({ params }: { params: Params }) {
+  slot('writing');
   const writing = await resolve(params);
   if (!writing) notFound();
 

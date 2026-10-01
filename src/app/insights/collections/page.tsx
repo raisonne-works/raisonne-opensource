@@ -23,6 +23,7 @@ import { NO_INDEX, pageMetadata } from '@/lib/seo/metadata';
 import { cn } from '@/lib/utils';
 
 import { missingChainVars, seriesIndex, snapshotEvents, snapshotInsights, snapshotMeta, insightsExtraNav } from '../_data';
+import { slot } from '@/lib/theme';
 
 /**
  * Every series, side by side: who holds it, how much of it there is, and
@@ -55,6 +56,7 @@ export function generateMetadata(): Metadata {
 const PERIOD_DAYS = 90;
 
 export default async function InsightsCollectionsPage({ searchParams }: { searchParams: SearchParams }) {
+  slot('insights');
   const settings = getSettings();
   if (surfaceState(settings, 'insights') === 'off') notFound();
 
