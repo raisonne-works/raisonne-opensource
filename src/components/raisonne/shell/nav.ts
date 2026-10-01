@@ -60,8 +60,14 @@ function compact(items: (NavItem | null)[]): NavItem[] {
 }
 
 /**
- * The grouped navigation for this install: Catalogue (the records), Artist
- * (the person), and the standalone pages a module adds.
+ * The grouped navigation for this install.
+ *
+ * Two menus, the same split the catalogue uses: Catalog is the records
+ * (index, series, one of ones, installations, exhibitions, awards).
+ * Insights is the person and the figures (about, press, analytics,
+ * leaderboard). A section with nothing in it is left out. Collaborations,
+ * the CV and commissions stay on the page and in the footer; they are not
+ * items in these menus.
  */
 export function siteNav(
   data: SiteData,
@@ -71,17 +77,13 @@ export function siteNav(
   const { settings } = data;
   const installations = data.installations.length + data.immersives.length;
   const hasCatalogue = data.series.length > 0 || data.works.length > 0;
-  const hasCv =
-    data.cv !== null ||
-    data.exhibitions.length > 0 ||
-    data.awards.length > 0 ||
-    data.press.length > 0 ||
-    Boolean(data.artist.bio) ||
-    Boolean(data.artist.statement);
 
-  // The count beside a label has to be the thing the label names: this said
-  // 29 next to Works on an install that holds 3,914 of them.
-  const works = data.works.filter(work => !work.hidden).length;
+  const series = data.series.filter(item => !item.hidden && item.kind !== 'one-of-one');
+  const oneOfOneSeries = data.series.filter(item => !item.hidden && item.kind === 'one-of-one');
+  const oneOfOneWorks = data.works.filter(
+    work => !work.hidden && work.oneOfOne && !oneOfOneSeries.some(item => item.slug === work.seriesSlug),
+  );
+  const oneOfOnes = oneOfOneSeries.length + oneOfOneWorks.length;
 
   /**
    * What the shop has for sale, hidden products left out, phygitals counted.
@@ -96,13 +98,24 @@ export function siteNav(
         (data.store?.phygitals ?? []).filter(product => !product.hidden).length)
     : 0;
 
-  const catalogue = compact([
+  const catalog = compact([
     hasCatalogue
+      ? { href: '/works', label: 'Index', description: 'The whole catalogue, in one list.' }
+      : null,
+    series.length > 0
       ? {
-          href: '/works',
-          label: 'Works',
-          description: 'Every series and every token.',
-          count: works || data.series.length,
+          href: '/works?type=series',
+          label: 'Series',
+          description: 'Bodies of work, each one a contract.',
+          count: series.length,
+        }
+      : null,
+    oneOfOnes > 0
+      ? {
+          href: '/works?type=one-of-one',
+          label: 'One of ones',
+          description: 'Unique works, with nothing listed twice.',
+          count: oneOfOnes,
         }
       : null,
     installations > 0
@@ -113,14 +126,6 @@ export function siteNav(
           count: installations,
         }
       : null,
-    data.physicalWorks.length > 0
-      ? {
-          href: '/physical-works',
-          label: 'Physical works',
-          description: 'Works that exist as objects.',
-          count: data.physicalWorks.length,
-        }
-      : null,
     data.exhibitions.length > 0
       ? {
           href: '/exhibitions',
@@ -129,54 +134,34 @@ export function siteNav(
           count: data.exhibitions.length,
         }
       : null,
-    data.collaborations.length > 0
-      ? {
-          href: '/collaborations',
-          label: 'Collaborations',
-          description: 'Projects made with others.',
-          count: data.collaborations.length,
-        }
-      : null,
     data.awards.length > 0
       ? { href: '/awards', label: 'Awards', description: 'Prizes and nominations.', count: data.awards.length }
       : null,
-    data.writings.length > 0 && isModuleEnabled(settings, 'writings')
-      ? { href: '/writings', label: 'Writings', description: 'Papers and essays.', count: data.writings.length }
-      : null,
   ]);
 
-  const artist = compact([
+  const insights = compact([
     { href: '/about', label: 'About', description: `Who ${data.artist.name} is and how the work is made.` },
-    hasCv ? { href: '/cv', label: 'CV', description: 'The full record, ready to print.' } : null,
     data.press.length > 0
-      ? { href: '/press', label: 'Press', description: 'Articles, interviews and talks.', count: data.press.length }
+      ? { href: '/press', label: 'Press & media', description: 'Articles, interviews and talks.', count: data.press.length }
+      : null,
+    isModuleEnabled(settings, 'insights')
+      ? { href: '/insights', label: 'Analytics', description: 'What the chain says about the work.' }
+      : null,
+    isModuleEnabled(settings, 'insights')
+      ? { href: '/leaderboard', label: 'Leaderboard', description: 'Who holds the work.' }
       : null,
   ]);
 
-  const standalone = compact([
-    data.commissions !== null && isModuleEnabled(settings, 'commissions')
-      ? { href: '/commissions', label: 'Commissions', description: 'Working together.' }
-      : null,
-    // Insights follows the module switch alone. Whether there is a chain
-    // snapshot to read lives in a file this pure function cannot see, and the
-    // page answers that itself: with no snapshot it prints the panel naming
-    // the command to run, which is a page worth reaching.
-    isModuleEnabled(settings, 'insights')
-      ? { href: '/insights', label: 'Insights', description: 'What the chain says about the work.' }
-      : null,
-    // The shop needs both: the module on, and something in it. A switched-on
-    // store with no products is an empty room, and the rule here is that a
-    // link leads somewhere.
+  const shop =
     shopProducts > 0
-      ? { href: '/shop', label: 'Shop', description: 'Prints, books and objects.', count: shopProducts }
-      : null,
-  ]);
+      ? [{ href: '/shop', label: 'Shop', description: 'Prints, books and objects.', count: shopProducts }]
+      : [];
 
   return [
-    { id: 'catalogue', label: 'Catalogue', items: catalogue },
-    { id: 'artist', label: 'Artist', items: artist },
-    { id: 'more', label: 'More', items: standalone },
-  ].filter(group => group.items.length > 0);
+    { id: 'insights', label: 'Insights', items: insights },
+    { id: 'catalog', label: 'Catalog', items: catalog },
+    shop.length > 0 ? { id: 'shop', label: 'Shop', items: shop } : null,
+  ].filter((group): group is NavGroup => group !== null && group.items.length > 0);
 }
 
 // ---------------------------------------------------------------------------
