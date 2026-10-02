@@ -71,7 +71,7 @@ export function AboutPage({
         }
       />
 
-      <div className="grid gap-x-12 xl:grid-cols-[minmax(0,40rem)_minmax(0,22rem)] xl:justify-between xl:gap-x-16">
+      <div className="grid gap-x-12 xl:grid-cols-[minmax(0,1fr)_minmax(18rem,32rem)] xl:items-start xl:gap-x-16">
         <div className="min-w-0">
           {artist.bio ? (
             <Section id="biography" title="Biography" headingLevel={headingLevel}>
@@ -81,7 +81,7 @@ export function AboutPage({
 
           {statement.length > 0 ? (
             <Section id="statement" title="Statement" headingLevel={headingLevel}>
-              <div className="flex max-w-[36rem] flex-col gap-4 text-base/7 text-pretty">
+              <div className="flex flex-col gap-4 text-base/7 text-pretty">
                 {statement.map((block, index) => (
                   <p key={index}>{block}</p>
                 ))}
@@ -129,7 +129,7 @@ export function AboutPage({
           description="These are the minting addresses this install lists for the artist. Check a listing against them before you collect. Addresses not on this list are outside what this catalogue claims."
           headingLevel={headingLevel}
         >
-          <MintingAddresses wallets={artist.wallets} notice={artist.securityNotice} className="max-w-[48rem]" />
+          <MintingAddresses wallets={artist.wallets} notice={artist.securityNotice} />
         </Section>
       ) : null}
 
