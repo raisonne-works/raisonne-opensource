@@ -131,7 +131,7 @@ export function seoMetadata(seo: Seo | null | undefined, fallback: SeoFallback =
   const title = written ? siteTitle(written, artist.name, siteOrigin(settings)) : undefined;
   const shareTitle = titleText(title) ?? written;
   const description = firstText(seo?.description, fallback.description);
-  const image = shareImage(seo?.image ?? fallback.image) ?? DEFAULT_SHARE_IMAGE;
+  const image = shareImage(firstText(seo?.image, fallback.image)) ?? DEFAULT_SHARE_IMAGE;
   const keywords = seo?.keywords?.length ? seo.keywords : fallback.keywords;
   const canonical = fallback.path;
 
