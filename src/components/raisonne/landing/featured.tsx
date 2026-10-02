@@ -143,65 +143,89 @@ function recordList(data: SiteData, type: RecordRef['type']): SimpleRecord[] {
 }
 
 /**
- * The featured tiles. The first one takes two columns and two rows from md
- * up, so the page opens on one large work rather than a row of thumbnails.
+ * Six tiles, four columns. The first work is the large cell. The rest fill
+ * the rows beside and below it. A square picture inside a spanned cell was
+ * the bug: the span did nothing, and the grid fell apart.
+ */
+const BENTO_SPANS = [
+  'lg:col-span-2 lg:row-span-2',
+  'lg:col-span-2',
+  'lg:col-span-1',
+  'lg:col-span-1',
+  'lg:col-span-2',
+  'lg:col-span-2',
+] as const;
+
+function bentoSpan(index: number, count: number): string {
+  if (count < 3) return '';
+  if (count === 3) return ['sm:col-span-2 sm:row-span-2', 'sm:col-span-2', 'sm:col-span-2'][index] ?? '';
+  if (count === 4) return ['lg:col-span-2 lg:row-span-2', 'lg:col-span-2', 'lg:col-span-1', 'lg:col-span-1'][index] ?? '';
+  if (count === 5 && index === 4) return 'lg:col-span-4';
+  return BENTO_SPANS[index] ?? '';
+}
+
+/**
+ * Selected work as a bento. Each tile is the picture. The label sits on it.
+ * The first tile is the large cell when there are at least three.
  */
 export function FeaturedGrid({ items, className }: { items: FeaturedItem[]; className?: string }) {
   if (items.length === 0) return null;
+  const shown = items.slice(0, BENTO_SPANS.length);
 
   return (
-    <ul data-slot="featured" className={cn('grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3', className)}>
-      {items.map((item, index) => {
-        const lead = index === 0 && items.length > 2;
-        return (
-          <li key={item.key} className={cn('min-w-0', lead && 'col-span-2 md:row-span-2')}>
-            <Link
-              href={item.href}
-              className="group/featured flex min-w-0 flex-col gap-2 rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-            >
-              <MediaStill
-                media={item.media}
-                alt=""
-                as="span"
-                fit="cover"
-                priority={index === 0}
-                sizes={
-                  lead
-                    ? '(min-width: 1280px) 45vw, (min-width: 768px) 60vw, 100vw'
-                    : '(min-width: 1280px) 22vw, (min-width: 768px) 30vw, 50vw'
-                }
-              />
-              <span className="flex min-w-0 flex-col gap-0.5">
-                <span className="text-xs text-muted-foreground">
-                  {item.typeLabel}
-                  {item.year ? ` · ${item.year}` : ''}
-                </span>
-                <span
-                  className={cn(
-                    'font-medium text-pretty underline-offset-4 group-hover/featured:underline',
-                    lead ? 'text-base sm:text-lg' : 'text-sm',
-                  )}
-                >
-                  {item.title}
-                </span>
+    <ul
+      data-slot="featured"
+      className={cn(
+        'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[220px]',
+        className,
+      )}
+    >
+      {shown.map((item, index) => (
+        <li key={item.key} className={cn('min-h-[220px] min-w-0', bentoSpan(index, shown.length))}>
+          <Link
+            href={item.href}
+            className="group/featured relative block h-full overflow-hidden rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          >
+            <MediaStill
+              media={item.media}
+              alt=""
+              as="span"
+              fill
+              fit="cover"
+              priority={index === 0}
+              sizes={
+                index === 0
+                  ? '(min-width: 1024px) 50vw, 100vw'
+                  : '(min-width: 1024px) 25vw, 50vw'
+              }
+            />
+            <span className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-0.5 bg-gradient-to-t from-black/75 via-black/35 to-transparent p-3 pt-10 text-white">
+              <span className="text-xs text-white/75">
+                {item.typeLabel}
+                {item.year ? ` · ${item.year}` : ''}
               </span>
-            </Link>
-          </li>
-        );
-      })}
+              <span className="font-medium text-pretty underline-offset-4 group-hover/featured:underline">
+                {item.title}
+              </span>
+            </span>
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 }
 
 export function FeaturedGridSkeleton({ items = 6, className }: { items?: number; className?: string }) {
+  const count = Math.min(items, BENTO_SPANS.length);
   return (
-    <div role="status" className={cn('grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3', className)}>
+    <div
+      role="status"
+      className={cn('grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[220px]', className)}
+    >
       <span className="sr-only">Loading the featured work</span>
-      {Array.from({ length: items }, (_, index) => (
-        <div key={index} aria-hidden className={cn('flex flex-col gap-2', index === 0 && 'col-span-2 md:row-span-2')}>
-          <Skeleton className="aspect-square w-full rounded-lg" />
-          <Skeleton className="h-3 w-16" />
-          <Skeleton className="h-4 w-32" />
+      {Array.from({ length: count }, (_, index) => (
+        <div key={index} aria-hidden className={cn('min-h-[220px]', bentoSpan(index, count))}>
+          <Skeleton className="h-full w-full rounded-lg" />
         </div>
       ))}
     </div>
