@@ -48,11 +48,11 @@ export function WorkCard({
         priority={priority}
         className="transition-opacity group-hover/work-card:opacity-90"
       />
-      <div className="flex min-w-0 flex-col gap-0.5">
-        <span className="truncate text-sm font-medium underline-offset-4 group-hover/work-card:underline" title={work.title}>
+      <div data-slot="work-card-caption" className="flex min-w-0 flex-col gap-0.5">
+        <span data-slot="work-card-title" className="truncate text-sm font-medium underline-offset-4 group-hover/work-card:underline" title={work.title}>
           {title}
         </span>
-        <span className="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
+        <span data-slot="work-card-meta" className="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
           {showToken ? (
             <span className="truncate" title={`Token ${work.tokenId}`}>
               Token <span className="font-mono">{shortTokenId(work.tokenId)}</span>

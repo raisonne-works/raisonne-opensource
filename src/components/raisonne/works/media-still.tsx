@@ -67,6 +67,8 @@ export function MediaStill({
   return (
     <Frame
       data-slot="media-still"
+      data-width={media?.width ?? undefined}
+      data-height={media?.height ?? undefined}
       className={cn(
         'relative block w-full overflow-hidden',
         fill ? 'absolute inset-0 h-full rounded-none' : 'aspect-square rounded-lg',

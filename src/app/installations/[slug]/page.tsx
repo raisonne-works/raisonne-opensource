@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowUpRightIcon } from 'lucide-react';
 
-import { immersiveFacts, installationFacts } from '@/components/raisonne/records/facts';
+import { immersiveFacts, installationFacts, installationFactsByMaking } from '@/components/raisonne/records/facts';
 import { RecordBreadcrumb } from '@/components/raisonne/records/record-breadcrumb';
 import { RecordFacts } from '@/components/raisonne/records/record-facts';
 import { RecordHero } from '@/components/raisonne/records/record-hero';
@@ -74,6 +74,8 @@ export default async function InstallationPage({ params }: { params: Params }) {
   const documentation = assetsBeyondStory([...record.photos, ...record.videos], record.story, record.cover);
   const experienceUrl = kind === 'immersive' ? record.experienceUrl : null;
   const path = pathFor(record.slug);
+  const year = record.year === null ? null : String(record.year);
+  const medium = kind === 'installation' ? record.medium : null;
 
   const images: Asset[] = [record.cover, ...record.photos].filter((asset): asset is Asset => Boolean(asset));
 
@@ -102,6 +104,9 @@ export default async function InstallationPage({ params }: { params: Params }) {
         description={record.description}
         cover={record.cover}
         tags={record.tags}
+        place={kind === 'installation' ? record.location : null}
+        corner={(kind === 'immersive' ? record.duration : null) ?? year}
+        labels={[...(year ? [year] : []), ...(medium ? [medium.split(' ').slice(0, 3).join(' ')] : [])]}
       />
 
       <StoryBlocks
@@ -109,6 +114,7 @@ export default async function InstallationPage({ params }: { params: Params }) {
         aside={
           <RecordFacts
             facts={facts}
+            alternate={kind === 'installation' ? installationFactsByMaking(record) : undefined}
             actions={
               experienceUrl ? (
                 <Button

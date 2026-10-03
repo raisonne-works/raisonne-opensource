@@ -6,7 +6,9 @@ import { Container } from '@/components/raisonne/shell/page';
 import { decodeParam, seriesAboutHref, seriesHref, seriesTitle } from '@/components/raisonne/works/lib';
 import { SeriesAbout } from '@/components/raisonne/works/series-about';
 import { SeriesHero } from '@/components/raisonne/works/series-hero';
-import { getChildSeries, getSeries, getSiteData, getWorksForSeries } from '@/fixtures';
+import { SeriesSpecs } from '@/components/raisonne/works/series-specs';
+import { getChildSeries, getSeries, getSettings, getSiteData, getWorksForSeries } from '@/fixtures';
+import { worksLabel } from '@/lib/records';
 import { seoMetadata } from '@/lib/seo/metadata';
 import type { Series, StoryBlock } from '@/lib/types';
 import { slot } from '@/lib/theme';
@@ -62,19 +64,26 @@ export default async function SeriesAboutPage({ params }: { params: Params }) {
   const works =
     getWorksForSeries(series.slug).length +
     children.reduce((sum, child) => sum + getWorksForSeries(child.slug).length, 0);
+  const label = worksLabel(getSettings());
 
   return (
     <Container className="pb-16 md:pb-24">
       <BreadcrumbJsonLd
         items={[
-          { name: 'Works', path: '/works' },
+          { name: label, path: '/works' },
           ...(parent ? [{ name: seriesTitle(parent), path: seriesHref(parent) }] : []),
           { name: seriesTitle(series), path: seriesHref(series) },
           { name: 'About' },
         ]}
       />
-      <SeriesHero series={series} parent={parent} workCount={works} />
-      <SeriesAbout story={story} inheritedFrom={inheritedFrom} title={null} id="story" />
+      <SeriesHero series={series} parent={parent} workCount={works} worksLabel={label} />
+      <SeriesAbout
+        story={story}
+        inheritedFrom={inheritedFrom}
+        title={null}
+        id="story"
+        specs={<SeriesSpecs series={series} worksInCatalogue={works} />}
+      />
     </Container>
   );
 }

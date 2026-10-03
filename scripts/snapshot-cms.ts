@@ -781,6 +781,7 @@ const EXHIBITION_KINDS: Record<string, ExhibitionKind> = {
   biennale: 'biennale',
   fair: 'fair',
   festival: 'festival',
+  conference: 'conference',
   exhibition: 'other',
 };
 
@@ -1226,7 +1227,7 @@ function mapCollaboration(doc: Json): Collaboration | null {
 }
 
 /** The words the `kind` field already carries, so a tag never repeats one. */
-const EXHIBITION_KIND_WORDS = new Set(['solo', 'group', 'fair', 'biennale', 'festival', 'screening', 'museum']);
+const EXHIBITION_KIND_WORDS = new Set(['solo', 'group', 'fair', 'biennale', 'festival', 'conference', 'screening', 'museum']);
 
 /**
  * The same show, entered twice.
@@ -1254,7 +1255,12 @@ function dedupeExhibitions(exhibitions: Exhibition[]): Exhibition[] {
     // Keep the richer record: a page beats no page, then a cover, then a story.
     const better =
       (show.slug ? 2 : 0) + (show.cover ? 1 : 0) > (existing.slug ? 2 : 0) + (existing.cover ? 1 : 0) ? show : existing;
-    byShow.set(key, { ...better, featured: better.featured || existing.featured || show.featured });
+    byShow.set(key, {
+      ...better,
+      featured: better.featured || existing.featured || show.featured,
+      // A featured record and its own CV line are one show that is both.
+      history: existing.history !== false || show.history !== false,
+    });
     report.duplicateExhibitions += 1;
   }
   return order.map(key => byShow.get(key)!).filter((show): show is Exhibition => Boolean(show));
@@ -1279,6 +1285,9 @@ function mapExhibition(doc: Json): Exhibition | null {
     url: str(doc.url) ?? str(doc.virtualTourUrl),
     slug: hasPage ? str(doc.slug) : null,
     featured: bool(doc.featured),
+    // The CMS keeps featured shows out of its history: they are the cards, and
+    // the CV lines are the history.
+    history: !bool(doc.featured),
     startDate: start,
     endDate: end,
     format: str(doc.format),
@@ -1428,6 +1437,7 @@ function readSeriesDoc(doc: Json): SeriesPatch | null {
     year: yearOf(doc.createdDate) ?? yearOf(doc.startDate),
     marketUrl: str(doc.marketUrl),
     story: storyBlocks(doc.layout, slug),
+    teaser: videoAsset(doc.videoTeaser),
     seo: seoOf(doc.meta),
   };
   return {

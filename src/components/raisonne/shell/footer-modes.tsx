@@ -125,7 +125,7 @@ function FooterPanel({ children }: { children: ReactNode }) {
   return (
     <>
       {/* The bar never covers the last row of a list. */}
-      <div aria-hidden className="h-12 print:hidden" />
+      <div aria-hidden data-shell="bottom-spacer" className="h-12 print:hidden" />
 
       <BottomBar>
         <Button
@@ -189,7 +189,7 @@ function BottomBar({ children }: { children?: ReactNode }) {
   }, []);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 print:hidden">
+    <div data-shell="bottom-bar" className="fixed inset-x-0 bottom-0 z-30 border-t bg-background/95 print:hidden">
       <div className="mx-auto flex h-12 w-full max-w-[180rem] items-center gap-2 px-4 sm:px-6 lg:px-8 3xl:px-12">
         {/* A page mounts its own control here, through BottomBarAction. */}
         <div data-slot={BOTTOM_BAR_SLOT} className="flex min-w-0 flex-1 items-center gap-2" />

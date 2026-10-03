@@ -49,16 +49,17 @@ export function SeriesCard({
         fit="cover"
         className="transition-opacity group-hover/series-card:opacity-90"
       />
-      <div className="flex min-w-0 flex-col gap-1">
+      <div data-slot="series-card-caption" className="flex min-w-0 flex-col gap-1">
         <span
+          data-slot="series-card-title"
           className="line-clamp-2 text-sm font-medium underline-offset-4 group-hover/series-card:underline"
           title={series.name}
         >
           {seriesTitle(series)}
         </span>
-        <span className="truncate text-xs text-muted-foreground">{facts.join(' · ')}</span>
+        <span data-slot="series-card-meta" className="truncate text-xs text-muted-foreground">{facts.join(' · ')}</span>
         {series.kind !== 'series' || series.coAuthored ? (
-          <span className="flex flex-wrap gap-1 pt-0.5">
+          <span data-slot="series-card-badges" className="flex flex-wrap gap-1 pt-0.5">
             {series.kind !== 'series' ? (
               <Badge variant="outline" className="font-normal">
                 {SERIES_KIND_LABELS[series.kind]}

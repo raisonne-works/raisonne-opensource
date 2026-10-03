@@ -39,12 +39,18 @@ import { TextBlock } from './text-block';
 export function StoryBlocks({
   blocks,
   aside,
+  tucked,
   headingLevel = 2,
   className,
 }: {
   blocks: StoryBlock[];
   /** The record's facts, placed beside the opening text. */
   aside?: ReactNode;
+  /**
+   * Facts the page already prints elsewhere, kept out of sight inside the
+   * opening text block. A pack that sets its facts beside the essay shows them.
+   */
+  tucked?: ReactNode;
   headingLevel?: HeadingLevel;
   className?: string;
 }) {
@@ -52,10 +58,11 @@ export function StoryBlocks({
 
   const immersiveRooms = isModuleEnabled(getSettings(), 'immersive-rooms');
   const firstTextIndex = aside ? blocks.findIndex(block => block.type === 'text') : -1;
+  const tuckedIndex = tucked && !aside ? blocks.findIndex(block => block.type === 'text') : -1;
 
   return (
-    <div className={cn('flex flex-col gap-12 md:gap-16', className)}>
-      {aside && firstTextIndex === -1 ? <div>{aside}</div> : null}
+    <div data-slot="story-blocks" className={cn('flex flex-col gap-12 md:gap-16', className)}>
+      {aside && firstTextIndex === -1 ? <div data-slot="story-aside">{aside}</div> : null}
 
       {blocks.map((block, index) => {
         const rendered = renderBlock(block, headingLevel, immersiveRooms);
@@ -63,17 +70,22 @@ export function StoryBlocks({
 
         if (index === firstTextIndex) {
           return (
-            <div key={block.id} className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-start xl:gap-12">
-              <div id={block.id} className="min-w-0 scroll-mt-24">
+            <div key={block.id} data-slot="story-lead" className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-start xl:gap-12">
+              <div id={block.id} data-block={block.type} className="min-w-0 scroll-mt-24">
                 {rendered}
               </div>
-              <div className="min-w-0 xl:sticky xl:top-20 xl:self-start">{aside}</div>
+              <div data-slot="story-aside" className="min-w-0 xl:sticky xl:top-20 xl:self-start">{aside}</div>
             </div>
           );
         }
 
         return (
-          <div key={block.id} id={block.id} className="min-w-0 scroll-mt-24">
+          <div key={block.id} id={block.id} data-block={block.type} className="min-w-0 scroll-mt-24">
+            {index === tuckedIndex ? (
+              <div data-slot="story-tucked" className="hidden">
+                {tucked}
+              </div>
+            ) : null}
             {rendered}
           </div>
         );

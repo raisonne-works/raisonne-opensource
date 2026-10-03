@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { isAnimatedImage, seriesTitle, workTitle } from '@/components/raisonne/works/lib';
+import { ipfsGateway } from '@/lib/config';
 import { type ImportEvent, isImportEvent } from '@/lib/import-events';
 import { DEFAULT_SETTINGS, catalogueCounts, recordHref } from '@/lib/records';
 import type {
@@ -117,13 +118,29 @@ const THUMBNAIL_STILL = /\/image\/upload\/thumbnailv2\//;
  * animates is not a still, and a still smaller than a tile is worse than the
  * original. next/image does the resizing either way.
  */
+/** A public gateway's path, or an ipfs:// address, with the content id and path after it. */
+const IPFS_ADDRESS = /^(?:ipfs:\/\/(?:ipfs\/)?|https:\/\/(?:ipfs\.io|dweb\.link|cloudflare-ipfs\.com|gateway\.ipfs\.io)\/ipfs\/)(.+)$/;
+
+/**
+ * A live work or film recorded on a public gateway loads through the
+ * install's own gateway when it has one. Pictures keep their address: the
+ * image optimiser only fetches from hosts it was told about.
+ */
+function throughGateway(url: string | null | undefined): string | null | undefined {
+  const gateway = ipfsGateway();
+  if (!url || !gateway) return url;
+  const match = IPFS_ADDRESS.exec(url);
+  return match ? gateway + match[1] : url;
+}
+
 function normalizeMedia<T extends Media | null>(media: T): T {
   if (!media) return media;
   const { full } = media;
   let still = media.still;
   if (still && isAnimatedImage(still)) still = full && !isAnimatedImage(full) ? full : null;
   if (still && full && still !== full && THUMBNAIL_STILL.test(still)) still = full;
-  return still === media.still ? media : ({ ...media, still } as T);
+  const animation = throughGateway(media.animation);
+  return still === media.still && animation === media.animation ? media : ({ ...media, still, animation } as T);
 }
 
 function list<T>(value: T[] | undefined | null): T[] {

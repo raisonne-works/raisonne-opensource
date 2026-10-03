@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { MediaStill } from '@/components/raisonne/works/media-still';
 import { GRID_CLASS, GRID_SIZES, formatCount } from '@/components/raisonne/works/lib';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import type { Media, SiteData } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -173,9 +173,11 @@ export function CatalogueSections({
   const used = new Set<string>();
 
   return (
-    <ul className={cn(GRID_CLASS, className)}>
+    <ul data-slot="catalogue-sections" className={cn(GRID_CLASS, className)}>
       {sections.map(section => {
         const count = counts[section.id] ?? 0;
+        // The every-token tile carries the artist's name for the section.
+        const label = section.id === 'work' ? worksLabel(data.settings, section.label) : section.label;
         return (
           <li key={section.id} className="min-w-0">
             <article className="group/section relative flex min-w-0 flex-col gap-2.5">
@@ -192,7 +194,7 @@ export function CatalogueSections({
                     href={section.href}
                     className='rounded-sm underline-offset-4 outline-none after:absolute after:inset-0 after:content-[""] hover:underline focus-visible:ring-3 focus-visible:ring-ring/50'
                   >
-                    {section.label}
+                    {label}
                   </Link>
                   <span className="text-xs text-muted-foreground tabular-nums">{formatCount(count)}</span>
                 </h3>

@@ -65,6 +65,7 @@ export function CatalogueSearch({
       action={config.basePath}
       method="get"
       role="search"
+      data-slot="catalogue-search"
       className={cn('w-full min-w-0 sm:w-auto sm:max-w-80 sm:flex-1', className)}
       onSubmit={event => {
         event.preventDefault();

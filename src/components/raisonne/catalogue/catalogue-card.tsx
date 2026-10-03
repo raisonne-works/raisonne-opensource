@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { EyeIcon } from 'lucide-react';
 
 import { CopyButton } from '@/components/raisonne/shell/copy-button';
 import { MEDIA_FRAME_CLASS } from '@/components/raisonne/works/lib';
@@ -8,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
+import { CardTeaser } from './card-teaser';
 import { EnlargeButton } from './enlarge-dialog';
 import type { CatalogueEntry } from './entry';
 import { VIEW_GRID_SIZES } from './lib';
@@ -54,8 +56,8 @@ export function CatalogueCard({
   const fit = density === 'sheet' ? 'contain' : entry.fit;
 
   return (
-    <article className={cn('group/card relative flex min-w-0 flex-col gap-2.5', className)}>
-      <div className="relative">
+    <article data-slot="catalogue-card" data-type={entry.type} className={cn('group/card relative flex min-w-0 flex-col gap-2.5', className)}>
+      <div data-slot="catalogue-card-media" className="relative">
         {entry.media?.still ? (
           <MediaStill
             media={entry.media}
@@ -83,13 +85,14 @@ export function CatalogueCard({
             />
           </span>
         ) : null}
+        {entry.teaser && entry.media?.still ? <CardTeaser src={entry.teaser.src} /> : null}
 
         {/*
           Hover affordances, and only where a pointer can hover. On a phone
           they were a permanent white pill over a fifth of every artwork, and
           a catalogue raisonne does not put chrome on the work.
         */}
-        <div className="absolute top-1.5 right-1.5 z-10 hidden items-center gap-1 rounded-lg bg-background/80 p-0.5 opacity-0 transition-opacity group-hover/card:opacity-100 group-focus-within/card:opacity-100 [@media(hover:hover)]:flex">
+        <div data-slot="catalogue-card-actions" className="absolute top-1.5 right-1.5 z-10 hidden items-center gap-1 rounded-lg bg-background/80 p-0.5 opacity-0 transition-opacity group-hover/card:opacity-100 group-focus-within/card:opacity-100 [@media(hover:hover)]:flex">
           <EnlargeButton entry={entry} />
           {entry.contract ? (
             <CopyButton value={entry.contract} label={`Copy the contract address for ${entry.title}`} />
@@ -104,20 +107,27 @@ export function CatalogueCard({
       </div>
 
       {density === 'sheet' ? (
-        <TitleLink entry={entry} href={href} external={external} cover />
+        <>
+          <TitleLink entry={entry} href={href} external={external} cover />
+          {/* A caption for a design that prints one on the sheet. Skin zero reads the name out instead. */}
+          <div data-slot="catalogue-card-caption" aria-hidden className="hidden min-w-0 flex-col gap-1">
+            <span data-slot="catalogue-card-title">{entry.title}</span>
+            <CardMeta meta={entry.meta} />
+            <CardEye href={entry.href} />
+          </div>
+        </>
       ) : (
-        <div className="flex min-w-0 flex-col gap-1">
+        <div data-slot="catalogue-card-caption" className="flex min-w-0 flex-col gap-1">
           <TitleLink
             entry={entry}
             href={href}
             external={external}
             className="line-clamp-2 text-sm font-medium underline-offset-4 group-hover/card:underline"
           />
-          {entry.meta.length > 0 ? (
-            <span className="truncate text-xs text-muted-foreground">{entry.meta.join(' · ')}</span>
-          ) : null}
+          <CardMeta meta={entry.meta} />
+          <CardEye href={entry.href} />
           {density === 'grid' && badges.length > 0 ? (
-            <span className="flex flex-wrap gap-1 pt-0.5">
+            <span data-slot="catalogue-card-badges" className="flex flex-wrap gap-1 pt-0.5">
               {badges.map(badge => (
                 <Badge key={badge} variant="outline" className="font-normal">
                   {badge}
@@ -128,6 +138,46 @@ export function CatalogueCard({
         </div>
       )}
     </article>
+  );
+}
+
+/**
+ * The caption line: the facts run together with a dot between them. Each
+ * fact is its own element and says what it is (a year, a count, a word), so
+ * a design can set them as separate tags or leave some out.
+ */
+function CardMeta({ meta }: { meta: string[] }) {
+  if (meta.length === 0) return null;
+  return (
+    <span data-slot="catalogue-card-meta" className="truncate text-xs text-muted-foreground">
+      {meta.map((fact, index) => (
+        <span key={`${index}-${fact}`} data-slot="catalogue-card-fact" data-fact={factKind(fact)}>
+          {index > 0 ? <span data-slot="catalogue-card-fact-dot"> · </span> : null}
+          {fact}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function factKind(fact: string): 'year' | 'count' | 'text' {
+  if (/^\d{4}$/.test(fact)) return 'year';
+  if (/^[\d.,]+\s/.test(fact)) return 'count';
+  return 'text';
+}
+
+/**
+ * A small way in beside the name, for a design that draws one. It sits over
+ * the tile's stretched link so it has a hover of its own. Hidden in skin
+ * zero, where the whole tile is already the link, and kept out of the tab
+ * order and the accessibility tree because it repeats that link.
+ */
+function CardEye({ href }: { href: string | null }) {
+  if (!href) return null;
+  return (
+    <Link href={href} data-slot="catalogue-card-eye" aria-hidden tabIndex={-1} className="hidden">
+      <EyeIcon />
+    </Link>
   );
 }
 

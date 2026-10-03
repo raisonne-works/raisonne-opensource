@@ -21,7 +21,7 @@ import { getCounts, getFeaturedSeries, getSiteData } from '@/fixtures';
 import { homePageJsonLd } from '@/lib/seo/json-ld';
 import { pageMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import type { Landing, LandingSectionId, Series } from '@/lib/types';
 import { slot } from '@/lib/theme';
 
@@ -124,7 +124,7 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={homePageJsonLd({ artist, counts, origin })} />
+      <JsonLd data={homePageJsonLd({ artist, counts, origin, worksLabel: worksLabel(settings) })} />
 
       <Container className="pt-10 pb-2 md:pt-16 md:pb-4">
         {landing && enabled('hero') ? (

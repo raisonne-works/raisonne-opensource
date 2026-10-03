@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { DEFAULT_WORKS_LABEL } from '@/lib/records';
 import type { Series } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -32,6 +33,7 @@ import {
   seriesTitle,
 } from './lib';
 import { MediaStill } from './media-still';
+import { SeriesTeaser } from './series-teaser';
 
 /**
  * The top of a series page: where it sits, what it is called, and why it is
@@ -50,6 +52,7 @@ export function SeriesHeader({
   series,
   parent = null,
   facts,
+  worksLabel = DEFAULT_WORKS_LABEL,
   headingLevel = 1,
   className,
 }: {
@@ -58,6 +61,8 @@ export function SeriesHeader({
   parent?: Series | null;
   /** The facts panel (SeriesSpecs), between the description and the attribution. */
   facts?: ReactNode;
+  /** What the first crumb calls /works: worksLabel(settings). */
+  worksLabel?: string;
   /** 1 on a series page; deeper where the header is shown inside another page. */
   headingLevel?: HeadingLevel;
   className?: string;
@@ -73,7 +78,7 @@ export function SeriesHeader({
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="/works" />}>Works</BreadcrumbLink>
+            <BreadcrumbLink render={<Link href="/works" />}>{worksLabel}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           {parent ? (
@@ -92,7 +97,9 @@ export function SeriesHeader({
         </BreadcrumbList>
       </Breadcrumb>
 
-      {series.cover?.still ? (
+      {series.teaser?.kind === 'video' ? (
+        <SeriesTeaser teaser={series.teaser} poster={series.cover?.still} label={`${title}, teaser film`} />
+      ) : series.cover?.still ? (
         <MediaStill
           media={series.cover}
           alt=""
@@ -155,7 +162,7 @@ export function SeriesHeader({
       />
 
       {fullName ? (
-        <p className="text-sm text-muted-foreground">
+        <p data-slot="series-chain-name" className="text-sm text-muted-foreground">
           Recorded on-chain as <span className="font-mono break-words">{fullName}</span>
         </p>
       ) : null}
@@ -168,7 +175,7 @@ export function SeriesHeader({
         quiet line instead.
       */}
       {hasEvidence ? (
-        <div className="flex max-w-prose flex-col gap-3">
+        <div data-slot="series-evidence" className="flex max-w-prose flex-col gap-3">
           <SubHeading className="text-sm font-medium">Why this is attributed to the artist</SubHeading>
           <EvidenceBadges evidence={series.evidence} coAuthored={series.coAuthored} />
           <p className="text-sm text-muted-foreground">
@@ -177,7 +184,7 @@ export function SeriesHeader({
           </p>
         </div>
       ) : (
-        <p className="max-w-prose text-sm text-muted-foreground">
+        <p data-slot="series-evidence" className="max-w-prose text-sm text-muted-foreground">
           {series.kind !== 'series' ? `${SERIES_KIND_DESCRIPTIONS[series.kind]} ` : ''}
           No attribution signal is recorded on this contract yet.
         </p>

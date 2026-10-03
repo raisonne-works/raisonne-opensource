@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowUpRightIcon, ChevronDownIcon } from 'lucide-react';
+import { Fragment } from 'react';
 
 import type { HeadingLevel } from '@/components/raisonne/shell/heading';
 import { nextHeadingLevel } from '@/components/raisonne/shell/heading';
@@ -46,10 +47,19 @@ export function TextBlock({
 
       {paragraphs.length > 0 ? (
         // Block layout, not flex: CSS columns do nothing inside a flex container.
-        <div className={cn('text-base/relaxed text-pretty [&>p+p]:mt-4', COLUMN_CLASS[block.columns])}>
+        <div data-slot="text-body" data-columns={block.columns} className={cn('text-base/relaxed text-pretty [&>p+p]:mt-4', COLUMN_CLASS[block.columns])}>
           {paragraphs.map((paragraph, index) => (
             <p key={index} className="break-inside-avoid-column">
-              {paragraph}
+              {/* A line break inside a paragraph reads as a space here. Each
+                  line is marked so a pack can stand them apart instead. */}
+              {paragraph.includes('\n')
+                ? paragraph.split('\n').map((line, at) => (
+                    <Fragment key={at}>
+                      {at > 0 ? '\n' : null}
+                      <span data-slot="text-line">{line}</span>
+                    </Fragment>
+                  ))
+                : paragraph}
             </p>
           ))}
         </div>

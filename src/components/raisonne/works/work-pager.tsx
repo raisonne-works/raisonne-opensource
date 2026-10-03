@@ -22,7 +22,7 @@ export function WorkPager({
   if (!previous && !next) return null;
 
   return (
-    <nav aria-label="Other works in this series" className={cn('grid grid-cols-2 gap-4 pt-6', className)}>
+    <nav data-slot="work-pager" aria-label="Other works in this series" className={cn('grid grid-cols-2 gap-4 pt-6', className)}>
       {previous ? <PagerLink work={previous} href={hrefFor(previous)} direction="previous" /> : <span />}
       {next ? <PagerLink work={next} href={hrefFor(next)} direction="next" /> : <span />}
     </nav>

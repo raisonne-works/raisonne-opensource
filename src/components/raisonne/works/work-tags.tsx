@@ -25,7 +25,7 @@ export function WorkTags({
   if (items.length === 0) return null;
 
   return (
-    <ul aria-label={label} className={cn('flex flex-wrap gap-1.5', className)}>
+    <ul data-slot="work-tags" aria-label={label} className={cn('flex flex-wrap gap-1.5', className)}>
       {items.map(tag => (
         <li key={tag}>
           <Badge variant="outline" className="font-normal" render={<Link href={mediumHref(tag)} />}>

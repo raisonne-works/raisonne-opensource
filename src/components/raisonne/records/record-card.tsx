@@ -110,7 +110,7 @@ export function RecordCardGrid({
   }
 
   return (
-    <ul className={cn(GRID_CLASS, className)}>
+    <ul data-slot="record-grid" className={cn(GRID_CLASS, className)}>
       {previews.map((preview, index) => (
         <li key={`${preview.type}:${preview.ref.key}`} className="min-w-0">
           <RecordCard preview={preview} priority={index < priorityCount} />

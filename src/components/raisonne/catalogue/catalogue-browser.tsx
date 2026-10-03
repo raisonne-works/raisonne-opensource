@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ImagesIcon, SearchXIcon } from 'lucide-react';
+import { ImagesIcon, RefreshCwIcon, SearchXIcon } from 'lucide-react';
 
 import { BottomBarAction } from '@/components/raisonne/shell/bottom-bar-action';
 import type { HeadingLevel } from '@/components/raisonne/shell/heading';
@@ -13,6 +13,7 @@ import { CatalogueTable, CatalogueTableSkeleton } from './catalogue-table';
 import type { CatalogueEntry } from './entry';
 import { ActiveFilters, CatalogueFacets } from './facets';
 import { GalleryWall } from './gallery-wall';
+import { CatalogueMore } from './catalogue-more';
 import { CataloguePagination } from './catalogue-pagination';
 import {
   PAGE_SIZE,
@@ -27,9 +28,11 @@ import {
   filterEntries,
   groupEntries,
   isFiltered,
+  pageCount,
   sortEntries,
   type CatalogueConfig,
   type CatalogueState,
+  type Facet,
 } from './lib';
 import { CatalogueSearch } from './search-bar';
 import { SortMenu } from './sort-menu';
@@ -68,7 +71,10 @@ export function CatalogueBrowser({
 }) {
   const matches = sortEntries(filterEntries(entries, state), state.sort, dailySeed());
   const page = clampPage(state.page, matches.length);
-  const visible = matches.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  // A design that grows the list asks for the pages from this one through a later one.
+  const through = Math.min(Math.max(page, state.through ?? page), pageCount(matches.length));
+  const visible = matches.slice((page - 1) * PAGE_SIZE, through * PAGE_SIZE);
+  const shown = (page - 1) * PAGE_SIZE + visible.length;
   const facets = buildFacets(entries, state, config);
   const filtered = isFiltered(state);
   const showType = config.groupBy === 'type' ? state.type === null : entries.some(entry => entry.type !== entries[0]?.type);
@@ -77,40 +83,23 @@ export function CatalogueBrowser({
   // nothing to sort and nothing to draw another way.
   if (entries.length === 0) {
     return (
-      <div id={id} className={cn('flex scroll-mt-20 flex-col gap-6', className)}>
+      <div id={id} data-catalogue-type={state.type ?? undefined} data-catalogue-path={config.basePath} data-catalogue-view={state.view} className={cn('flex scroll-mt-20 flex-col gap-6', className)}>
         <CatalogueEmpty state={state} config={config} everythingEmpty />
       </div>
     );
   }
 
   return (
-    <div id={id} className={cn('flex scroll-mt-20 flex-col gap-6', className)}>
-      {/*
-        One control bar, grouped at the left. Pushing the view toggle to the
-        far right left two clusters 2,000 px apart on a wide screen with
-        nothing between them, which reads as a broken row rather than a bar.
-        On a phone the search takes a row of its own, so its placeholder is
-        not clipped mid-word and the buttons keep their labels.
-      */}
-      <div className="flex flex-col gap-3">
-        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-          <CatalogueSearch state={state} config={config} />
-          <div className="flex items-center gap-2">
-            <CatalogueFacets facets={facets} state={state} config={config} />
-            <SortMenu state={state} config={config} />
-            <ViewToggle state={state} config={config} className="ml-auto sm:ml-0" />
-          </div>
-        </div>
-
-        <ActiveFilters state={state} config={config} />
-
-        <p className="text-sm text-muted-foreground tabular-nums" aria-live="polite">
-          {countLabel(matches.length, page, config)}
-          {filtered && matches.length !== entries.length ? (
-            <span className="text-muted-foreground/70"> · {formatCount(entries.length)} in all</span>
-          ) : null}
-        </p>
-      </div>
+    <div id={id} data-catalogue-type={state.type ?? undefined} data-catalogue-path={config.basePath} data-catalogue-view={state.view} className={cn('flex scroll-mt-20 flex-col gap-6', className)}>
+      <CatalogueToolbar
+        state={state}
+        config={config}
+        facets={facets}
+        shown={shown}
+        total={matches.length}
+        all={entries.length}
+        page={page}
+      />
 
       {matches.length === 0 ? (
         <CatalogueEmpty state={state} config={config} everythingEmpty={false} />
@@ -118,6 +107,9 @@ export function CatalogueBrowser({
         <>
           <CatalogueResults entries={visible} state={state} showType={showType} config={config} headingLevel={headingLevel} />
           <CataloguePagination state={state} config={config} total={matches.length} anchorId={id} />
+          <CatalogueMore
+            href={shown < matches.length ? catalogueHref(config, state, { page, through: through + 1 }) : null}
+          />
           {/*
             Deep in a long grid the toolbar is far above, so the bar at the
             bottom of the window carries where the visitor is and, when a
@@ -139,6 +131,86 @@ export function CatalogueBrowser({
           </BottomBarAction>
         </>
       )}
+    </div>
+  );
+}
+
+/**
+ * One control bar, grouped at the left. Pushing the view toggle to the far
+ * right left two clusters 2,000 px apart on a wide screen with nothing
+ * between them, which reads as a broken row rather than a bar. On a phone
+ * the search takes a row of its own, so its placeholder is not clipped
+ * mid-word and the buttons keep their labels.
+ *
+ * It is its own component so a page that lists its rows itself, a series and
+ * its works, can stand the same bar beside them.
+ */
+export function CatalogueToolbar({
+  state,
+  config,
+  facets,
+  shown,
+  total,
+  all,
+  page,
+  className,
+  ...rest
+}: {
+  state: CatalogueState;
+  config: CatalogueConfig;
+  facets: Facet[];
+  /** The number of the last row on screen. */
+  shown: number;
+  /** How many rows match right now. */
+  total: number;
+  /** How many rows the list holds with nothing narrowing it. */
+  all: number;
+  page: number;
+  className?: string;
+} & Omit<React.ComponentProps<'div'>, 'children'>) {
+  const filtered = isFiltered(state);
+  return (
+    <div data-slot="catalogue-toolbar" className={cn('flex flex-col gap-3', className)} {...rest}>
+      <div data-slot="catalogue-controls" className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+        <CatalogueSearch state={state} config={config} />
+        <div data-slot="catalogue-actions" className="flex items-center gap-2">
+          <CatalogueFacets facets={facets} state={state} config={config} />
+          <SortMenu state={state} config={config} />
+          <ViewToggle state={state} config={config} className="ml-auto sm:ml-0" />
+          {/*
+            One key that clears the search and every facet, and stays in the
+            section. Skin zero says as much with its chips and their "Clear
+            all", so there it stays hidden; a design with a bare bar of keys
+            shows it.
+          */}
+          <Link
+            data-control="reset"
+            href={catalogueHref(config, state, { ...clearedState(), type: state.type })}
+            scroll={false}
+            aria-label="Reset all filters"
+            className="hidden"
+          >
+            <RefreshCwIcon aria-hidden />
+          </Link>
+        </div>
+      </div>
+
+      <ActiveFilters state={state} config={config} />
+
+      <p
+        data-slot="catalogue-count"
+        data-shown={shown}
+        data-total={total}
+        data-all={all}
+        data-complete={shown >= total ? '' : undefined}
+        className="text-sm text-muted-foreground tabular-nums"
+        aria-live="polite"
+      >
+        {countLabel(total, page, config)}
+        {filtered && total !== all ? (
+          <span className="text-muted-foreground/70"> · {formatCount(all)} in all</span>
+        ) : null}
+      </p>
     </div>
   );
 }
@@ -192,9 +264,9 @@ function CatalogueResults({
 
   const Heading = `h${headingLevel}` as const;
   return (
-    <div className="flex flex-col gap-10">
+    <div data-slot="catalogue-groups" className="flex flex-col gap-10">
       {groupEntries(entries, config.groupBy ?? 'type').map(group => (
-        <section key={group.id} aria-labelledby={`group-${group.id}`} className="flex flex-col gap-4">
+        <section key={group.id} data-slot="catalogue-group" aria-labelledby={`group-${group.id}`} className="flex flex-col gap-4">
           <Heading id={`group-${group.id}`} className="text-lg font-semibold tracking-tight">
             {group.label}
             <span className="ml-2 text-sm font-normal text-muted-foreground tabular-nums">{group.entries.length}</span>
@@ -218,9 +290,14 @@ function CatalogueGrid({
   markFeatured?: boolean;
 }) {
   return (
-    <ul className={VIEW_GRID_CLASS[density]}>
+    <ul data-slot="catalogue-grid" data-view={density} className={VIEW_GRID_CLASS[density]}>
       {entries.map((entry, index) => (
-        <li key={entry.key} className="min-w-0">
+        <li
+          key={entry.key}
+          data-width={entry.media?.width ?? undefined}
+          data-height={entry.media?.height ?? undefined}
+          className="min-w-0"
+        >
           <CatalogueCard
             entry={entry}
             density={density}

@@ -21,9 +21,9 @@ export function RecordIntro({
   className?: string;
 }) {
   return (
-    <div className={cn('grid gap-8 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-start xl:gap-12', className)}>
-      <div className="min-w-0">{children}</div>
-      <div className="min-w-0 xl:sticky xl:top-20 xl:self-start">{aside}</div>
+    <div data-slot="record-intro" className={cn('grid gap-8 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-start xl:gap-12', className)}>
+      <div data-slot="record-intro-body" className="min-w-0">{children}</div>
+      <div data-slot="record-intro-aside" className="min-w-0 xl:sticky xl:top-20 xl:self-start">{aside}</div>
     </div>
   );
 }

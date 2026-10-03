@@ -111,7 +111,7 @@ function ViewerShell({ work, liveHtml }: { work: Work; liveHtml: boolean }) {
   const explorerHost = hostOf(work.explorerUrl);
 
   return (
-    <div ref={shell} className="relative flex min-h-0 flex-1 flex-col bg-background">
+    <div ref={shell} data-slot="work-viewer" className="relative flex min-h-0 flex-1 flex-col bg-background">
       <DialogHeader className="gap-1 border-b px-4 py-3 pr-12">
         <DialogTitle className="truncate leading-snug" title={work.title}>
           {title}
@@ -125,11 +125,11 @@ function ViewerShell({ work, liveHtml }: { work: Work; liveHtml: boolean }) {
         <span className="sr-only">Close the viewer</span>
       </DialogClose>
 
-      <div className="relative min-h-0 flex-1 bg-muted/40">
+      <div data-slot="work-viewer-stage" className="relative min-h-0 flex-1 bg-muted/40">
         <ViewerStage work={work} liveHtml={liveHtml} zoom={canZoom ? zoom : null} />
       </div>
 
-      <div className="flex flex-col gap-2 border-t px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+      <div data-slot="work-viewer-bar" className="flex flex-col gap-2 border-t px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex min-w-0 items-center gap-2">
           {canZoom ? (
             <ZoomControls controller={zoom} />
@@ -137,7 +137,7 @@ function ViewerShell({ work, liveHtml }: { work: Work; liveHtml: boolean }) {
             <p className="text-sm text-muted-foreground">{MEDIA_KIND_LABELS[work.media.kind]}</p>
           )}
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div data-slot="work-viewer-actions" className="flex flex-wrap items-center gap-2">
           {canFullscreen ? (
             <Button variant="ghost" size="sm" onClick={toggleFullscreen} aria-pressed={fullscreen}>
               {fullscreen ? <MinimizeIcon aria-hidden data-icon="inline-start" /> : <MaximizeIcon aria-hidden data-icon="inline-start" />}

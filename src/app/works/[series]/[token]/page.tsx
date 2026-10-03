@@ -15,6 +15,7 @@ import { WorkDetail } from '@/components/raisonne/works/work-detail';
 import { WorkPager } from '@/components/raisonne/works/work-pager';
 import { getArtist, getSeries, getSettings, getSiteData, getWork, getWorksForSeries } from '@/fixtures';
 import { plainText } from '@/lib/markdown';
+import { worksLabel } from '@/lib/records';
 import { breadcrumbJsonLd, graph, visualArtworkJsonLd } from '@/lib/seo/json-ld';
 import { seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
@@ -78,7 +79,7 @@ export default async function WorkPage({ params }: { params: Params }) {
           visualArtworkJsonLd({ work, series, artist: getArtist(), origin, path }),
           breadcrumbJsonLd({
             items: [
-              { name: 'Works', path: '/works' },
+              { name: worksLabel(settings), path: '/works' },
               ...(parent ? [{ name: seriesTitle(parent), path: seriesHref(parent) }] : []),
               { name: seriesTitle(series), path: seriesHref(series) },
               { name: workTitle(work) },
@@ -93,6 +94,7 @@ export default async function WorkPage({ params }: { params: Params }) {
         parent={parent}
         liveHtml={settings.liveHtml}
         showOwner={settings.showOwners}
+        worksLabel={worksLabel(settings)}
         standalone={isSingleWorkSeries(series, siblings)}
       />
       <WorkPager previous={previous} next={next} />

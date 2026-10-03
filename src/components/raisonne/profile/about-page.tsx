@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DownloadIcon } from 'lucide-react';
 
 import { NewsletterForm } from '@/components/raisonne/landing/newsletter-form';
 import { type HeadingLevel, nextHeadingLevel } from '@/components/raisonne/shell/heading';
@@ -56,6 +57,7 @@ export function AboutPage({
     statement.length > 0;
   const signUp = newsletter === null ? 'off' : newsletterState(data.settings);
 
+  const pressKitUrl = artist.pressKit?.fileUrl ?? null;
   return (
     <Container size="editorial" className={className}>
       <PageHeader
@@ -63,10 +65,26 @@ export function AboutPage({
         title={artist.name}
         description={artist.description ?? artist.tagline ?? undefined}
         actions={
-          hasCv ? (
-            <Button variant="outline" nativeButton={false} render={<Link href="/cv" />}>
-              Read the full CV
-            </Button>
+          hasCv || pressKitUrl ? (
+            <>
+              {hasCv ? (
+                <Button variant="outline" nativeButton={false} render={<Link href="/cv" />}>
+                  Read the full CV
+                </Button>
+              ) : null}
+              {/* The press kit is the PDF set on the About page in the editor. */}
+              {pressKitUrl ? (
+                <Button
+                  variant="outline"
+                  nativeButton={false}
+                  render={<a href={pressKitUrl} download target="_blank" rel="noopener noreferrer" />}
+                >
+                  <DownloadIcon aria-hidden data-icon="inline-start" />
+                  Download the press kit
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </Button>
+              ) : null}
+            </>
           ) : undefined
         }
       />
@@ -94,7 +112,7 @@ export function AboutPage({
           <div className="min-w-0">
             <Section
               id="studio"
-              title="The studio"
+              title={artist.imagesTitle?.trim() || 'The studio'}
               headingLevel={headingLevel}
               size="small"
               className="xl:sticky xl:top-20"

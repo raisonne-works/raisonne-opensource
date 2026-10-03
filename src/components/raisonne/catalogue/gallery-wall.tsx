@@ -33,7 +33,7 @@ export function GalleryWall({ entries, className }: { entries: CatalogueEntry[];
   }
 
   return (
-    <div className={cn('flex flex-col gap-4', className)}>
+    <div data-slot="gallery-wall" className={cn('flex flex-col gap-4', className)}>
       <ul
         ref={track}
         tabIndex={0}

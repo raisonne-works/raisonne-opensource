@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { DEFAULT_WORKS_LABEL } from '@/lib/records';
 import type { Series, Work } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -55,6 +56,7 @@ export function WorkDetail({
   parent = null,
   liveHtml = false,
   showOwner = false,
+  worksLabel = DEFAULT_WORKS_LABEL,
   headingLevel = 1,
   standalone = false,
   className,
@@ -67,6 +69,8 @@ export function WorkDetail({
   liveHtml?: boolean;
   /** SiteSettings.showOwners. */
   showOwner?: boolean;
+  /** What the first crumb calls /works: worksLabel(settings). */
+  worksLabel?: string;
   /** 1 on a work page; deeper where the work is shown inside another page. */
   headingLevel?: HeadingLevel;
   /** The work is the whole series (a one of one), so the breadcrumb skips the series. */
@@ -81,11 +85,11 @@ export function WorkDetail({
   const categories = work.categories?.length ? work.categories : series.categories;
 
   return (
-    <article className={cn('flex flex-col gap-6', className)}>
+    <article data-slot="work-detail" data-one-of-one={unique ? '' : undefined} className={cn('flex flex-col gap-6', className)}>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="/works" />}>Works</BreadcrumbLink>
+            <BreadcrumbLink render={<Link href="/works" />}>{worksLabel}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           {standalone ? (
@@ -118,15 +122,15 @@ export function WorkDetail({
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-start xl:gap-12">
-        <div className="xl:sticky xl:top-20 xl:self-start">
+      <div data-slot="work-layout" className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-start xl:gap-12">
+        <div data-slot="work-media" className="xl:sticky xl:top-20 xl:self-start">
           <WorkMedia work={work} liveHtml={liveHtml} />
         </div>
 
-        <div className={cn('flex min-w-0 flex-col gap-8', READING_CLASS)}>
-          <header className="flex flex-col gap-3">
+        <div data-slot="work-facts" className={cn('flex min-w-0 flex-col gap-8', READING_CLASS)}>
+          <header data-slot="work-header" className="flex flex-col gap-3">
             {standalone ? null : (
-              <p className="text-sm text-muted-foreground">
+              <p data-slot="work-series" className="text-sm text-muted-foreground">
                 <Link href={seriesHref(series)} className="underline-offset-4 hover:text-foreground hover:underline">
                   {seriesTitle(series)}
                 </Link>
@@ -138,7 +142,7 @@ export function WorkDetail({
             >
               {title}
             </Heading>
-            <div className="flex flex-wrap items-center gap-1.5">
+            <div data-slot="work-badges" className="flex flex-wrap items-center gap-1.5">
               <Badge variant="secondary">{MEDIA_KIND_LABELS[work.media.kind]}</Badge>
               {unique ? (
                 <Badge variant="outline" className="font-normal">
@@ -162,12 +166,12 @@ export function WorkDetail({
 
           <WorkFacts work={work} series={series} />
 
-          <div className="flex flex-wrap gap-2">
+          <div data-slot="work-actions" className="flex flex-wrap gap-2">
             <ShareButton title={title} text={`${title}, ${seriesTitle(series)}`} />
             <Button
               variant="outline"
               nativeButton={false}
-              render={<a href={work.explorerUrl} target="_blank" rel="noopener noreferrer" />}
+              render={<a data-link="explorer" href={work.explorerUrl} target="_blank" rel="noopener noreferrer" />}
             >
               View on {hostOf(work.explorerUrl)}
               <ExternalLinkIcon aria-hidden data-icon="inline-end" />
@@ -177,7 +181,7 @@ export function WorkDetail({
               <Button
                 variant="outline"
                 nativeButton={false}
-                render={<a href={marketUrl} target="_blank" rel="noopener noreferrer" />}
+                render={<a data-link="market" href={marketUrl} target="_blank" rel="noopener noreferrer" />}
               >
                 Collect on {marketLabel(marketUrl, work.platform ?? series.platform)}
                 <ExternalLinkIcon aria-hidden data-icon="inline-end" />
@@ -193,7 +197,7 @@ export function WorkDetail({
             headingLevel={nextHeadingLevel(headingLevel)}
           />
 
-          <section className="flex flex-col gap-3">
+          <section data-slot="work-provenance" className="flex flex-col gap-3">
             <SubHeading className="text-sm font-medium">Provenance</SubHeading>
             <p className="text-sm text-muted-foreground text-pretty">
               {SERIES_KIND_DESCRIPTIONS[series.kind]} This is how the catalogue knows the work is the artist&apos;s:
@@ -217,7 +221,7 @@ export function WorkDetailSkeleton({ className }: { className?: string }) {
   return (
     <div className={cn('flex flex-col gap-6', className)} role="status" aria-label="Loading work">
       <Skeleton className="h-4 w-56" />
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-start xl:gap-12">
+      <div data-slot="work-layout" className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_26rem] xl:items-start xl:gap-12">
         <Skeleton className={cn('w-full rounded-lg', WORK_STAGE_CLASS)} />
         <div className={cn('flex flex-col gap-8', READING_CLASS)}>
           <div className="flex flex-col gap-2">

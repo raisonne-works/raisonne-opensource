@@ -59,6 +59,8 @@ export interface CatalogueEntry {
   media: Media | null;
   /** A second image the card crossfades to on hover. */
   hoverStill: string | null;
+  /** A short film the card plays, muted, while the pointer is on it. Series only. */
+  teaser?: { src: string; poster: string | null } | null;
   /** Covers fill their frame; artworks are shown whole. */
   fit: 'cover' | 'contain';
   year: number | null;
@@ -161,6 +163,10 @@ export function seriesEntry(series: Series, hoverStill: string | null = null): C
     externalHref: series.marketUrl,
     media: series.cover,
     hoverStill,
+    teaser:
+      series.teaser?.kind === 'video' && series.teaser.src
+        ? { src: series.teaser.renditions?.[0]?.src ?? series.teaser.src, poster: series.teaser.poster }
+        : null,
     fit: 'cover',
     year: series.year,
     date: series.year !== null ? `${series.year}-12-31` : null,

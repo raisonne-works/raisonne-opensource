@@ -8,6 +8,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import type { Asset } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
+/** How much of a long description a pack's title card opens with. */
+const HERO_OPENING = 300;
+
 /**
  * The top of a record's page: the picture first, then what it is, what it is
  * called and one paragraph about it.
@@ -24,6 +27,9 @@ export function RecordHero({
   cover,
   badges,
   tags,
+  place,
+  corner,
+  labels,
   actions,
   headingLevel = 1,
   priority = true,
@@ -38,15 +44,26 @@ export function RecordHero({
   /** Status and kind badges, shown beside the eyebrow. */
   badges?: ReactNode;
   tags?: string[];
+  /**
+   * Where the record was shown, a line for the card's corner (a year, a
+   * running time) and short labels that sum it up. Skin zero prints all of
+   * this in the record's facts, so these stay out of sight here; a pack whose
+   * title card carries them brings them into view.
+   */
+  place?: string | null;
+  corner?: string | null;
+  labels?: string[];
   actions?: ReactNode;
   headingLevel?: HeadingLevel;
   priority?: boolean;
   className?: string;
 }) {
   const Heading = `h${headingLevel}` as const;
+  // A pack with a fixed title card shows the opening of a long description.
+  const opening = description && description.length > HERO_OPENING ? `${description.substring(0, HERO_OPENING)}...` : null;
 
   return (
-    <header className={cn('flex flex-col gap-6', className)}>
+    <header data-slot="record-hero" className={cn('flex flex-col gap-6', className)}>
       {cover ? (
         cover.kind === 'video' ? (
           <AssetVideo asset={cover} label={title} frameClassName="max-h-[70svh]" />
@@ -63,9 +80,9 @@ export function RecordHero({
       ) : null}
 
       {/* The text column is capped even on a 2560 px screen: a title is not a banner. */}
-      <div className="flex max-w-[52rem] flex-col gap-3">
+      <div data-slot="record-hero-text" className="flex max-w-[52rem] flex-col gap-3">
         {eyebrow || badges ? (
-          <div className="flex flex-wrap items-center gap-2">
+          <div data-slot="record-hero-eyebrow" className="flex flex-wrap items-center gap-2">
             {eyebrow ? <p className="text-sm font-medium text-muted-foreground">{eyebrow}</p> : null}
             {badges}
           </div>
@@ -76,14 +93,43 @@ export function RecordHero({
           {title}
         </Heading>
 
-        {subtitle ? <p className="text-lg text-pretty text-muted-foreground">{subtitle}</p> : null}
+        {subtitle ? <p data-slot="record-hero-subtitle" className="text-lg text-pretty text-muted-foreground">{subtitle}</p> : null}
 
         {description ? (
-          <p className={cn('text-base/relaxed text-pretty sm:text-lg/relaxed', READING_LEAD_CLASS)}>{description}</p>
+          <p data-slot="record-hero-description" className={cn('text-base/relaxed text-pretty sm:text-lg/relaxed', READING_LEAD_CLASS)}>
+            {opening ? (
+              <>
+                <span data-slot="record-hero-description-full">{description}</span>
+                <span data-slot="record-hero-description-opening" aria-hidden className="hidden">
+                  {opening}
+                </span>
+              </>
+            ) : (
+              description
+            )}
+          </p>
+        ) : null}
+
+        {place ? (
+          <p data-slot="record-hero-place" className="hidden">
+            {place}
+          </p>
+        ) : null}
+        {corner ? (
+          <p data-slot="record-hero-corner" className="hidden">
+            {corner}
+          </p>
+        ) : null}
+        {labels && labels.length > 0 ? (
+          <ul data-slot="record-hero-labels" className="hidden">
+            {labels.map(label => (
+              <li key={label}>{label}</li>
+            ))}
+          </ul>
         ) : null}
 
         {tags && tags.length > 0 ? (
-          <ul className="flex flex-wrap gap-1.5 pt-1">
+          <ul data-slot="record-hero-tags" className="flex flex-wrap gap-1.5 pt-1">
             {tags.map(tag => (
               <li key={tag}>
                 <Badge variant="outline" className="font-normal">
@@ -94,7 +140,7 @@ export function RecordHero({
           </ul>
         ) : null}
 
-        {actions ? <div className="flex flex-wrap gap-2 pt-2">{actions}</div> : null}
+        {actions ? <div data-slot="record-hero-actions" className="flex flex-wrap gap-2 pt-2">{actions}</div> : null}
       </div>
     </header>
   );

@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { DEFAULT_WORKS_LABEL } from '@/lib/records';
 import type { Drop, Series } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
@@ -35,6 +36,7 @@ export function DropHero({
   drop,
   series = null,
   now,
+  worksLabel = DEFAULT_WORKS_LABEL,
   headingLevel = 1,
   className,
 }: {
@@ -42,6 +44,8 @@ export function DropHero({
   series?: Series | null;
   /** The time the page was rendered. */
   now: number;
+  /** What the first crumb calls /works: worksLabel(settings). */
+  worksLabel?: string;
   headingLevel?: HeadingLevel;
   className?: string;
 }) {
@@ -54,7 +58,7 @@ export function DropHero({
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link href="/works" />}>Works</BreadcrumbLink>
+            <BreadcrumbLink render={<Link href="/works" />}>{worksLabel}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           {series ? (

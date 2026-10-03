@@ -53,18 +53,18 @@ export function PressBlock({
 /** Press as rows: the headline, the outlet and the date, each row one link. */
 export function PressLinkList({ items, className }: { items: PressItem[]; className?: string }) {
   return (
-    <ol className={cn('divide-y divide-border border-y border-border', className)}>
+    <ol data-slot="press-list" className={cn('divide-y divide-border border-y border-border', className)}>
       {items.map(item => {
         const href = pressHref(item);
         const date = formatPressDate(item);
         const external = Boolean(href && /^https?:\/\//i.test(href));
         const label = (
           <>
-            <span className="flex min-w-0 flex-col gap-1">
-              <span className="leading-6 font-medium text-pretty underline-offset-4 group-hover/press:underline">
+            <span data-slot="press-text" className="flex min-w-0 flex-col gap-1">
+              <span data-slot="press-headline" className="leading-6 font-medium text-pretty underline-offset-4 group-hover/press:underline">
                 {item.title}
               </span>
-              <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+              <span data-slot="press-outlet" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                 {item.outlet}
                 {item.kind && item.kind !== 'article' ? (
                   <Badge variant="outline" className="font-normal">

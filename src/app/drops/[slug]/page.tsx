@@ -12,7 +12,7 @@ import { StoryBlocks } from '@/components/raisonne/story/story-blocks';
 import { decodeParam, dropHref, seriesHref, seriesTitle } from '@/components/raisonne/works/lib';
 import { getDrop, getDrops, getSeries, getSettings } from '@/fixtures';
 import { newsletterState } from '@/lib/newsletter';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import { seoMetadata } from '@/lib/seo/metadata';
 import { slot } from '@/lib/theme';
 
@@ -71,12 +71,12 @@ export default async function DropPage({ params }: { params: Params }) {
     <Container className="pb-16 md:pb-24">
       <BreadcrumbJsonLd
         items={[
-          { name: 'Works', path: '/works' },
+          { name: worksLabel(settings), path: '/works' },
           ...(series ? [{ name: seriesTitle(series), path: seriesHref(series) }] : []),
           { name: drop.title },
         ]}
       />
-      <DropHero drop={drop} series={series} now={now} />
+      <DropHero drop={drop} series={series} now={now} worksLabel={worksLabel(settings)} />
 
       <Section title="Release details" id="details">
         <DropSpecs drop={drop} series={series} />

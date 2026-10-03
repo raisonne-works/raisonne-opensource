@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { awardFacts } from '@/components/raisonne/records/facts';
+import { awardFacts, awardFactsByCategory } from '@/components/raisonne/records/facts';
 import { RecordBreadcrumb } from '@/components/raisonne/records/record-breadcrumb';
 import { RecordCard } from '@/components/raisonne/records/record-card';
 import { RecordFacts } from '@/components/raisonne/records/record-facts';
@@ -79,7 +79,13 @@ export default async function AwardPage({ params }: { params: Params }) {
         badges={result ? <Badge variant="secondary">{result}</Badge> : null}
       />
 
-      <StoryBlocks blocks={award.story ?? []} aside={<RecordFacts facts={facts} title="The award" />} />
+      <StoryBlocks blocks={award.story ?? []} aside={
+          <RecordFacts
+            facts={facts}
+            alternate={awardFactsByCategory(award, project?.title, project?.href)}
+            title="The award"
+          />
+        } />
 
       {project ? (
         <Section title="Given for" className="py-0 md:py-0">

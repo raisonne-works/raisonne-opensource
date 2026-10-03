@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
@@ -101,7 +102,9 @@ export function ShopSortMenu({ path, sort, className }: { path: string; sort: So
         <span>{current.label}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-auto min-w-48">
-        <DropdownMenuLabel>Sort</DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Sort</DropdownMenuLabel>
+        </DropdownMenuGroup>
         {SORTS.map(entry => {
           const selected = entry.id === sort;
           return (

@@ -39,7 +39,7 @@ export function ImmersiveBlock({
 
   return (
     <div className={cn('flex flex-col gap-6', className)}>
-      <div className={cn('flex flex-col gap-2', READING_CLASS)}>
+      <div data-slot="immersive-head" className={cn('flex flex-col gap-2', READING_CLASS)}>
         <p className="flex items-center gap-2 text-sm text-muted-foreground">
           <BoxIcon aria-hidden className="size-4" />
           {ROOM_LABEL[block.room]}

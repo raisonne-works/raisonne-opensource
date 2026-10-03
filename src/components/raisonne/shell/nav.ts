@@ -1,4 +1,4 @@
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import type { SiteData } from '@/lib/types';
 
 /**
@@ -99,8 +99,10 @@ export function siteNav(
     : 0;
 
   const catalog = compact([
+    // The menu has always said Index here; the artist's own name for the
+    // section wins when settings give one.
     hasCatalogue
-      ? { href: '/works', label: 'Index', description: 'The whole catalogue, in one list.' }
+      ? { href: '/works', label: worksLabel(settings, 'Index'), description: 'The whole catalogue, in one list.' }
       : null,
     series.length > 0
       ? {
