@@ -8,6 +8,7 @@ import { getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
 
 import './print.css';
+import { slot } from '@/lib/theme';
 
 export function generateMetadata(): Metadata {
   const { artist } = getSiteData();
@@ -31,6 +32,7 @@ function cvFileName(name: string): string {
 }
 
 export default function CvPage() {
+  slot('cv');
   const data = getSiteData();
   const { artist, cv } = data;
 

@@ -36,15 +36,15 @@ export function FilmBlock({
   return (
     <div className={cn('flex flex-col gap-6', className)}>
       {block.title || block.description ? (
-        <div className={cn('flex flex-col gap-2', READING_CLASS)}>
-          <p className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div data-slot="film-head" className={cn('flex flex-col gap-2', READING_CLASS)}>
+          <p data-slot="film-label" className="flex items-center gap-2 text-sm text-muted-foreground">
             <FilmIcon aria-hidden className="size-4" />
             Film{length ? `, ${length}` : null}
           </p>
           {block.title ? (
             <Heading className="text-xl font-semibold tracking-tight text-balance sm:text-2xl">{block.title}</Heading>
           ) : null}
-          {block.description ? <p className="text-base/relaxed text-pretty">{block.description}</p> : null}
+          {block.description ? <p data-slot="film-description" className="text-base/relaxed text-pretty">{block.description}</p> : null}
         </div>
       ) : null}
       <AssetVideo asset={block.video} label={block.title ?? 'Film'} frameClassName="max-h-[80svh]" />

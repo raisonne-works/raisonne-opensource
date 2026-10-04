@@ -110,6 +110,7 @@ export function LiveHtmlFrame({
           including a full white canvas on a dark page. */}
       <div
         ref={frame}
+        data-slot="live-html-stage"
         style={stageVars(work.media)}
         className={cn(
           'relative overflow-hidden rounded-lg bg-muted ring-1 ring-inset ring-border',
@@ -173,7 +174,7 @@ export function LiveHtmlFrame({
         ) : null}
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2">
+      <div data-slot="live-html-note" className="flex flex-wrap items-center justify-between gap-2">
         <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
           <ShieldIcon aria-hidden className="size-3.5 shrink-0" />
           {enabled

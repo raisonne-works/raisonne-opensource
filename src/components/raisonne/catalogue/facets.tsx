@@ -39,13 +39,15 @@ export function CatalogueFacets({
   config: CatalogueConfig;
   className?: string;
 }) {
-  if (facets.length === 0) return null;
+  // Nothing to narrow by: no key. The empty place is kept for a design whose
+  // bar always shows the same keys; skin zero leaves it hidden.
+  if (facets.length === 0) return <span data-control="filters" data-empty="" aria-hidden className="hidden" />;
   const active = facets.reduce((sum, facet) => sum + facet.activeCount, 0);
 
   return (
     <Popover>
       <PopoverTrigger
-        render={<Button variant="outline" size="sm" className={className} aria-label="Filters" />}
+        render={<Button variant="outline" size="sm" className={className} data-control="filters" aria-label="Filters" />}
       >
         <SlidersHorizontalIcon aria-hidden data-icon="inline-start" />
         <span>Filters</span>
@@ -65,15 +67,17 @@ export function CatalogueFacets({
       <PopoverContent
         align="end"
         className="w-80 max-w-[calc(100vw-2rem)] gap-0 p-0 shadow-lg ring-border"
+        data-catalogue-facets={config.basePath}
       >
-        <div className="flex max-h-[min(65svh,28rem)] flex-col gap-4 overflow-y-auto overscroll-contain p-3 [scrollbar-gutter:stable]">
+        <div data-slot="catalogue-facets-list" className="flex max-h-[min(65svh,28rem)] flex-col gap-4 overflow-y-auto overscroll-contain p-3 [scrollbar-gutter:stable]">
           {facets.map((facet, index) => (
-            <div key={facet.id} className="flex flex-col gap-2">
+            <div key={facet.id} data-slot="catalogue-facet" data-facet={facet.id} className="flex flex-col gap-2">
               {index > 0 ? <Separator className="-mt-2 mb-1" /> : null}
-              <div className="flex items-center justify-between gap-2">
+              <div data-slot="catalogue-facet-head" className="flex items-center justify-between gap-2">
                 <h3 className="text-xs font-medium text-muted-foreground">{facet.label}</h3>
                 {facet.activeCount > 0 ? (
                   <Link
+                    data-slot="catalogue-facet-reset"
                     href={catalogueHref(config, state, resetFacet(facet))}
                     scroll={false}
                     className="rounded-sm text-xs text-muted-foreground underline-offset-4 outline-none hover:text-foreground hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"
@@ -82,10 +86,11 @@ export function CatalogueFacets({
                   </Link>
                 ) : null}
               </div>
-              <ul className="flex flex-wrap gap-1.5">
+              <ul data-slot="catalogue-facet-values" className="flex flex-wrap gap-1.5">
                 {facet.values.map(value => (
                   <li key={value.value}>
                     <Link
+                      data-slot="catalogue-facet-value"
                       href={catalogueHref(config, state, toggleFacetValue(state, facet.id, value.value))}
                       scroll={false}
                       aria-current={value.selected ? 'true' : undefined}
@@ -98,7 +103,7 @@ export function CatalogueFacets({
                       )}
                     >
                       {value.label}
-                      <span className="text-xs text-muted-foreground tabular-nums">{value.count}</span>
+                      <span data-slot="catalogue-facet-count" className="text-xs text-muted-foreground tabular-nums">{value.count}</span>
                     </Link>
                   </li>
                 ))}
@@ -108,7 +113,7 @@ export function CatalogueFacets({
         </div>
 
         {isFiltered(state) ? (
-          <div className="border-t p-2">
+          <div data-slot="catalogue-facets-clear" className="border-t p-2">
             <Button
               variant="ghost"
               size="sm"
@@ -163,11 +168,12 @@ export function ActiveFilters({
   if (chips.length === 0) return null;
 
   return (
-    <div className={cn('flex flex-wrap items-center gap-1.5', className)}>
+    <div data-slot="active-filters" className={cn('flex flex-wrap items-center gap-1.5', className)}>
       <span className="sr-only">Filters in force</span>
       {chips.map(chip => (
         <Link
           key={chip.id}
+          data-slot="active-filter"
           href={chip.href}
           scroll={false}
           className="inline-flex h-7 items-center gap-1 rounded-lg bg-muted px-2 text-sm transition-colors outline-none hover:bg-muted/70 focus-visible:ring-3 focus-visible:ring-ring/50"
@@ -180,6 +186,7 @@ export function ActiveFilters({
       ))}
       {chips.length > 1 ? (
         <Link
+          data-slot="active-filters-clear"
           href={catalogueHref(config, state, clearedState())}
           scroll={false}
           className="ml-1 rounded-sm text-sm text-muted-foreground underline-offset-4 outline-none hover:text-foreground hover:underline focus-visible:ring-3 focus-visible:ring-ring/50"

@@ -11,6 +11,7 @@ import { getArtist, getCollaborations, getCommissions, getSettings } from '@/fix
 import { isModuleEnabled } from '@/lib/records';
 import { NO_INDEX, pageMetadata } from '@/lib/seo/metadata';
 import type { Collaboration } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 /**
  * How to work with the artist: what the studio takes on, who it has worked
@@ -47,6 +48,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function CommissionsPageRoute() {
+  slot('commissions');
   const page = commissionsPage();
   if (!page) notFound();
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { awardFacts } from '@/components/raisonne/records/facts';
+import { awardFacts, awardFactsByCategory } from '@/components/raisonne/records/facts';
 import { RecordBreadcrumb } from '@/components/raisonne/records/record-breadcrumb';
 import { RecordCard } from '@/components/raisonne/records/record-card';
 import { RecordFacts } from '@/components/raisonne/records/record-facts';
@@ -14,6 +14,7 @@ import { decodeParam } from '@/components/raisonne/works/lib';
 import { Badge } from '@/components/ui/badge';
 import { getAward, getAwards } from '@/fixtures';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * One award: the prize, the category, where it was given, and the work it
@@ -54,6 +55,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function AwardPage({ params }: { params: Params }) {
+  slot('award');
   const award = await resolve(params);
   if (!award) notFound();
 
@@ -77,7 +79,13 @@ export default async function AwardPage({ params }: { params: Params }) {
         badges={result ? <Badge variant="secondary">{result}</Badge> : null}
       />
 
-      <StoryBlocks blocks={award.story ?? []} aside={<RecordFacts facts={facts} title="The award" />} />
+      <StoryBlocks blocks={award.story ?? []} aside={
+          <RecordFacts
+            facts={facts}
+            alternate={awardFactsByCategory(award, project?.title, project?.href)}
+            title="The award"
+          />
+        } />
 
       {project ? (
         <Section title="Given for" className="py-0 md:py-0">

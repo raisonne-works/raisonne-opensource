@@ -48,9 +48,14 @@ export function WorkGrid({
   }
 
   return (
-    <ul className={cn(GRID_CLASS, className)}>
+    <ul data-slot="work-grid" className={cn(GRID_CLASS, className)}>
       {works.map((work, index) => (
-        <li key={work.id} className={cn('min-w-0', itemClassName?.(index))}>
+        <li
+          key={work.id}
+          data-width={work.media.width ?? undefined}
+          data-height={work.media.height ?? undefined}
+          className={cn('min-w-0', itemClassName?.(index))}
+        >
           <WorkCard work={work} href={hrefFor(work)} priority={index < priorityCount} />
         </li>
       ))}

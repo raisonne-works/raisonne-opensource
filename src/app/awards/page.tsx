@@ -11,6 +11,7 @@ import {
 import { storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * Awards, as cards or as a table. Like the exhibitions list, this one offers
@@ -28,6 +29,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function AwardsPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('awards');
   const params = await searchParams;
   const data = getSiteData();
 

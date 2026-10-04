@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { AboutSection } from '@/components/raisonne/records/about-section';
-import { exhibitionFacts, statusLabel } from '@/components/raisonne/records/facts';
+import { exhibitionFacts, exhibitionFactsByStanding, statusLabel } from '@/components/raisonne/records/facts';
 import { RecordBreadcrumb } from '@/components/raisonne/records/record-breadcrumb';
 import { RecordFacts } from '@/components/raisonne/records/record-facts';
 import { RecordHero } from '@/components/raisonne/records/record-hero';
@@ -18,6 +18,7 @@ import { exhibitionStatus } from '@/lib/records';
 import { exhibitionJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 /**
  * One exhibition: what it was, where and when, who curated it, and the
@@ -61,6 +62,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function ExhibitionPage({ params }: { params: Params }) {
+  slot('exhibition');
   const exhibition = await resolve(params);
   if (!exhibition) notFound();
 
@@ -68,7 +70,14 @@ export default async function ExhibitionPage({ params }: { params: Params }) {
   const status = statusLabel(exhibitionStatus(exhibition));
   const hasAbout = Boolean(exhibition.about && exhibition.about.length > 0);
 
-  const factsNode = <RecordFacts facts={facts} highlights={exhibition.highlights} title="The show" />;
+  const factsNode = (
+    <RecordFacts
+      facts={facts}
+      alternate={exhibitionFactsByStanding(exhibition)}
+      highlights={exhibition.highlights}
+      title="The show"
+    />
+  );
 
   return (
     <Container className="flex flex-col gap-10 pt-6 pb-16 md:gap-12 md:pb-24">
@@ -87,7 +96,17 @@ export default async function ExhibitionPage({ params }: { params: Params }) {
         description={exhibition.description}
         cover={exhibition.cover}
         tags={exhibition.tags}
-        badges={status ? <Badge variant={status === 'On now' ? 'default' : 'secondary'}>{status}</Badge> : null}
+        badges={
+          status ? (
+            <Badge
+              variant={status === 'On now' ? 'default' : 'secondary'}
+              data-venue={exhibition.venue || undefined}
+              data-place={[exhibition.city, exhibition.country].filter(Boolean).join(', ') || undefined}
+            >
+              {status}
+            </Badge>
+          ) : null
+        }
       />
 
       {hasAbout ? (

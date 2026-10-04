@@ -7,13 +7,14 @@ import { SiteAnalytics } from '@/components/raisonne/seo/site-analytics';
 import { SiteBreadcrumbs } from '@/components/raisonne/shell/site-breadcrumbs';
 import { SiteFooter } from '@/components/raisonne/shell/site-footer';
 import { SiteHeader } from '@/components/raisonne/shell/site-header';
+import { SkinScript } from '@/components/raisonne/shell/skin-script';
 import { siteNav } from '@/components/raisonne/shell/nav';
 import { ThemeProvider } from '@/components/raisonne/shell/theme-provider';
 import { CartSlot } from '@/components/raisonne/store/cart-slot';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { getProducts, getSiteData, getSiteSource } from '@/fixtures';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import { defaultMetadata } from '@/lib/seo/metadata';
 import { ownerToolsEnabled } from '@/lib/tools';
 
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   // what the path segment spells: /shop titled "Store" under a crumb
   // reading "Shop" was the same page called two things in one viewport.
   const crumbLabels = {
+    works: worksLabel(settings),
     ...(data.store?.page?.title ? { shop: data.store.page.title } : {}),
     ...(data.guild?.title ? { guild: data.guild.title } : {}),
   };
@@ -72,6 +74,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
+        {/* The worn pack's styles, after the app's own. Empty on skin zero. See /skin.css.
+            A pack is mounted at run time, so this cannot be an import. */}
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel="stylesheet" href="/skin.css" precedence="skin" />
+        <SkinScript />
         <ThemeProvider>
           <TooltipProvider>
             <a
@@ -85,9 +92,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
               groups={groups}
               account={<AccountSlot enabled={isModuleEnabled(settings, 'collectors')} />}
               cart={<CartSlot enabled={shopProducts > 0} />}
+              packLinks={data.collaborations.length > 0 ? [{ href: '/collaborations', label: 'Collabs' }] : []}
             />
             <SiteBreadcrumbs labels={crumbLabels} />
-            <main id="main" tabIndex={-1} className="flex-1 outline-none">
+            <main id="main" data-shell="main" tabIndex={-1} className="flex-1 outline-none">
               {children}
             </main>
             <SiteFooter
@@ -95,6 +103,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
               groups={groups}
               settings={settings}
               newsletter={landing?.newsletter ?? null}
+              ambientVideo={isModuleEnabled(settings, 'showreel') ? (landing?.showreel?.video.src ?? null) : null}
               tools={tools}
               demoData={demoData}
             />

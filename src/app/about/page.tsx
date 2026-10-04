@@ -7,6 +7,7 @@ import { fillTokens } from '@/lib/records';
 import { profilePageJsonLd } from '@/lib/seo/json-ld';
 import { pageMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 export function generateMetadata(): Metadata {
   const { artist } = getSiteData();
@@ -25,6 +26,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function About() {
+  slot('about');
   const data = getSiteData();
   const counts = getCounts();
 

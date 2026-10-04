@@ -15,6 +15,7 @@ import { productJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
 import type { Work } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 /**
  * One physical or phygital work: the object, what it is made of, where it
@@ -54,6 +55,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function PhysicalWorkPage({ params }: { params: Params }) {
+  slot('physical-work');
   const physical = await resolve(params);
   if (!physical) notFound();
 

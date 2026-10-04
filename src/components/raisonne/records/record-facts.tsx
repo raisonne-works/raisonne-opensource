@@ -19,11 +19,17 @@ export function RecordFacts({
   title = 'Record',
   headingLevel = 2,
   highlights,
+  alternate,
   actions,
   children,
   className,
 }: {
   facts: Fact[];
+  /**
+   * The same facts in another order, for a pack that reads them differently.
+   * Out of sight in skin zero, which prints `facts`.
+   */
+  alternate?: Fact[];
   title?: string | null;
   headingLevel?: HeadingLevel;
   highlights?: string[];
@@ -36,9 +42,14 @@ export function RecordFacts({
   if (facts.length === 0 && !hasHighlights && !actions && !children) return null;
 
   return (
-    <section className={cn('flex flex-col gap-3', className)}>
+    <section data-slot="record-facts" className={cn('flex flex-col gap-3', className)}>
       {title ? <Heading className="text-sm font-medium">{title}</Heading> : null}
       <FactsTable facts={facts} />
+      {alternate && alternate.length > 0 ? (
+        <div data-slot="record-facts-alternate" className="hidden">
+          <FactsTable facts={alternate} />
+        </div>
+      ) : null}
       {hasHighlights ? (
         <ul className="flex flex-col gap-1 pt-1">
           {highlights?.map(highlight => (

@@ -96,7 +96,16 @@ export function Showreel({
   }, []);
 
   return (
-    <figure data-slot="showreel" className={cn('flex flex-col gap-3', className)}>
+    <figure
+      data-slot="showreel"
+      // What a pack's script needs to present the reel its own way.
+      data-video-src={showreel.video.src}
+      data-video-poster={posterUrl}
+      data-video-renditions={JSON.stringify(
+        (showreel.video.renditions ?? []).filter(r => r.src).map(r => ({ height: r.height, src: r.src })),
+      )}
+      className={cn('flex flex-col gap-3', className)}
+    >
       <div
         ref={frameRef}
         onMouseEnter={startPreview}

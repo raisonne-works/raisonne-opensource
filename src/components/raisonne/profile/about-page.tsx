@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DownloadIcon } from 'lucide-react';
 
 import { NewsletterForm } from '@/components/raisonne/landing/newsletter-form';
 import { type HeadingLevel, nextHeadingLevel } from '@/components/raisonne/shell/heading';
@@ -56,6 +57,7 @@ export function AboutPage({
     statement.length > 0;
   const signUp = newsletter === null ? 'off' : newsletterState(data.settings);
 
+  const pressKitUrl = artist.pressKit?.fileUrl ?? null;
   return (
     <Container size="editorial" className={className}>
       <PageHeader
@@ -63,15 +65,31 @@ export function AboutPage({
         title={artist.name}
         description={artist.description ?? artist.tagline ?? undefined}
         actions={
-          hasCv ? (
-            <Button variant="outline" nativeButton={false} render={<Link href="/cv" />}>
-              Read the full CV
-            </Button>
+          hasCv || pressKitUrl ? (
+            <>
+              {hasCv ? (
+                <Button variant="outline" nativeButton={false} render={<Link href="/cv" />}>
+                  Read the full CV
+                </Button>
+              ) : null}
+              {/* The press kit is the PDF set on the About page in the editor. */}
+              {pressKitUrl ? (
+                <Button
+                  variant="outline"
+                  nativeButton={false}
+                  render={<a href={pressKitUrl} download target="_blank" rel="noopener noreferrer" />}
+                >
+                  <DownloadIcon aria-hidden data-icon="inline-start" />
+                  Download the press kit
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </Button>
+              ) : null}
+            </>
           ) : undefined
         }
       />
 
-      <div className="grid gap-x-12 xl:grid-cols-[minmax(0,40rem)_minmax(0,22rem)] xl:justify-between xl:gap-x-16">
+      <div className="grid gap-x-12 xl:grid-cols-[minmax(0,1fr)_minmax(18rem,32rem)] xl:items-start xl:gap-x-16">
         <div className="min-w-0">
           {artist.bio ? (
             <Section id="biography" title="Biography" headingLevel={headingLevel}>
@@ -81,7 +99,7 @@ export function AboutPage({
 
           {statement.length > 0 ? (
             <Section id="statement" title="Statement" headingLevel={headingLevel}>
-              <div className="flex max-w-[36rem] flex-col gap-4 text-base/7 text-pretty">
+              <div className="flex flex-col gap-4 text-base/7 text-pretty">
                 {statement.map((block, index) => (
                   <p key={index}>{block}</p>
                 ))}
@@ -94,7 +112,7 @@ export function AboutPage({
           <div className="min-w-0">
             <Section
               id="studio"
-              title="The studio"
+              title={artist.imagesTitle?.trim() || 'The studio'}
               headingLevel={headingLevel}
               size="small"
               className="xl:sticky xl:top-20"
@@ -129,7 +147,7 @@ export function AboutPage({
           description="These are the minting addresses this install lists for the artist. Check a listing against them before you collect. Addresses not on this list are outside what this catalogue claims."
           headingLevel={headingLevel}
         >
-          <MintingAddresses wallets={artist.wallets} notice={artist.securityNotice} className="max-w-[48rem]" />
+          <MintingAddresses wallets={artist.wallets} notice={artist.securityNotice} />
         </Section>
       ) : null}
 

@@ -154,16 +154,18 @@ export function AccountMenu({ address, ens, role, publicProfile = false, expires
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-64">
-        <DropdownMenuLabel className="flex flex-col gap-1">
-          <span className="truncate font-medium">{label}</span>
-          {ens ? <span className="font-mono text-xs text-muted-foreground">{shortAddress(address)}</span> : null}
-          {role === 'owner' ? (
-            <Badge variant="secondary" className="mt-1 w-fit">
-              <PaletteIcon aria-hidden data-icon="inline-start" />
-              Artist
-            </Badge>
-          ) : null}
-        </DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel className="flex flex-col gap-1">
+            <span className="truncate font-medium">{label}</span>
+            {ens ? <span className="font-mono text-xs text-muted-foreground">{shortAddress(address)}</span> : null}
+            {role === 'owner' ? (
+              <Badge variant="secondary" className="mt-1 w-fit">
+                <PaletteIcon aria-hidden data-icon="inline-start" />
+                Artist
+              </Badge>
+            ) : null}
+          </DropdownMenuLabel>
+        </DropdownMenuGroup>
 
         <DropdownMenuSeparator />
 

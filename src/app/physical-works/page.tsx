@@ -11,6 +11,7 @@ import {
 import { storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /** Physical and phygital works: the ones that exist as objects. */
 
@@ -24,6 +25,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function PhysicalWorksPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('physical-works');
   const params = await searchParams;
   const data = getSiteData();
 

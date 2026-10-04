@@ -22,6 +22,7 @@ import { formatNumber } from '@/lib/money';
 import { NO_INDEX, pageMetadata } from '@/lib/seo/metadata';
 
 import { activityRow, insightsExtraNav, missingChainVars, seriesIndex, snapshotEvents, snapshotMeta } from '../_data';
+import { slot } from '@/lib/theme';
 
 /**
  * The public on-chain feed: every mint, transfer, sale and burn the snapshot
@@ -50,6 +51,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function InsightsActivityPage({ searchParams }: { searchParams: SearchParams }) {
+  slot('insights');
   const settings = getSettings();
   if (surfaceState(settings, 'insights') === 'off') notFound();
 

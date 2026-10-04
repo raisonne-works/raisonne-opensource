@@ -12,11 +12,12 @@ export const EXHIBITION_KIND_LABEL: Record<ExhibitionKind, string> = {
   biennale: 'Biennale',
   festival: 'Festival',
   fair: 'Fair',
+  conference: 'Conference',
   other: 'Other',
 };
 
 /** The order kinds appear in filters and summaries. */
-export const EXHIBITION_KIND_ORDER: readonly ExhibitionKind[] = ['solo', 'group', 'biennale', 'festival', 'fair', 'other'];
+export const EXHIBITION_KIND_ORDER: readonly ExhibitionKind[] = ['solo', 'group', 'biennale', 'festival', 'fair', 'conference', 'other'];
 
 /** Joins the parts that are present. */
 export function joinParts(parts: ReadonlyArray<string | null | undefined>, separator = ', '): string {

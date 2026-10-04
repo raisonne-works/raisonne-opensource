@@ -16,6 +16,7 @@ import { getSession } from '@/lib/auth/guards';
 import { getHoldings } from '@/lib/chain/holdings';
 import { isModuleEnabled } from '@/lib/records';
 import { NO_INDEX, pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 import type { CommissionKind } from '@/lib/types';
 
 /**
@@ -53,6 +54,7 @@ function startKind(value: string | string[] | undefined): CommissionKind | null 
 }
 
 export default async function CommissionRequestPage({ searchParams }: { searchParams: SearchParams }) {
+  slot('commissions');
   if (!isModuleEnabled(getSettings(), 'commissions')) notFound();
 
   const store = getStore();

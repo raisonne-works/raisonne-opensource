@@ -6,7 +6,7 @@ import type { Artist } from '@/lib/types';
 import { HideOnBareRoute } from './bare-shell';
 import type { NavGroup } from './nav';
 import { Container } from './page';
-import { MainNav, MobileNav } from './site-nav';
+import { MainNav, MobileNav, PackLinks } from './site-nav';
 import { ThemeToggle } from './theme-toggle';
 
 /**
@@ -29,6 +29,7 @@ export function SiteHeader({
   groups,
   account,
   cart,
+  packLinks = [],
 }: {
   artist: Artist;
   groups: NavGroup[];
@@ -36,9 +37,11 @@ export function SiteHeader({
   account?: ReactNode;
   /** Usually <CartSlot />. Only an install that sells something passes one. */
   cart?: ReactNode;
+  /** Links only a design pack shows, beside the menus. Hidden in skin zero. */
+  packLinks?: { href: string; label: string }[];
 }) {
   return (
-    <header className="sticky top-0 z-40 border-b bg-background print:hidden">
+    <header data-shell="header" className="sticky top-0 z-40 border-b bg-background print:hidden">
       <Container className="flex h-14 items-center gap-2">
         <Link
           href="/"
@@ -47,6 +50,11 @@ export function SiteHeader({
           {artist.name}
         </Link>
         <div className="ml-auto flex items-center gap-1">
+          {packLinks.length > 0 ? (
+            <HideOnBareRoute>
+              <PackLinks links={packLinks} />
+            </HideOnBareRoute>
+          ) : null}
           <HideOnBareRoute>
             <MainNav groups={groups} className="hidden md:flex" />
           </HideOnBareRoute>

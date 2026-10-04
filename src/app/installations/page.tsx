@@ -11,6 +11,7 @@ import {
 import { storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * Installations and immersive experiences in one list, the way an artist
@@ -28,6 +29,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function InstallationsPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('installations');
   const params = await searchParams;
   const data = getSiteData();
   const all = installationEntries(data);

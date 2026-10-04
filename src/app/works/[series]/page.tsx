@@ -1,7 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ExternalLinkIcon } from 'lucide-react';
+import { ExternalLinkIcon, SearchXIcon } from 'lucide-react';
 
+import { CatalogueToolbar } from '@/components/raisonne/catalogue/catalogue-browser';
+import { CatalogueMore } from '@/components/raisonne/catalogue/catalogue-more';
+import { CatalogueTable } from '@/components/raisonne/catalogue/catalogue-table';
+import { workEntry } from '@/components/raisonne/catalogue/entry';
+import { GalleryWall } from '@/components/raisonne/catalogue/gallery-wall';
+import {
+  ALL_VIEWS,
+  buildFacets,
+  catalogueHref,
+  dailySeed,
+  filterEntries,
+  isFiltered,
+  parseState,
+  sortEntries,
+  type CatalogueConfig,
+} from '@/components/raisonne/catalogue/lib';
 import { DropCallout } from '@/components/raisonne/drops/drop-callout';
 import { JsonLd } from '@/components/raisonne/seo/json-ld';
 import { Container, Section } from '@/components/raisonne/shell/page';
@@ -24,11 +40,14 @@ import { WorkDetail } from '@/components/raisonne/works/work-detail';
 import { WorkGrid } from '@/components/raisonne/works/work-grid';
 import { WorksPagination } from '@/components/raisonne/works/works-pagination';
 import { Button } from '@/components/ui/button';
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty';
+import { EMPTY_BLOCK_CLASS } from '@/components/raisonne/shell/measure';
 import { getChildSeries, getDrops, getSeries, getSettings, getSiteData, getWorksForSeries } from '@/fixtures';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import { breadcrumbJsonLd, graph, nftCollectionJsonLd } from '@/lib/seo/json-ld';
 import { seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
+import { slot } from '@/lib/theme';
 
 type Params = Promise<{ series: string }>;
 
@@ -80,6 +99,7 @@ function pageNumber(value: string | string[] | undefined, pages: number): number
  * parent's, so a visitor who lands on one still reads what it is about.
  */
 export default async function SeriesPage({ params, searchParams }: { params: Params; searchParams: Search }) {
+  slot('series');
   const slug = decodeParam((await params).series);
   const series = getSeries(slug);
   if (!series) notFound();
@@ -101,6 +121,7 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
           parent={parent}
           liveHtml={settings.liveHtml}
           showOwner={settings.showOwners}
+          worksLabel={worksLabel(settings)}
           standalone
         />
       </Container>
@@ -109,14 +130,43 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
 
   const story = series.story?.length ? series.story : (parent?.story ?? []);
   const inherited = series.story?.length ? null : parent;
-  const pages = Math.max(1, Math.ceil(works.length / PAGE_SIZE));
-  // searchParams is only read when there is more than one page, so every
-  // shorter series still renders statically.
-  const page = pages > 1 ? pageNumber((await searchParams).page, pages) : 1;
-  const shown = pages > 1 ? works.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE) : works;
+
+  /*
+   * The works answer to the same URL state as every list: a search, the
+   * facets, an order and a view. Skin zero draws no bar for them here, so a
+   * plain visit is the series in its own order, a page at a time, as before;
+   * a design that stands the catalogue's bar under the works shows it.
+   */
+  const config: CatalogueConfig = {
+    basePath: seriesHref(series),
+    views: ALL_VIEWS,
+    defaultView: 'grid',
+    defaultSort: 'featured',
+    searchPlaceholder: `Search ${seriesTitle(series)}`,
+    facets: ['kind', 'medium', 'year', 'chain', 'platform'],
+    noun: 'work',
+    nounPlural: 'works',
+    empty: { title: 'No works yet', description: 'Works appear here once their tokens are imported.' },
+  };
+  const state = parseState(await searchParams, config);
+  const family = new Map([series, ...children].map(each => [each.slug, each]));
+  const entries = works.map(work => workEntry(work, family.get(work.seriesSlug)));
+  const byKey = new Map(works.map((work, index) => [entries[index].key, work]));
+  const matched = filterEntries(entries, state);
+  // The default order is the series' own; any other is asked for by name.
+  const ordered = state.sort === config.defaultSort ? matched : sortEntries(matched, state.sort, dailySeed());
+  const filtered = isFiltered(state);
+
+  const pages = Math.max(1, Math.ceil(ordered.length / PAGE_SIZE));
+  const page = pageNumber(String(state.page), pages);
+  // A design that grows the list asks for this page through a later one.
+  const through = Math.min(Math.max(page, state.through ?? page), pages);
+  const shownEntries = ordered.slice((page - 1) * PAGE_SIZE, through * PAGE_SIZE);
+  const shown = shownEntries.flatMap(entry => byKey.get(entry.key) ?? []);
   const partial = works.length > 0 && works.length < series.workCount;
   const explorer = contractExplorerUrl(series.chain, series.contract);
   const first = (page - 1) * PAGE_SIZE + 1;
+  const last = first + shown.length - 1;
 
   const origin = siteOrigin(settings);
   // Chapters point at the parent's release, so a drop is one click away from any page in the family.
@@ -133,7 +183,7 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
           nftCollectionJsonLd({ series, origin, path: seriesHref(series), workCount: works.length }),
           breadcrumbJsonLd({
             items: [
-              { name: 'Works', path: '/works' },
+              { name: worksLabel(settings), path: '/works' },
               ...(parent ? [{ name: seriesTitle(parent), path: seriesHref(parent) }] : []),
               { name: seriesTitle(series) },
             ],
@@ -144,6 +194,7 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
       <SeriesHeader
         series={series}
         parent={parent}
+        worksLabel={worksLabel(settings)}
         facts={<SeriesSpecs series={series} worksInCatalogue={works.length} />}
       />
 
@@ -151,13 +202,19 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
 
       <SubSeries series={children} />
 
-      <SeriesAbout story={story} inheritedFrom={inherited} moreHref={seriesAboutHref(series)} />
+      <SeriesAbout
+        story={story}
+        inheritedFrom={inherited}
+        moreHref={seriesAboutHref(series)}
+        specs={<SeriesSpecs series={series} worksInCatalogue={works.length} />}
+      />
 
       <Section
+        id="works"
         title="Works"
         description={
           pages > 1
-            ? `Works ${formatCount(first)} to ${formatCount(first + shown.length - 1)} of ${formatCount(works.length)} in this catalogue.`
+            ? `Works ${formatCount(first)} to ${formatCount(last)} of ${formatCount(ordered.length)} in this catalogue.`
             : children.length > 0 && works.length > 0
               ? `Every work in the family, chapters included.`
               : partial
@@ -165,12 +222,40 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
                 : undefined
         }
       >
-        <WorkGrid works={shown} priorityCount={4} />
+        {state.view === 'table' && shown.length > 0 ? (
+          <div data-slot="series-works" data-view="table">
+            <CatalogueTable entries={shownEntries} caption="Works in this series" state={state} config={config} />
+          </div>
+        ) : state.view === 'wall' && shown.length > 0 ? (
+          <div data-slot="series-works" data-view="wall">
+            <GalleryWall entries={shownEntries} />
+          </div>
+        ) : (
+          <WorkGrid
+            works={shown}
+            priorityCount={4}
+            empty={
+              filtered ? (
+                <Empty data-slot="series-works" className={EMPTY_BLOCK_CLASS}>
+                  <EmptyHeader>
+                    <EmptyMedia variant="icon">
+                      <SearchXIcon />
+                    </EmptyMedia>
+                    <EmptyTitle>Nothing matches</EmptyTitle>
+                    <EmptyDescription>
+                      {state.q ? `No works match "${state.q}" with these filters.` : 'No works match these filters.'}
+                    </EmptyDescription>
+                  </EmptyHeader>
+                </Empty>
+              ) : undefined
+            }
+          />
+        )}
         <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
           <WorksPagination
             page={page}
             pages={pages}
-            hrefFor={target => (target === 1 ? seriesHref(series) : `${seriesHref(series)}?page=${target}`)}
+            hrefFor={target => catalogueHref(config, state, { page: target })}
           />
           {partial && explorer ? (
             <Button
@@ -185,6 +270,23 @@ export default async function SeriesPage({ params, searchParams }: { params: Par
             </Button>
           ) : null}
         </div>
+        {/* The catalogue's bar, for the works. Hidden until a design asks for it. */}
+        <CatalogueToolbar
+          state={state}
+          config={config}
+          facets={buildFacets(entries, state, config)}
+          shown={last}
+          total={ordered.length}
+          all={entries.length}
+          page={page}
+          className="hidden"
+          data-catalogue-path={config.basePath}
+          data-catalogue-view={state.view}
+          data-catalogue-series=""
+        />
+        <CatalogueMore
+          href={last < ordered.length ? catalogueHref(config, state, { page, through: through + 1 }) : null}
+        />
       </Section>
     </Container>
   );

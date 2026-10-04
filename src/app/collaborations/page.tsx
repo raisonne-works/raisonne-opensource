@@ -11,6 +11,7 @@ import {
 import { storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { getSiteData } from '@/fixtures';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /** Projects made with brands, institutions and other artists. */
 
@@ -24,6 +25,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function CollaborationsPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('collaborations');
   const params = await searchParams;
   const data = getSiteData();
 

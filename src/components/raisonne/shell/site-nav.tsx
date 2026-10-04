@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MenuIcon } from 'lucide-react';
@@ -30,10 +30,29 @@ import { ThemeToggle } from './theme-toggle';
  */
 export function MainNav({ groups, className }: { groups: NavGroup[]; className?: string }) {
   const pathname = usePathname();
+  const [value, setValue] = useState<string | null>(null);
+  const clickOnly = useClickOnlyMenus();
+
+  useEffect(() => {
+    setValue(null);
+  }, [pathname]);
+
   if (groups.length === 0) return null;
 
   return (
-    <NavigationMenu className={className} aria-label="Main">
+    <NavigationMenu
+      className={className}
+      aria-label="Main"
+      value={value}
+      onValueChange={(next, details) => {
+        // A pack that asks for it gets menus that open and close on a press
+        // only: the pointer passing over a trigger, or leaving the menu,
+        // changes nothing. A press is the trigger's own onClick below, alone,
+        // so a second press closes the menu rather than toggling it twice.
+        if (clickOnly && (details.reason === 'trigger-hover' || details.reason === 'trigger-press')) return;
+        setValue(next);
+      }}
+    >
       <NavigationMenuList className="gap-0.5">
         {groups.map(group => {
           const single = group.items.length === 1 ? group.items[0] : null;
@@ -57,8 +76,12 @@ export function MainNav({ groups, className }: { groups: NavGroup[]; className?:
           }
 
           return (
-            <NavigationMenuItem key={group.id}>
-              <NavigationMenuTrigger className={cn('text-muted-foreground', active && 'text-foreground')}>
+            <NavigationMenuItem key={group.id} value={group.id}>
+              <NavigationMenuTrigger
+                data-current-group={active ? '' : undefined}
+                className={cn('text-muted-foreground', active && 'text-foreground')}
+                onClick={() => setValue(current => (current === group.id ? null : group.id))}
+              >
                 {group.label}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -92,6 +115,44 @@ export function MainNav({ groups, className }: { groups: NavGroup[]; className?:
         })}
       </NavigationMenuList>
     </NavigationMenu>
+  );
+}
+
+/**
+ * Links a design pack may show in the bar beside the menus. Skin zero keeps
+ * them hidden (its own way to these pages is on the page and in the footer),
+ * so they change nothing until a pack's stylesheet shows them.
+ */
+export function PackLinks({ links }: { links: { href: string; label: string }[] }) {
+  const pathname = usePathname();
+  return (
+    <>
+      {links.map(link => (
+        <Link
+          key={link.href}
+          href={link.href}
+          data-slot="header-link"
+          aria-current={isActivePath(pathname, link.href) ? 'page' : undefined}
+          className="hidden"
+        >
+          {link.label}
+        </Link>
+      ))}
+    </>
+  );
+}
+
+/**
+ * Whether the worn pack wants the menus to open on a press only. A pack says
+ * so the way it asks for its script (see SkinScript): its stylesheet sets
+ * --skin-nav-open: click on the root. Skin zero sets nothing, and its menus
+ * open under the pointer as before.
+ */
+function useClickOnlyMenus(): boolean {
+  return useSyncExternalStore(
+    () => () => undefined,
+    () => getComputedStyle(document.documentElement).getPropertyValue('--skin-nav-open').trim() === 'click',
+    () => false,
   );
 }
 

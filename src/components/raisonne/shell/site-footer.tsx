@@ -46,6 +46,7 @@ export function SiteFooter({
   newsletter = null,
   tools = false,
   demoData = false,
+  ambientVideo = null,
 }: {
   artist: Artist;
   /** The same navigation the header shows, so every page is reachable from the bottom too. */
@@ -57,6 +58,8 @@ export function SiteFooter({
   tools?: boolean;
   /** This install is still showing the bundled demo artist. */
   demoData?: boolean;
+  /** The showreel's address, for a pack that sets it behind the footer. Skin zero does not use it. */
+  ambientVideo?: string | null;
 }) {
   const year = new Date().getFullYear();
   const { social, marketplace } = groupLinks(artist.links);
@@ -66,9 +69,15 @@ export function SiteFooter({
 
   return (
     <FooterShell>
+      {/* The data-slot names below are for a design pack to target. They change nothing here. */}
       <Container className="flex flex-col gap-10 py-10 md:py-12">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-          <div className="flex flex-col items-start gap-1">
+        <div
+          data-slot="footer-top"
+          // A pack may set the reel behind the footer; it needs to know where it is.
+          data-video-src={ambientVideo ?? undefined}
+          className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between"
+        >
+          <div data-slot="footer-identity" className="flex flex-col items-start gap-1">
             <p className="text-base font-semibold tracking-tight">{artist.name}</p>
             {artist.tagline ? <p className="max-w-prose text-sm text-muted-foreground">{artist.tagline}</p> : null}
             {artist.location ? <p className="text-sm text-muted-foreground">{artist.location}</p> : null}
@@ -89,13 +98,13 @@ export function SiteFooter({
               drops what a visitor types into it is worse than no form, and
               the note beside it names a variable nobody else needs to read. */}
           {signUp === 'on' && newsletter ? (
-            <div className="w-full max-w-sm">
+            <div data-slot="footer-newsletter" className="w-full max-w-sm">
               <NewsletterForm title={newsletter.title} description={newsletter.description} source="footer" />
             </div>
           ) : null}
           {signUp === 'unconfigured' && newsletter ? (
             <OwnerOnly>
-              <div className="w-full max-w-sm">
+              <div data-slot="footer-newsletter" className="w-full max-w-sm">
                 <NewsletterForm
                   title={newsletter.title}
                   description={newsletter.description}
@@ -109,11 +118,11 @@ export function SiteFooter({
 
         {/* Four even columns, each one group. Two across on a phone, so the
             footer is not longer than the page above it. */}
-        <div className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4">
+        <div data-slot="footer-columns" className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4">
           {navColumns.length > 0 ? (
             <nav aria-label="Footer" className="contents">
               {navColumns.map(group => (
-                <div key={group.id} className="flex flex-col gap-3">
+                <div key={group.id} data-slot="footer-nav-group" className="flex flex-col gap-3">
                   <h2 className="text-sm font-medium">{group.label}</h2>
                   <ul className="flex flex-col gap-2">
                     {group.items.map(item => (
@@ -130,7 +139,7 @@ export function SiteFooter({
           ) : null}
 
           {social.length > 0 ? (
-            <div className="flex flex-col gap-3">
+            <div data-slot="footer-social" className="flex flex-col gap-3">
               <h2 id="footer-elsewhere" className="text-sm font-medium">
                 Elsewhere
               </h2>
@@ -139,7 +148,7 @@ export function SiteFooter({
           ) : null}
 
           {marketplace.length > 0 ? (
-            <div className="flex flex-col gap-3">
+            <div data-slot="footer-marketplaces" className="flex flex-col gap-3">
               <h2 id="footer-collect" className="text-sm font-medium">
                 Where to collect
               </h2>
@@ -148,7 +157,7 @@ export function SiteFooter({
           ) : null}
 
           {/* Public how-to — everyone. Owner workbench stays OwnerOnly below. */}
-          <nav aria-labelledby="footer-docs-title" className="flex flex-col gap-3">
+          <nav data-slot="footer-docs" aria-labelledby="footer-docs-title" className="flex flex-col gap-3">
             <h2 id="footer-docs-title" className="text-sm font-medium">
               Raisonne
             </h2>
@@ -175,7 +184,7 @@ export function SiteFooter({
               Shown to the owner session and to nobody else. */}
           {tools ? (
             <OwnerOnly>
-              <nav aria-labelledby="footer-tools-title" className="flex flex-col gap-3">
+              <nav data-slot="footer-tools" aria-labelledby="footer-tools-title" className="flex flex-col gap-3">
                 <h2 id="footer-tools-title" className="text-sm font-medium">
                   For the artist
                 </h2>
@@ -194,7 +203,7 @@ export function SiteFooter({
         </div>
 
         {artist.wallets.length > 0 ? (
-          <div className="flex flex-col gap-3 border-t pt-8">
+          <div data-slot="footer-wallets" className="flex flex-col gap-3 border-t pt-8">
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <h2 className="text-sm font-medium">Minting addresses</h2>
               <Link href="/about#minting-addresses" className={linkClass}>
@@ -223,9 +232,9 @@ export function SiteFooter({
         ) : null}
       </Container>
 
-      <div className="border-t">
+      <div data-slot="footer-legal" className="border-t">
         <Container className="flex flex-col gap-2 py-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>
+          <p data-slot="footer-copyright">
             &copy; {year} {artist.name}
           </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">

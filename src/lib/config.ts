@@ -50,6 +50,12 @@ export const ENV_DOCS: Record<string, string> = {
   RAISONNE_POD_API_KEY: 'The print-on-demand key. Integration is a stub: nothing is sent anywhere yet.',
   RAISONNE_TRUSTED_PROXY:
     '1 when a reverse proxy you control sets X-Forwarded-For. Set it: nearly every real install is behind a proxy, and without it rate limits fall back to per-wallet and per-cart counting with only a coarse ceiling per address.',
+  RAISONNE_SKIN:
+    'The id of the design pack this install wears, e.g. a folder name inside RAISONNE_PACK_DIR. Unset, or a pack that fails its checks, means skin zero, the design that ships with the app.',
+  RAISONNE_IPFS_GATEWAY:
+    'An IPFS gateway that live works and films load through, e.g. https://ipfs.example.art/ipfs/. Public gateways such as ipfs.io limit how often they answer and cannot be shown inside the page when they refuse, so a live work stays blank. Unset keeps each address as recorded.',
+  RAISONNE_PACK_DIR:
+    'The folder that holds design packs, one folder per pack id with a pack.json and an optional pack.css. Packs are private and never ship with the app; mount this from a volume.',
   RAISONNE_UPDATE_REPO:
     'owner/name of the GitHub repository releases are read from. Default orkhan-art-web/raisonne-os. Set this when this install tracks a fork.',
   RAISONNE_UPDATE:
@@ -414,4 +420,20 @@ export function surfaceState(settings: SiteSettings | null | undefined, id: Surf
 /** The statuses a surface's setup panel should print, worst first. */
 export function surfaceRequirements(id: SurfaceId): FeatureStatus[] {
   return SURFACE_FEATURES[id].map(featureStatus).sort((a, b) => Number(a.configured) - Number(b.configured));
+}
+
+// ---------------------------------------------------------------------------
+// The design pack
+// ---------------------------------------------------------------------------
+
+/** The gateway IPFS media loads through, ending in a slash; null keeps recorded addresses. */
+export function ipfsGateway(): string | null {
+  const value = env('RAISONNE_IPFS_GATEWAY');
+  if (!value || !/^https:\/\//.test(value)) return null;
+  return value.replace(/\/?$/, '/');
+}
+
+/** Which pack to wear and where packs live. Either one missing means skin zero. */
+export function skinSettings(): { id: string | null; dir: string | null } {
+  return { id: env('RAISONNE_SKIN'), dir: env('RAISONNE_PACK_DIR') };
 }

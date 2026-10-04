@@ -12,6 +12,7 @@ import { articleJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
 import type { Series } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 /**
  * One piece of press, kept on this site: the text or the player, the
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function PressPage({ params }: { params: Params }) {
+  slot('press-item');
   const item = await resolve(params);
   if (!item) notFound();
 

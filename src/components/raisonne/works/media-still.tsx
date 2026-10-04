@@ -30,6 +30,7 @@ export function MediaStill({
   className,
   priority = false,
   fit = 'contain',
+  fill = false,
   source = 'still',
   emptyLabel,
   as: Frame = 'div',
@@ -43,6 +44,8 @@ export function MediaStill({
   priority?: boolean;
   /** contain shows the whole work (the default for artworks); cover fills the frame (series covers). */
   fit?: 'contain' | 'cover';
+  /** Fill the parent instead of forcing a square. The parent must have a height. */
+  fill?: boolean;
   /** still for cards and grids; stage for the large frame on a work page. */
   source?: 'still' | 'stage';
   /**
@@ -64,7 +67,14 @@ export function MediaStill({
   return (
     <Frame
       data-slot="media-still"
-      className={cn('relative block aspect-square w-full overflow-hidden rounded-lg', MEDIA_FRAME_CLASS, className)}
+      data-width={media?.width ?? undefined}
+      data-height={media?.height ?? undefined}
+      className={cn(
+        'relative block w-full overflow-hidden',
+        fill ? 'absolute inset-0 h-full rounded-none' : 'aspect-square rounded-lg',
+        MEDIA_FRAME_CLASS,
+        className,
+      )}
     >
       {src && !failed ? (
         <Image

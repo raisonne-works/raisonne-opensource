@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
@@ -202,7 +203,9 @@ function DirectoryControls({
           <span>{currentSort.label}</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-auto min-w-48">
-          <DropdownMenuLabel>Sort</DropdownMenuLabel>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Sort</DropdownMenuLabel>
+          </DropdownMenuGroup>
           {DIRECTORY_SORTS.map(sort => {
             const selected = sort.id === state.sort;
             return (
@@ -238,7 +241,9 @@ function DirectoryControls({
             <span>{currentSeries ? currentSeries.name : 'Every series'}</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="max-h-80 w-auto min-w-56 overflow-y-auto">
-            <DropdownMenuLabel>Holders of</DropdownMenuLabel>
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Holders of</DropdownMenuLabel>
+            </DropdownMenuGroup>
             <DropdownMenuItem
               render={<Link href={directoryHref(state, { series: '' })} scroll={false} />}
             >

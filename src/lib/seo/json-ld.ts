@@ -1,5 +1,6 @@
 import { seriesTitle, workTitle } from '@/components/raisonne/works/lib';
 import { plainText } from '@/lib/markdown';
+import { DEFAULT_WORKS_LABEL } from '@/lib/records';
 import type {
   Artist,
   ArtistLink,
@@ -554,10 +555,13 @@ export function homePageJsonLd({
   artist,
   counts,
   origin,
+  worksLabel = DEFAULT_WORKS_LABEL,
 }: {
   artist: Artist;
   counts: CatalogueCounts;
   origin: string;
+  /** What the site calls /works: worksLabel(settings). */
+  worksLabel?: string;
 }): JsonLdNode {
   return withContext({
     '@type': 'WebPage',
@@ -573,7 +577,7 @@ export function homePageJsonLd({
       name: `The catalogue of ${artist.name}`,
       numberOfItems: counts.works,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Works', url: `${origin}/works` },
+        { '@type': 'ListItem', position: 1, name: worksLabel, url: `${origin}/works` },
         { '@type': 'ListItem', position: 2, name: 'Exhibitions', url: `${origin}/exhibitions` },
         { '@type': 'ListItem', position: 3, name: 'About', url: `${origin}/about` },
       ],

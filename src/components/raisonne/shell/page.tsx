@@ -17,12 +17,10 @@ const containerSizes = {
   /** Media and grids: uses the width, up to 2880 px of content. */
   wide: 'max-w-[180rem]',
   /**
-   * Pages that are mostly prose with something beside it: the biography and
-   * the studio, the CV and its contents list. A 72ch column against the left
-   * edge of a 2560 px screen reads as unfinished rather than generous, so the
-   * whole block is centred at a width the two columns actually fill.
+   * The page width. Same gutter as the header, out to the edges.
+   * A reading measure belongs on a paragraph, not on the page.
    */
-  editorial: 'max-w-[88rem]',
+  editorial: 'max-w-[180rem]',
   /** Reading: a single column of about 72 characters (plus the gutter at each breakpoint). */
   text: 'max-w-[calc(72ch+2rem)] sm:max-w-[calc(72ch+3rem)] lg:max-w-[calc(72ch+4rem)] 3xl:max-w-[calc(72ch+6rem)]',
 } as const;

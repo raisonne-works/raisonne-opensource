@@ -43,9 +43,14 @@ export function SeriesGrid({
   }
 
   return (
-    <ul className={cn(GRID_CLASS, className)}>
+    <ul data-slot="series-grid" className={cn(GRID_CLASS, className)}>
       {series.map((item, index) => (
-        <li key={item.slug} className={cn('min-w-0', itemClassName?.(index))}>
+        <li
+          key={item.slug}
+          data-width={item.cover?.width ?? undefined}
+          data-height={item.cover?.height ?? undefined}
+          className={cn('min-w-0', itemClassName?.(index))}
+        >
           <SeriesCard series={item} href={seriesHref(item)} priority={index < priorityCount} />
         </li>
       ))}

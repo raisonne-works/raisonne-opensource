@@ -16,6 +16,7 @@ import { storeIsConfigured } from '@/components/raisonne/store/setup';
 import { pageMetadata } from '@/lib/seo/metadata';
 import type { Fact } from '@/lib/types';
 import { FactsTable } from '@/components/raisonne/shell/facts';
+import { slot } from '@/lib/theme';
 
 /**
  * One collection: the cover, the artist's own words about it, and what is
@@ -51,6 +52,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function ShopCollectionPage({ params }: { params: Params }) {
+  slot('shop');
   const collection = await resolve(params);
   if (!collection) notFound();
 

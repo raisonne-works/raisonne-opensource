@@ -88,6 +88,25 @@ export function exhibitionFacts(exhibition: Exhibition, now?: number): Fact[] {
   );
 }
 
+/**
+ * A show's facts, led by its standing and its kind, then who and where, then
+ * when. The second order a pack may read them in; see RecordFacts.
+ */
+export function exhibitionFactsByStanding(exhibition: Exhibition, now?: number): Fact[] {
+  return factList(
+    fact('Status', statusLabel(exhibitionStatus(exhibition, now))),
+    fact('Format', exhibition.format),
+    fact('Event', exhibition.event),
+    fact('Curator', exhibition.curator),
+    fact('Venue', exhibition.venue),
+    fact('Place', joined([exhibition.city, exhibition.country])),
+    fact('Dates', formatDateRange(exhibition.startDate, exhibition.endDate) ?? String(exhibition.year)),
+    fact('Virtual tour', exhibition.virtualTourUrl ? 'Walk through the show' : null, exhibition.virtualTourUrl),
+    fact('Press kit', exhibition.pressKitUrl ? 'Download the press kit' : null, exhibition.pressKitUrl),
+    fact('Official page', exhibition.url ? hostLabel(exhibition.url) : null, exhibition.url),
+  );
+}
+
 export function installationFacts(installation: Installation): Fact[] {
   return factList(
     fact('Year', installation.year),
@@ -96,6 +115,21 @@ export function installationFacts(installation: Installation): Fact[] {
     fact('Materials', joined(installation.materials)),
     fact('Location', installation.location),
     fact('Curator', installation.curator),
+  );
+}
+
+/**
+ * The same facts, led by what the piece is made of and ending on when. A
+ * pack whose title card already carries the year reads them in this order.
+ */
+export function installationFactsByMaking(installation: Installation): Fact[] {
+  return factList(
+    fact('Medium', installation.medium),
+    fact('Dimensions', installation.dimensions),
+    fact('Curator', installation.curator),
+    fact('Location', installation.location),
+    fact('Year', installation.year),
+    fact('Materials', joined(installation.materials)),
   );
 }
 
@@ -146,6 +180,20 @@ export function awardFacts(award: Award, projectTitle?: string | null, projectHr
     fact('Organization', award.organization),
     fact('Result', award.prize ?? award.result),
     fact('Category', award.category),
+    fact('Ceremony', award.ceremonyLocation),
+    projectHref ? fact('Given for', projectTitle ?? 'The project', projectHref) : null,
+    fact('Official page', award.url ? hostLabel(award.url) : null, award.url),
+    fact('Press release', award.pressReleaseUrl ? 'Read the announcement' : null, award.pressReleaseUrl),
+  );
+}
+
+/** An award's facts, led by what it was given as and by whom, then when and where. */
+export function awardFactsByCategory(award: Award, projectTitle?: string | null, projectHref?: string | null): Fact[] {
+  return factList(
+    fact('Category', award.category),
+    fact('Result', award.prize ?? award.result),
+    fact('Organization', award.organization),
+    fact('Year', award.year),
     fact('Ceremony', award.ceremonyLocation),
     projectHref ? fact('Given for', projectTitle ?? 'The project', projectHref) : null,
     fact('Official page', award.url ? hostLabel(award.url) : null, award.url),

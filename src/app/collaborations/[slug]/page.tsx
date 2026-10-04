@@ -21,6 +21,7 @@ import { imageGalleryJsonLd } from '@/lib/seo/json-ld';
 import { NO_INDEX, seoMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
 import type { Asset } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 /**
  * One collaboration: who it was with, what came of it, and where to see the
@@ -58,6 +59,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function CollaborationPage({ params }: { params: Params }) {
+  slot('collaboration');
   const collaboration = await resolve(params);
   if (!collaboration) notFound();
 

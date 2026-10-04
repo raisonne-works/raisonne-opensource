@@ -186,6 +186,8 @@ export interface Series {
   year: number | null;
   workCount: number;
   cover: Media | null;
+  /** A short film about the series. Plays muted in the series header and on its card. */
+  teaser?: Asset | null;
   evidence: Evidence[];
   /** The artist controls the contract but made it with others. */
   coAuthored: boolean;
@@ -266,6 +268,8 @@ export interface Artist {
   description?: string | null;
   /** Wave 1. Studio and portrait photos for the About page. */
   images?: Asset[];
+  /** The heading over those photos on the About page. Defaults to "The studio". */
+  imagesTitle?: string | null;
   /** Wave 1. Public contact address. */
   email?: string | null;
   /** Wave 1. Shown under the minting addresses, e.g. "Never send funds to an address from a DM." */
@@ -282,7 +286,7 @@ export interface Artist {
 // CV records (original, with Wave 1 fields)
 // ---------------------------------------------------------------------------
 
-export type ExhibitionKind = 'solo' | 'group' | 'biennale' | 'festival' | 'fair' | 'other';
+export type ExhibitionKind = 'solo' | 'group' | 'biennale' | 'festival' | 'fair' | 'conference' | 'other';
 
 export interface Exhibition {
   id: string;
@@ -298,6 +302,13 @@ export interface Exhibition {
   slug?: string | null;
   /** Wave 1. Featured shows appear as cards above the history list. */
   featured?: boolean;
+  /**
+   * Whether the show is also a line in the artist's own history. A CMS that
+   * keeps featured shows apart from its CV lines (a featured record "is not
+   * history") says false for a featured show with no line of its own. Unset
+   * means the show is in the history.
+   */
+  history?: boolean;
   /** Wave 1. ISO dates. Status (upcoming, current, past) is worked out from them. */
   startDate?: string | null;
   endDate?: string | null;
@@ -628,6 +639,11 @@ export interface SiteEvent {
   endDate: string | null;
   image: Asset | null;
   url: string | null;
+  /**
+   * The status as the artist wrote it ("Live", "Upcoming"). The site works
+   * the status out from the dates; a design may print this one instead.
+   */
+  statedStatus?: string | null;
 }
 
 /** A client, partner or institution with a logo. */
@@ -781,6 +797,12 @@ export interface SiteSettings {
   /** Old URLs to send on, e.g. /contact to /commissions. */
   redirects: { from: string; to: string; permanent: boolean }[];
   legal: { privacy: RichText | null; terms: RichText | null; updatedAt: string | null };
+  /**
+   * The artist's own names for parts of the site. `works` is what the /works
+   * section and its every-token view are called in the menu, titles and
+   * breadcrumbs, e.g. "Index". Left out, they read "Works" (see worksLabel()).
+   */
+  labels?: { works?: string | null };
 }
 
 /** Live counts that tokens in the bio and the home stats resolve to. Computed, never stored. */

@@ -35,13 +35,13 @@ export function GalleryBlock({
   return (
     <div className={cn('flex flex-col gap-6', className)}>
       {block.title || block.aside ? (
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+        <div data-slot="gallery-head" className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
           {block.title ? (
             <Heading className="text-xl font-semibold tracking-tight text-balance sm:text-2xl">{block.title}</Heading>
           ) : (
             <span />
           )}
-          {block.aside ? <p className="text-sm text-muted-foreground">{block.aside}</p> : null}
+          {block.aside ? <p data-slot="gallery-aside" className="text-sm text-muted-foreground">{block.aside}</p> : null}
         </div>
       ) : null}
 
@@ -57,7 +57,7 @@ export function GalleryBlock({
 export function AssetGallery({ items, className }: { items: Asset[]; className?: string }) {
   if (items.length === 0) return null;
   return (
-    <ul className={cn(GALLERY_GRID_CLASS, className)}>
+    <ul data-slot="asset-gallery" className={cn(GALLERY_GRID_CLASS, className)}>
       {items.map((asset, index) => (
         <li key={`${asset.src}-${index}`} className="min-w-0">
           <AssetFigure asset={asset} sizes={GALLERY_SIZES} />

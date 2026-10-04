@@ -21,8 +21,9 @@ import { getCounts, getFeaturedSeries, getSiteData } from '@/fixtures';
 import { homePageJsonLd } from '@/lib/seo/json-ld';
 import { pageMetadata } from '@/lib/seo/metadata';
 import { siteOrigin } from '@/lib/seo/urls';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import type { Landing, LandingSectionId, Series } from '@/lib/types';
+import { slot } from '@/lib/theme';
 
 export function generateMetadata(): Metadata {
   const { artist } = getSiteData();
@@ -91,6 +92,7 @@ function HeroWork({ series }: { series: Series }) {
  * way into the catalogue, which is what the page is for.
  */
 export default function HomePage() {
+  slot('home');
   const data = getSiteData();
   const { artist, series, landing, settings } = data;
   const counts = getCounts();
@@ -122,7 +124,7 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={homePageJsonLd({ artist, counts, origin })} />
+      <JsonLd data={homePageJsonLd({ artist, counts, origin, worksLabel: worksLabel(settings) })} />
 
       <Container className="pt-10 pb-2 md:pt-16 md:pb-4">
         {landing && enabled('hero') ? (

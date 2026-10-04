@@ -10,13 +10,14 @@ import {
   type CatalogueConfig,
   type RawSearchParams,
 } from '@/components/raisonne/catalogue/lib';
-import { storedView } from '@/components/raisonne/catalogue/view-cookie';
+import { packDefaultView, storedView } from '@/components/raisonne/catalogue/view-cookie';
 import { Container, PageHeader, Section } from '@/components/raisonne/shell/page';
 import { getSiteData } from '@/fixtures';
 import { formatCount } from '@/components/raisonne/works/lib';
-import { catalogueCounts, isModuleEnabled } from '@/lib/records';
+import { catalogueCounts, isModuleEnabled, worksLabel } from '@/lib/records';
 import type { SiteData } from '@/lib/types';
 import { pageMetadata } from '@/lib/seo/metadata';
+import { slot } from '@/lib/theme';
 
 /**
  * The whole catalogue in one index: every kind of record, searchable,
@@ -29,9 +30,9 @@ import { pageMetadata } from '@/lib/seo/metadata';
  */
 
 export function generateMetadata(): Metadata {
-  const { artist } = getSiteData();
+  const { artist, settings } = getSiteData();
   return pageMetadata('works', {
-    title: 'Works',
+    title: worksLabel(settings),
     description: `The catalogue of ${artist.name}: series, works, installations, shows, collaborations and awards.`,
     path: '/works',
   });
@@ -42,7 +43,7 @@ function typeOptions(data: SiteData): { value: CatalogueTypeFilter | ''; label: 
   const counts = sectionCounts(data);
   const options: { value: CatalogueTypeFilter; label: string; module?: 'writings' | 'drops' }[] = [
     { value: 'series', label: 'Series' },
-    { value: 'work', label: 'Works' },
+    { value: 'work', label: worksLabel(data.settings) },
     { value: ONE_OF_ONE_TYPE, label: 'One of ones' },
     { value: 'installation', label: 'Installations' },
     { value: 'physical-work', label: 'Physical works' },
@@ -60,13 +61,15 @@ function typeOptions(data: SiteData): { value: CatalogueTypeFilter | ''; label: 
 }
 
 export default async function WorksPage({ searchParams }: { searchParams: Promise<RawSearchParams> }) {
+  slot('works');
   const params = await searchParams;
   const data = getSiteData();
 
   const base: CatalogueConfig = {
     basePath: '/works',
     views: ALL_VIEWS,
-    defaultView: 'grid',
+    // The whole index may open another way in a pack; a section of it keeps the grid.
+    defaultView: params.type ? 'grid' : packDefaultView('index', ALL_VIEWS, 'grid'),
     defaultSort: 'featured',
     searchPlaceholder: 'Search the catalogue',
     facets: ['type', 'kind', 'medium', 'year', 'chain', 'platform'],
@@ -95,11 +98,12 @@ export default async function WorksPage({ searchParams }: { searchParams: Promis
   const entries = indexEntries(data, state.type);
   const counts = catalogueCounts(data);
   const { artist } = data;
+  const label = worksLabel(data.settings);
 
   return (
     <Container className="pb-16 md:pb-24">
       <PageHeader
-        title="Works"
+        title={label}
         description={`Everything in the catalogue of ${artist.name}, attributed from the chain itself: series and single works, and the shows, installations and projects around them.`}
       />
 
@@ -118,7 +122,7 @@ export default async function WorksPage({ searchParams }: { searchParams: Promis
         className="pt-2"
         description={
           state.type === null
-            ? `A series is one entry here, with its works inside it: ${formatCount(counts.works)} works in ${formatCount(counts.series)} series. Pick Works above to list every token on its own.`
+            ? `A series is one entry here, with its works inside it: ${formatCount(counts.works)} works in ${formatCount(counts.series)} series. Pick ${label} above to list every token on its own.`
             : undefined
         }
       >

@@ -92,13 +92,14 @@ export function WorkMedia({ work, liveHtml = false, className }: { work: Work; l
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div data-slot="work-stage-group" className="flex flex-col gap-2">
       <MediaViewer
         work={work}
         liveHtml={liveHtml}
         trigger={
           <button
             type="button"
+            data-media-kind={media.kind}
             style={frameStyle}
             aria-label={`${action.label}: ${title}`}
             className={cn(
@@ -110,6 +111,7 @@ export function WorkMedia({ work, liveHtml = false, className }: { work: Work; l
       >
         {still}
         <span
+          data-slot="work-media-hint"
           className={cn(
             'pointer-events-none absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-md bg-background/90 px-2 py-1 text-xs font-medium text-foreground ring-1 ring-foreground/10 transition-opacity',
             // Video works always say so; stills reveal the hint on hover or focus.
@@ -122,7 +124,7 @@ export function WorkMedia({ work, liveHtml = false, className }: { work: Work; l
         </span>
       </MediaViewer>
       {media.kind === 'html' && media.animation ? (
-        <div className="flex flex-wrap items-center justify-between gap-2">
+        <div data-slot="work-media-note" className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-xs text-muted-foreground">This site shows interactive works as stills.</p>
           <Button
             variant="outline"

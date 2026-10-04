@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { formatCount } from '@/components/raisonne/works/lib';
-import { isModuleEnabled } from '@/lib/records';
+import { isModuleEnabled, worksLabel } from '@/lib/records';
 import { Skeleton } from '@/components/ui/skeleton';
 import type { CatalogueCounts, SiteData } from '@/lib/types';
 import { cn } from '@/lib/utils';
@@ -23,7 +23,7 @@ export interface Highlight {
 /** The highlights this install can honestly show, in a fixed order. */
 export function highlightsFor(data: SiteData, counts: CatalogueCounts): Highlight[] {
   return [
-    { label: 'Works', count: counts.works, href: '/works' },
+    { label: worksLabel(data.settings), count: counts.works, href: '/works' },
     { label: 'Series', count: counts.series, href: '/works' },
     { label: 'Installations', count: counts.installations, href: '/installations' },
     { label: 'Exhibitions', count: counts.exhibitions, href: '/exhibitions' },

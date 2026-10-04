@@ -53,20 +53,20 @@ export function CatalogueTable({
       <caption className="sr-only">{caption}</caption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-14">
+          <TableHead data-col="image" className="w-14">
             <span className="sr-only">Image</span>
           </TableHead>
-          <TableHead>
+          <TableHead data-col="title">
             <SortHead label="Title" ascending="a-z" descending="z-a" sortable={sortable} />
           </TableHead>
-          {showType ? <TableHead className="hidden sm:table-cell">Type</TableHead> : null}
-          <TableHead className="w-24">
+          {showType ? <TableHead data-col="type" className="hidden sm:table-cell">Type</TableHead> : null}
+          <TableHead data-col="year" className="w-24">
             <SortHead label="Year" ascending="oldest" descending="newest" sortable={sortable} />
           </TableHead>
-          <TableHead className="hidden w-[22ch] md:table-cell">Medium</TableHead>
-          {showChain ? <TableHead className="hidden w-28 lg:table-cell">Chain</TableHead> : null}
-          {showContract ? <TableHead className="hidden w-48 lg:table-cell">Contract</TableHead> : null}
-          <TableHead className="w-20 text-right">
+          <TableHead data-col="medium" className="hidden w-[22ch] md:table-cell">Medium</TableHead>
+          {showChain ? <TableHead data-col="chain" className="hidden w-28 lg:table-cell">Chain</TableHead> : null}
+          {showContract ? <TableHead data-col="contract" className="hidden w-48 lg:table-cell">Contract</TableHead> : null}
+          <TableHead data-col="open" className="w-20 text-right">
             <span className="sr-only">Open</span>
           </TableHead>
         </TableRow>
@@ -74,7 +74,7 @@ export function CatalogueTable({
       <TableBody>
         {entries.map(entry => (
           <TableRow key={entry.key}>
-            <TableCell>
+            <TableCell data-col="image">
               <MediaStill
                 media={entry.media}
                 alt=""
@@ -83,29 +83,29 @@ export function CatalogueTable({
                 className="size-10 rounded-md"
               />
             </TableCell>
-            <TableCell className="max-w-[36ch] font-medium">
+            <TableCell data-col="title" className="max-w-[36ch] font-medium">
               <RowTitle entry={entry} />
             </TableCell>
             {showType ? (
-              <TableCell className="hidden sm:table-cell">
+              <TableCell data-col="type" className="hidden sm:table-cell">
                 <Badge variant="outline" className="font-normal">
                   {entry.typeLabel}
                 </Badge>
               </TableCell>
             ) : null}
-            <TableCell className="font-mono text-xs tabular-nums">{entry.year ?? ''}</TableCell>
-            <TableCell className="hidden max-w-[22ch] md:table-cell">
+            <TableCell data-col="year" className="font-mono text-xs tabular-nums">{entry.year ?? ''}</TableCell>
+            <TableCell data-col="medium" className="hidden max-w-[22ch] md:table-cell">
               <span className="block truncate text-muted-foreground" title={mediumLabel(entry)}>
                 {mediumLabel(entry)}
               </span>
             </TableCell>
             {showChain ? (
-              <TableCell className="hidden lg:table-cell text-muted-foreground">
+              <TableCell data-col="chain" className="hidden lg:table-cell text-muted-foreground">
                 {entry.chain ? CHAIN_LABELS[entry.chain] : ''}
               </TableCell>
             ) : null}
             {showContract ? (
-              <TableCell className="hidden lg:table-cell">
+              <TableCell data-col="contract" className="hidden lg:table-cell">
                 {entry.contract ? (
                   <span className="flex items-center gap-1">
                     <span className="font-mono text-xs" title={entry.contract}>
@@ -129,7 +129,7 @@ export function CatalogueTable({
                 )}
               </TableCell>
             ) : null}
-            <TableCell className="text-right">
+            <TableCell data-col="open" className="text-right">
               <RowOpen entry={entry} />
             </TableCell>
           </TableRow>

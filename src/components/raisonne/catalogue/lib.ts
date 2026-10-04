@@ -245,6 +245,12 @@ export interface CatalogueState {
   view: ViewId;
   /** Which page of PAGE_SIZE rows, counting from 1. */
   page: number;
+  /**
+   * The last page shown, when a list grows instead of turning: rows run from
+   * the start of `page` to the end of this one. Absent means one page. Only a
+   * design that loads more as the visitor scrolls ever asks for it.
+   */
+  through?: number;
 }
 
 export interface CatalogueConfig {
@@ -333,6 +339,8 @@ export function parseState(
     config.defaultView;
   const sort = SORT_IDS.find(id => id === firstParam(params, 'sort')) ?? config.defaultSort;
   const page = Number.parseInt(firstParam(params, 'page'), 10);
+  const through = Number.parseInt(firstParam(params, 'through'), 10);
+  const first = Number.isFinite(page) && page > 1 ? Math.min(page, MAX_PAGE) : 1;
 
   return {
     q: firstParam(params, 'q'),
@@ -344,7 +352,8 @@ export function parseState(
     platform: listParam(params, 'platform'),
     sort,
     view,
-    page: Number.isFinite(page) && page > 1 ? Math.min(page, MAX_PAGE) : 1,
+    page: first,
+    ...(Number.isFinite(through) && through > first ? { through: Math.min(through, MAX_PAGE) } : {}),
   };
 }
 
@@ -362,6 +371,7 @@ export type StateChange = Partial<{
   sort: SortId;
   view: ViewId;
   page: number;
+  through: number;
 }>;
 
 /**
@@ -372,6 +382,8 @@ export type StateChange = Partial<{
 export function catalogueHref(config: CatalogueConfig, state: CatalogueState, change: StateChange = {}): string {
   const next: CatalogueState = { ...state, ...change };
   if (!('page' in change)) next.page = 1;
+  // A grown list starts again with whatever else changes.
+  if (!('through' in change)) next.through = undefined;
 
   const params = new URLSearchParams();
   if (next.q) params.set('q', next.q);
@@ -383,6 +395,7 @@ export function catalogueHref(config: CatalogueConfig, state: CatalogueState, ch
   if (next.sort !== config.defaultSort) params.set('sort', next.sort);
   if (next.view !== config.defaultView) params.set('view', next.view);
   if (next.page > 1) params.set('page', String(next.page));
+  if (next.through && next.through > next.page) params.set('through', String(next.through));
 
   const query = params.toString();
   return query ? `${config.basePath}?${query}` : config.basePath;

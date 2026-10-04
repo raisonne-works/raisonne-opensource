@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { ArrowRightIcon } from 'lucide-react';
 
 import { type HeadingLevel, nextHeadingLevel } from '@/components/raisonne/shell/heading';
@@ -20,6 +21,7 @@ export function SeriesAbout({
   story,
   inheritedFrom = null,
   moreHref,
+  specs,
   title = 'About this series',
   headingLevel = 2,
   id = 'about',
@@ -30,6 +32,8 @@ export function SeriesAbout({
   inheritedFrom?: Series | null;
   /** Where the whole essay lives, when this is the shortened version on a series page. */
   moreHref?: string;
+  /** The series' facts (SeriesSpecs), kept out of sight beside the opening text for a pack to show. */
+  specs?: ReactNode;
   /** null on a page whose own heading already names the series. */
   title?: string | null;
   headingLevel?: HeadingLevel;
@@ -59,15 +63,21 @@ export function SeriesAbout({
       }
       action={
         moreHref ? (
-          <Button variant="outline" size="sm" nativeButton={false} render={<Link href={moreHref} />}>
-            Read it on its own page
-            <ArrowRightIcon aria-hidden data-icon="inline-end" />
-          </Button>
+          <>
+            {/* The way back up to the works, for a pack that opens this story as a sheet of its own. */}
+            <a data-slot="series-about-back" href="#works" className="hidden">
+              Back to artworks
+            </a>
+            <Button variant="outline" size="sm" nativeButton={false} render={<Link href={moreHref} />}>
+              Read it on its own page
+              <ArrowRightIcon aria-hidden data-icon="inline-end" />
+            </Button>
+          </>
         ) : undefined
       }
       className={className}
     >
-      <StoryBlocks blocks={story} headingLevel={title ? nextHeadingLevel(headingLevel) : headingLevel} />
+      <StoryBlocks blocks={story} tucked={specs} headingLevel={title ? nextHeadingLevel(headingLevel) : headingLevel} />
     </Section>
   );
 }

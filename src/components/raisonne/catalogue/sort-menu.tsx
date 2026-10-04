@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
@@ -31,32 +32,35 @@ export function SortMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button variant="outline" size="sm" className={className} aria-label={`Sort: ${current.label}`} />}
+        render={<Button variant="outline" size="sm" className={className} data-control="sort" aria-label={`Sort: ${current.label}`} />}
       >
         <ArrowDownUpIcon aria-hidden data-icon="inline-start" />
         {/* The label stays: a bare pair of arrows is not a word anyone reads. */}
         <span>{current.label}</span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-auto min-w-44">
-        <DropdownMenuLabel>Sort</DropdownMenuLabel>
-        {SORTS.map(sort => {
-          const selected = sort.id === state.sort;
-          return (
-            <DropdownMenuItem
-              key={sort.id}
-              render={
-                <Link
-                  href={catalogueHref(config, state, { sort: sort.id })}
-                  scroll={false}
-                  aria-current={selected ? 'true' : undefined}
-                />
-              }
-            >
-              <CheckIcon aria-hidden className={selected ? undefined : 'invisible'} />
-              {sort.label}
-            </DropdownMenuItem>
-          );
-        })}
+      <DropdownMenuContent align="end" className="w-auto min-w-44" data-catalogue-sort={config.basePath}>
+        {/* Base UI needs a group label inside a group: on its own it threw and took the list down. */}
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Sort</DropdownMenuLabel>
+          {SORTS.map(sort => {
+            const selected = sort.id === state.sort;
+            return (
+              <DropdownMenuItem
+                key={sort.id}
+                render={
+                  <Link
+                    href={catalogueHref(config, state, { sort: sort.id })}
+                    scroll={false}
+                    aria-current={selected ? 'true' : undefined}
+                  />
+                }
+              >
+                <CheckIcon aria-hidden className={selected ? undefined : 'invisible'} />
+                {sort.label}
+              </DropdownMenuItem>
+            );
+          })}
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -93,9 +93,9 @@ export function ExhibitionHistory({
   if (groups.length === 0) return null;
 
   return (
-    <div className={cn('flex flex-col gap-10', className)}>
+    <div data-slot="exhibition-history" className={cn('flex flex-col gap-10', className)}>
       {groups.map(group => (
-        <section key={group.kind} aria-labelledby={`history-${group.kind}`} className="flex flex-col gap-3">
+        <section key={group.kind} data-slot="exhibition-history-group" data-kind={group.kind} aria-labelledby={`history-${group.kind}`} className="flex flex-col gap-3">
           <Heading id={`history-${group.kind}`} className="text-lg font-semibold tracking-tight">
             {group.label}
             <span className="ml-2 text-sm font-normal text-muted-foreground tabular-nums">
@@ -126,10 +126,10 @@ function HistoryRow({ exhibition }: { exhibition: Exhibition }) {
   const dates = exhibitionDates(exhibition);
 
   return (
-    <li className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 gap-y-1.5 py-3 sm:grid-cols-[4.5rem_minmax(0,1fr)_auto]">
-      <span className="font-mono text-sm leading-6 text-muted-foreground tabular-nums">{exhibition.year}</span>
-      <div className="min-w-0">
-        <p className="leading-6 font-medium text-pretty">
+    <li data-slot="exhibition-history-row" className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 gap-y-1.5 py-3 sm:grid-cols-[4.5rem_minmax(0,1fr)_auto]">
+      <span data-slot="exhibition-history-year" className="font-mono text-sm leading-6 text-muted-foreground tabular-nums">{exhibition.year}</span>
+      <div data-slot="exhibition-history-show" className="min-w-0">
+        <p data-slot="exhibition-history-title" className="leading-6 font-medium text-pretty">
           {href ? (
             <Link
               href={href}
@@ -142,12 +142,17 @@ function HistoryRow({ exhibition }: { exhibition: Exhibition }) {
           )}
         </p>
         {place || dates ? (
-          <p className="text-sm text-pretty text-muted-foreground">
+          <p
+            data-slot="exhibition-history-place"
+            data-venue={exhibition.venue || undefined}
+            data-where={[exhibition.city, exhibition.country].filter(Boolean).join(', ') || undefined}
+            className="text-sm text-pretty text-muted-foreground"
+          >
             {[place, dates].filter(Boolean).join(' · ')}
           </p>
         ) : null}
       </div>
-      <div className="col-start-2 sm:col-start-3 sm:row-start-1 sm:pt-0.5">
+      <div data-slot="exhibition-history-kind" className="col-start-2 sm:col-start-3 sm:row-start-1 sm:pt-0.5">
         <ExhibitionKindBadge kind={exhibition.kind} />
       </div>
     </li>
