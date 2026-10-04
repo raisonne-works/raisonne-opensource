@@ -166,7 +166,7 @@ export function News({
           </Heading>
           <ul className="flex flex-col divide-y divide-border">
             {news.map(item => (
-              <li key={item.id} className="flex flex-col gap-1 py-4 first:pt-0">
+              <li key={item.id} data-slot="news-item" className="flex flex-col gap-1 py-4 first:pt-0">
                 {item.date ? (
                   <time dateTime={item.date} className="text-xs text-muted-foreground tabular-nums">
                     {formatDate(item.date)}
@@ -195,8 +195,14 @@ export function News({
               const label = STATUS_LABEL[status];
               const when = eventDates(event);
               return (
-                <li key={event.id} className="flex flex-col gap-1 py-4 first:pt-0">
-                  <span className="flex flex-wrap items-center gap-2">
+                <li
+                  key={event.id}
+                  data-slot="news-item"
+                  data-status={status}
+                  data-stated={event.statedStatus ? '' : undefined}
+                  className="flex flex-col gap-1 py-4 first:pt-0"
+                >
+                  <span data-slot="news-when" className="flex flex-wrap items-center gap-2">
                     {label ? (
                       <Badge variant={status === 'current' ? 'default' : 'outline'} className="shrink-0">
                         {label}
@@ -206,10 +212,27 @@ export function News({
                   </span>
                   <ItemHeading className="text-base">
                     <NewsTitle title={event.title} href={event.url} image={event.image} />
+                    {/* For a design that sets the status beside the title; the badge above says it here. */}
+                    {event.statedStatus || label ? (
+                      <span aria-hidden data-slot="news-status" className="hidden">
+                        {event.statedStatus || label}
+                      </span>
+                    ) : null}
                   </ItemHeading>
-                  {event.location ? <p className="text-sm text-muted-foreground">{event.location}</p> : null}
+                  {event.location ? (
+                    <p data-slot="news-place" className="text-sm text-muted-foreground">
+                      {event.location}
+                    </p>
+                  ) : null}
                   {event.description ? (
                     <p className="max-w-[40rem] text-sm text-pretty text-muted-foreground">{event.description}</p>
+                  ) : null}
+                  {/* The date and the place on one line, for a design that ends the row with them. */}
+                  {when || event.location ? (
+                    <p aria-hidden data-slot="news-meta" className="hidden">
+                      {when ? <span>{when}</span> : null}
+                      {event.location ? <span>{event.location}</span> : null}
+                    </p>
                   ) : null}
                 </li>
               );

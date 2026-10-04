@@ -1201,9 +1201,14 @@ function mapPhysicalWork(doc: Json, seriesSlugById: Map<string, string>): Physic
   };
 }
 
+/** Statuses that mean a record is not for the public yet, or no longer. */
+const UNPUBLISHED_STATES = new Set(['draft', 'unpublished', 'hidden', 'archived']);
+
 function mapCollaboration(doc: Json): Collaboration | null {
   const base = baseFields(doc, doc.date);
   if (!base) return null;
+  // The CMS has no drafts for collaborations; its status field is how one is taken down.
+  if (UNPUBLISHED_STATES.has((title(doc.status) ?? str(doc.status) ?? '').toLowerCase())) return null;
   return {
     ...base,
     kind: title(doc.type) ?? str(doc.type),
@@ -1952,6 +1957,7 @@ function mapLanding(landing: Json | null, partners: Client[], timezone: string |
       endDate: isoDate(pick(entry, 'endDate')),
       image: imageAsset(pick(entry, 'image')),
       url: str(pick(entry, 'url')),
+      statedStatus: str(pick(entry, 'status')),
     }))
     .filter(entry => entry.title);
 

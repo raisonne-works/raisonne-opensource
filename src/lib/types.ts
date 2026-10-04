@@ -639,6 +639,11 @@ export interface SiteEvent {
   endDate: string | null;
   image: Asset | null;
   url: string | null;
+  /**
+   * The status as the artist wrote it ("Live", "Upcoming"). The site works
+   * the status out from the dates; a design may print this one instead.
+   */
+  statedStatus?: string | null;
 }
 
 /** A client, partner or institution with a logo. */

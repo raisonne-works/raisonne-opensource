@@ -92,7 +92,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
               groups={groups}
               account={<AccountSlot enabled={isModuleEnabled(settings, 'collectors')} />}
               cart={<CartSlot enabled={shopProducts > 0} />}
-              packLinks={isModuleEnabled(settings, 'commissions') ? [{ href: '/commissions', label: 'Collabs' }] : []}
+              packLinks={data.collaborations.length > 0 ? [{ href: '/collaborations', label: 'Collabs' }] : []}
             />
             <SiteBreadcrumbs labels={crumbLabels} />
             <main id="main" data-shell="main" tabIndex={-1} className="flex-1 outline-none">

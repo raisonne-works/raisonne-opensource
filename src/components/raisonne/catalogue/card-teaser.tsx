@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * A series' short film, played over its cover while the pointer is on the
- * card or the keyboard is inside it.
+ * A short film, played over a cover while the pointer is on its card (a
+ * catalogue card, or any element marked data-teaser-host) or the keyboard is
+ * inside it.
  *
  * It lies over the still and takes its box, so the card keeps its size and a
  * masonry keeps its rows. Nothing is fetched until the first hover, it never
@@ -20,7 +21,7 @@ export function CardTeaser({ src, className }: { src: string; className?: string
 
   useEffect(() => {
     const element = video.current;
-    const card = element?.closest<HTMLElement>('[data-slot="catalogue-card"]');
+    const card = element?.closest<HTMLElement>('[data-slot="catalogue-card"], [data-teaser-host]');
     if (!element || !card) return;
     if (!window.matchMedia('(hover: hover)').matches) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
