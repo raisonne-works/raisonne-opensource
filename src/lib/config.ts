@@ -1,5 +1,7 @@
 import 'server-only';
 
+import { readFileSync } from 'node:fs';
+
 /**
  * One place that answers "is this switched on, and if not, what is missing".
  *
@@ -52,6 +54,8 @@ export const ENV_DOCS: Record<string, string> = {
     '1 when a reverse proxy you control sets X-Forwarded-For. Set it: nearly every real install is behind a proxy, and without it rate limits fall back to per-wallet and per-cart counting with only a coarse ceiling per address.',
   RAISONNE_SKIN:
     'The id of the design pack this install wears, e.g. a folder name inside RAISONNE_PACK_DIR. Unset, or a pack that fails its checks, means skin zero, the design that ships with the app.',
+  RAISONNE_SKIN_FILE:
+    'A one-line file holding a pack id, read on every request. Default: .worn inside RAISONNE_PACK_DIR. When it is readable it replaces RAISONNE_SKIN, so the design can be switched without a restart; an empty file or skin-zero means the design that ships with the app.',
   RAISONNE_IPFS_GATEWAY:
     'An IPFS gateway that live works and films load through, e.g. https://ipfs.example.art/ipfs/. Public gateways such as ipfs.io limit how often they answer and cannot be shown inside the page when they refuse, so a live work stays blank. Unset keeps each address as recorded.',
   RAISONNE_PACK_DIR:
@@ -435,5 +439,17 @@ export function ipfsGateway(): string | null {
 
 /** Which pack to wear and where packs live. Either one missing means skin zero. */
 export function skinSettings(): { id: string | null; dir: string | null } {
-  return { id: env('RAISONNE_SKIN'), dir: env('RAISONNE_PACK_DIR') };
+  return { id: chosenSkin() ?? env('RAISONNE_SKIN'), dir: env('RAISONNE_PACK_DIR') };
+}
+
+/** The pack named in the choice file (RAISONNE_SKIN_FILE, or .worn in the pack folder); undefined when there is no such file, so RAISONNE_SKIN decides. */
+function chosenSkin(): string | null | undefined {
+  const dir = env('RAISONNE_PACK_DIR');
+  const file = env('RAISONNE_SKIN_FILE') ?? (dir ? `${dir.replace(/\/$/, '')}/.worn` : null);
+  if (!file) return undefined;
+  try {
+    return readFileSync(file, 'utf8').trim() || null;
+  } catch {
+    return undefined;
+  }
 }
