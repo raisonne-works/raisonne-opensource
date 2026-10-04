@@ -2859,7 +2859,7 @@ async function run(): Promise<void> {
     { from: '/catalog/one-of-ones', to: '/works', permanent: true },
     { from: '/catalog/exhibitions', to: '/exhibitions', permanent: true },
     { from: '/catalog/collaborations', to: '/collaborations', permanent: true },
-    { from: '/catalog/installations', to: '/installations', permanent: true },
+    { from: '/catalog/installations', to: '/immersive', permanent: true },
     { from: '/catalog/physicals', to: '/physical-works', permanent: true },
     { from: '/privacy-policy', to: '/privacy', permanent: true },
     { from: '/terms-of-service', to: '/terms', permanent: true },

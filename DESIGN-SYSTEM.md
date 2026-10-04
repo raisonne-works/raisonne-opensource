@@ -146,10 +146,10 @@ The one index behind `/works` and every type list. `entry.ts` turns any record i
 | `/works/[series]/about` | `SeriesHero`, `StoryBlocks` |
 | `/works/[series]/[token]` | `WorkDetail` (`WorkMedia`, `MediaViewer`, `LiveHtmlFrame`, `WorkAttributes`, `WorkFacts`, `WorkTags`), `ShareButton`, `WorkPager` |
 | `/drops/[slug]` | `DropHero`, `Countdown`, `DropPhases`, `DropSpecs`, `StoryBlocks`, `NotifyDialog` (module: `drops`) |
-| `/installations`, `/physical-works`, `/collaborations`, `/awards`, `/writings` | `CatalogueListPage` scoped to that type (`/writings` behind its module) |
+| `/immersive`, `/physical-works`, `/collaborations`, `/awards`, `/writings` | `CatalogueListPage` scoped to that type (`/writings` behind its module) |
 | `/exhibitions` | `CatalogueListPage` with `markFeatured`, then `ExhibitionHistory` |
 | `/press` | `PressFeatured`, `PressVideos`, `PressPodcasts`, `PressTable`, `PressKit` |
-| `/installations/[slug]`, `/exhibitions/[slug]`, `/physical-works/[slug]`, `/collaborations/[slug]`, `/awards/[slug]`, `/writings/[slug]`, `/press/[slug]` | `RecordBreadcrumb`, `RecordHero`, `RecordFacts`, `AboutSection`, `StoryBlocks`, plus the per-type block (`PartnerList`, `WorkGrid`, `WritingArticle`, `PressDetail`) |
+| `/immersive/[slug]`, `/exhibitions/[slug]`, `/physical-works/[slug]`, `/collaborations/[slug]`, `/awards/[slug]`, `/writings/[slug]`, `/press/[slug]` | `RecordBreadcrumb`, `RecordHero`, `RecordFacts`, `AboutSection`, `StoryBlocks`, plus the per-type block (`PartnerList`, `WorkGrid`, `WritingArticle`, `PressDetail`) |
 | `/commissions` | `CommissionsHero`, `Services`, `ClientLogos`, `FeaturedCollaborations` (module: `commissions`) |
 | `/about` | `AboutPage`: `BioWithCounts`, `Highlights`, `StudioCarousel`, `MintingAddresses`, `ResearchAreas`, `PartnerGroups`, `ArtistLinkList` |
 | `/cv` | `PageHeader`, `Cv`, `DownloadCvButton`, `PrintButton`; `/cv/download` writes the same data as an A4 PDF |

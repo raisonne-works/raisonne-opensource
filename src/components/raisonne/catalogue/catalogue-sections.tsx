@@ -48,9 +48,9 @@ const SECTIONS: SectionDefinition[] = [
   },
   {
     id: 'installation',
-    label: 'Installations',
-    description: 'Works made for a room, and the immersive experiences with them.',
-    href: '/installations',
+    label: 'Immersive',
+    description: 'Immersive experiences, and the installations made for a room.',
+    href: '/immersive',
   },
   {
     id: 'physical-work',

@@ -795,7 +795,7 @@ export function indexEntries(data: SiteData, type: CatalogueTypeFilter | null, n
 
 /**
  * Narrows a list that already holds one scope to one type inside it, which
- * is how /installations filters the immersive experiences folded into it.
+ * is how /immersive filters the immersive experiences folded into it.
  */
 export function scopeByType(entries: CatalogueEntry[], type: CatalogueTypeFilter | null): CatalogueEntry[] {
   if (!type) return entries;
