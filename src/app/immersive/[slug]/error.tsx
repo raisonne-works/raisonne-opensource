@@ -8,8 +8,8 @@ export default function InstallationError({ error, retry }: { error: Error & { d
       error={error}
       retry={retry}
       title="This installation could not be shown"
-      backHref="/installations"
-      backLabel="All installations"
+      backHref="/immersive"
+      backLabel="All immersive works"
     />
   );
 }

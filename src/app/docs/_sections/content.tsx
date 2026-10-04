@@ -792,7 +792,7 @@ export function AzSection() {
             { name: 'Import', where: <code>/import</code>, note: 'Owner-gated tool; wallet → series' },
             { name: 'Import replay feed', where: <code>/import/replay</code>, note: 'NDJSON event stream' },
             { name: 'Insights', where: <code>/insights</code>, note: '+ /activity, /collections' },
-            { name: 'Installations', where: <code>/installations</code>, note: '+ /[slug]' },
+            { name: 'Immersive', where: <code>/immersive</code>, note: 'Installations and immersive experiences together; + /[slug]' },
             { name: 'Leaderboard', where: <code>/leaderboard</code> },
             { name: 'Legal', where: <code>/privacy</code>, note: <code>/terms</code> },
             { name: 'Maintenance', where: <code>/maintenance</code>, note: 'Whole-site gate' },

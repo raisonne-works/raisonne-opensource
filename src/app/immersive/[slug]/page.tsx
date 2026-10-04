@@ -48,7 +48,7 @@ async function resolve(params: Params): Promise<Found> {
 }
 
 function pathFor(slug: string): string {
-  return `/installations/${encodeURIComponent(slug)}`;
+  return `/immersive/${encodeURIComponent(slug)}`;
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -81,9 +81,9 @@ export default async function InstallationPage({ params }: { params: Params }) {
 
   return (
     <Container className="flex flex-col gap-10 pt-6 pb-16 md:gap-12 md:pb-24">
-      <RecordBreadcrumb parents={[{ href: '/installations', label: 'Installations' }]} current={record.title} />
+      <RecordBreadcrumb parents={[{ href: '/immersive', label: 'Immersive' }]} current={record.title} />
       <BreadcrumbJsonLd
-        items={[{ name: 'Installations', path: '/installations' }, { name: record.title, path }]}
+        items={[{ name: 'Immersive', path: '/immersive' }, { name: record.title, path }]}
       />
       {images.length > 1 ? (
         <JsonLd

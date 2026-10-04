@@ -342,7 +342,7 @@ export function getFeaturedSeries(n: number): Series[] {
 // Records
 // ---------------------------------------------------------------------------
 
-/** Installations, newest first. The /installations page lists these with the immersive experiences. */
+/** Installations, newest first. The /immersive page lists these with the immersive experiences. */
 export function getInstallations(): Installation[] {
   return byYearDesc(getSiteData().installations);
 }
@@ -355,7 +355,7 @@ export function getImmersives(): Immersive[] {
   return byYearDesc(getSiteData().immersives);
 }
 
-/** /installations/[slug] serves both kinds, so it looks here when getInstallation misses. */
+/** /immersive/[slug] serves both kinds, so it looks here when getInstallation misses. */
 export function getImmersive(slug: string): Immersive | null {
   return getSiteData().immersives.find(record => record.slug === slug) ?? null;
 }

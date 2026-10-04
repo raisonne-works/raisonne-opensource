@@ -16,7 +16,7 @@ import { siteOrigin } from '@/lib/seo/urls';
  * Every page a visitor can reach, with nothing a visitor cannot.
  *
  * The list is built from the install's own data, so a site with no
- * installations has no /installations entry and a site with the writings
+ * installations has no /immersive entry and a site with the writings
  * module switched off lists none of its writings. Hidden series and works are
  * left out here exactly as they are left out of the catalogue, and the
  * artist's tools (/import, /design-system) never appear.
@@ -67,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   add('/docs', 0.8, 'monthly');
 
   const installations = data.installations.length + data.immersives.length;
-  if (installations) add('/installations', 0.8, 'monthly');
+  if (installations) add('/immersive', 0.8, 'monthly');
   if (data.physicalWorks.length) add('/physical-works', 0.8, 'monthly');
   if (data.exhibitions.length) add('/exhibitions', 0.8, 'monthly');
   if (data.collaborations.length) add('/collaborations', 0.7, 'monthly');
@@ -152,8 +152,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // --- The other record types ----------------------------------------------
 
-  for (const record of data.installations) add(`/installations/${encode(record.slug)}`, 0.7, 'monthly');
-  for (const record of data.immersives) add(`/installations/${encode(record.slug)}`, 0.7, 'monthly');
+  for (const record of data.installations) add(`/immersive/${encode(record.slug)}`, 0.7, 'monthly');
+  for (const record of data.immersives) add(`/immersive/${encode(record.slug)}`, 0.7, 'monthly');
   for (const record of data.physicalWorks) add(`/physical-works/${encode(record.slug)}`, 0.7, 'monthly');
   for (const record of data.collaborations) add(`/collaborations/${encode(record.slug)}`, 0.6, 'monthly');
 

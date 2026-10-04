@@ -222,7 +222,7 @@ function StructuredData() {
           name: gallery.title,
           description: gallery.description,
           origin,
-          path: `/installations/${gallery.slug}`,
+          path: `/immersive/${gallery.slug}`,
           images: gallery.photos,
         })
       : null,

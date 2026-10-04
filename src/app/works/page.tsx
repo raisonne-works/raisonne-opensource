@@ -45,7 +45,7 @@ function typeOptions(data: SiteData): { value: CatalogueTypeFilter | ''; label: 
     { value: 'series', label: 'Series' },
     { value: 'work', label: worksLabel(data.settings) },
     { value: ONE_OF_ONE_TYPE, label: 'One of ones' },
-    { value: 'installation', label: 'Installations' },
+    { value: 'installation', label: 'Immersive' },
     { value: 'physical-work', label: 'Physical works' },
     { value: 'exhibition', label: 'Exhibitions' },
     { value: 'collaboration', label: 'Collaborations' },

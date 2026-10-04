@@ -25,7 +25,7 @@ export function highlightsFor(data: SiteData, counts: CatalogueCounts): Highligh
   return [
     { label: worksLabel(data.settings), count: counts.works, href: '/works' },
     { label: 'Series', count: counts.series, href: '/works' },
-    { label: 'Installations', count: counts.installations, href: '/installations' },
+    { label: 'Immersive', count: counts.installations, href: '/immersive' },
     { label: 'Exhibitions', count: counts.exhibitions, href: '/exhibitions' },
     { label: 'Solo exhibitions', count: counts.soloExhibitions, href: '/exhibitions' },
     { label: 'Collaborations', count: counts.collaborations, href: '/collaborations' },

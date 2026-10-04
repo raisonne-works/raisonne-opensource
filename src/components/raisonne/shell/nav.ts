@@ -63,7 +63,7 @@ function compact(items: (NavItem | null)[]): NavItem[] {
  * The grouped navigation for this install.
  *
  * Two menus, the same split the catalogue uses: Catalog is the records
- * (index, series, one of ones, installations, exhibitions, awards).
+ * (index, series, one of ones, immersive, exhibitions, awards).
  * Insights is the person and the figures (about, press, analytics,
  * leaderboard). A section with nothing in it is left out. Collaborations,
  * the CV and commissions stay on the page and in the footer; they are not
@@ -122,9 +122,9 @@ export function siteNav(
       : null,
     installations > 0
       ? {
-          href: '/installations',
-          label: 'Installations',
-          description: 'Rooms, screens and immersive pieces.',
+          href: '/immersive',
+          label: 'Immersive',
+          description: 'Installations, rooms and immersive experiences.',
           count: installations,
         }
       : null,
@@ -186,7 +186,7 @@ export type FooterMode = 'flow' | 'panel' | 'off';
 const FOOTER_MODES: { prefix: string; exact?: boolean; mode: FooterMode }[] = [
   { prefix: '/cv', mode: 'off' },
   { prefix: '/works', exact: true, mode: 'panel' },
-  { prefix: '/installations', exact: true, mode: 'panel' },
+  { prefix: '/immersive', exact: true, mode: 'panel' },
   { prefix: '/physical-works', exact: true, mode: 'panel' },
   { prefix: '/exhibitions', exact: true, mode: 'panel' },
   { prefix: '/collaborations', exact: true, mode: 'panel' },
@@ -220,7 +220,7 @@ export function footerModeFor(pathname: string | null): FooterMode {
 /** Labels for the route segments the trail can name without reading the data. */
 const SEGMENT_LABELS: Record<string, string> = {
   works: 'Works',
-  installations: 'Installations',
+  immersive: 'Immersive',
   'physical-works': 'Physical works',
   exhibitions: 'Exhibitions',
   collaborations: 'Collaborations',

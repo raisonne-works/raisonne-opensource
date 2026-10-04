@@ -185,6 +185,12 @@ function settings(): FixtureSettings {
   return {};
 }
 
+/** Installations and immersive experiences share one section, which is now named for both. */
+const RENAMED_ROUTES = [
+  { source: '/installations', destination: '/immersive' },
+  { source: '/installations/:slug', destination: '/immersive/:slug' },
+];
+
 /**
  * Old URLs, from the data. A rule is kept only when both sides are site paths
  * and they differ, so a typo cannot put the site in a redirect loop.
@@ -199,6 +205,12 @@ function redirects() {
     if (source === destination) continue;
     if (rules.some(existing => existing.source === source)) continue;
     rules.push({ source, destination, permanent: rule.permanent !== false });
+  }
+
+  // Routes the app itself has renamed. These hold on every install, whatever its data says, so a
+  // bookmark, a shared link or a search result for the old address still arrives.
+  for (const rule of RENAMED_ROUTES) {
+    if (!rules.some(existing => existing.source === rule.source)) rules.push({ ...rule, permanent: true });
   }
 
   return rules;

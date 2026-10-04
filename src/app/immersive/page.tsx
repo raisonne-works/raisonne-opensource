@@ -14,17 +14,19 @@ import { pageMetadata } from '@/lib/seo/metadata';
 import { slot } from '@/lib/theme';
 
 /**
- * Installations and immersive experiences in one list, the way an artist
- * thinks of them: both are works made for a place rather than for a screen.
- * The type facet separates them for anyone who wants only one.
+ * Immersive: installations and immersive experiences in one list, the way an
+ * artist thinks of them. Both are works made for a place rather than for a
+ * screen, and both collections are read here. The type facet separates them
+ * for anyone who wants only one. The old address, /installations, redirects
+ * here (next.config.ts).
  */
 
 export function generateMetadata(): Metadata {
   const { artist } = getSiteData();
   return pageMetadata('installations', {
-    title: 'Installations',
-    description: `Installations and immersive experiences by ${artist.name}.`,
-    path: '/installations',
+    title: 'Immersive',
+    description: `Immersive experiences and installations by ${artist.name}.`,
+    path: '/immersive',
   });
 }
 
@@ -40,18 +42,18 @@ export default async function InstallationsPage({ searchParams }: { searchParams
   ];
 
   const base: CatalogueConfig = {
-    basePath: '/installations',
+    basePath: '/immersive',
     views: ALL_VIEWS,
     defaultView: 'grid',
     defaultSort: 'featured',
-    searchPlaceholder: 'Search installations',
+    searchPlaceholder: 'Search immersive works',
     facets: ['type', 'medium', 'year'],
-    noun: 'installation',
-    nounPlural: 'installations',
+    noun: 'immersive work',
+    nounPlural: 'immersive works',
     empty: {
-      title: 'No installations yet',
+      title: 'No immersive works yet',
       description:
-        'Works made for a room, and the immersive experiences with them, appear here once the artist adds one.',
+        'Immersive experiences, and the installations made for a room, appear here once the artist adds one.',
     },
     typeOptions: types.filter(option => option.count > 0),
   };
@@ -60,8 +62,8 @@ export default async function InstallationsPage({ searchParams }: { searchParams
 
   return (
     <CatalogueListPage
-      title="Installations"
-      description={`Works by ${data.artist.name} made for a place: projections, rooms and immersive experiences, with the documentation of each one.`}
+      title="Immersive"
+      description={`Works by ${data.artist.name} made for a place: immersive experiences, installations, projections and rooms, with the documentation of each one.`}
       state={state}
       config={base}
       entries={scopeByType(all, state.type)}
