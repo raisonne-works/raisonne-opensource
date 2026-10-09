@@ -60,7 +60,7 @@ import { slot } from '@/lib/theme';
 
 type Params = Promise<{ slug: string }>;
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   // Hidden products are left out of every listing and still have a page: the

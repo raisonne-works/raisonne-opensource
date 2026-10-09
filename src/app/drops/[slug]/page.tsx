@@ -32,7 +32,7 @@ const RENDERED_AT = Date.now();
  * Drops are an optional module. With it switched off the route answers 404
  * rather than showing an empty page, and nothing links to it.
  */
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   if (!isModuleEnabled(getSettings(), 'drops')) return [];

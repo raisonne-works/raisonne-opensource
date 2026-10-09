@@ -29,7 +29,7 @@ function storyFor(series: Series): { story: StoryBlock[]; inheritedFrom: Series 
   return parent?.story?.length ? { story: parent.story, inheritedFrom: parent } : { story: [], inheritedFrom: null };
 }
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getSiteData()
