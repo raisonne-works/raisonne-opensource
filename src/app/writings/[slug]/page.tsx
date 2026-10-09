@@ -22,7 +22,7 @@ import { slot } from '@/lib/theme';
 
 type Params = Promise<{ slug: string }>;
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 function writingsEnabled(): boolean {
   return isModuleEnabled(getSettings(), 'writings');

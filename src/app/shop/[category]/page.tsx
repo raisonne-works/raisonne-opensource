@@ -42,7 +42,7 @@ import { slot } from '@/lib/theme';
 
 type Params = Promise<{ category: string }>;
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getProductCategories()

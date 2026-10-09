@@ -24,7 +24,7 @@ import { slot } from '@/lib/theme';
 
 type Params = Promise<{ slug: string }>;
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getPress()

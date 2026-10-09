@@ -62,10 +62,10 @@ type Search = Promise<Record<string, string | string[] | undefined>>;
 const PAGE_SIZE = 48;
 
 /**
- * Every page is generated from the site data at build time, so an unknown
- * slug or token is a real 404 rather than a streamed not-found with status 200.
+ * Known fixture routes are generated at build time. Hosted tenants mount
+ * their fixture at runtime, so additional valid slugs are resolved on demand.
  */
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getSiteData().series.map(series => ({ series: series.slug }));
