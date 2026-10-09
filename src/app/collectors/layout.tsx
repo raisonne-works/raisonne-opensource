@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 
 import { getSettings } from '@/fixtures';
 import { isModuleEnabled } from '@/lib/records';
@@ -9,7 +10,9 @@ import { isModuleEnabled } from '@/lib/records';
  * shell before the page's notFound() is reached, so a switched-off module
  * would answer a soft 404 without this.
  */
-export default function CollectorsLayout({ children }: { children: React.ReactNode }) {
+export default async function CollectorsLayout({ children }: { children: React.ReactNode }) {
+  // Module switches live in the run-time fixture, not in the container image.
+  await connection();
   if (!isModuleEnabled(getSettings(), 'collectors')) notFound();
   return children;
 }

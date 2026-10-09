@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { connection } from 'next/server';
 
 import { getSettings } from '@/fixtures';
 import { surfaceState } from '@/lib/config';
@@ -16,7 +17,9 @@ import { surfaceState } from '@/lib/config';
  * Off means off. An install that does not publish its figures has no
  * /insights at all, rather than a page explaining that it has none.
  */
-export default function InsightsLayout({ children }: LayoutProps<'/insights'>) {
+export default async function InsightsLayout({ children }: LayoutProps<'/insights'>) {
+  // Module switches live in the run-time fixture, not in the container image.
+  await connection();
   if (surfaceState(getSettings(), 'insights') === 'off') notFound();
   return children;
 }
