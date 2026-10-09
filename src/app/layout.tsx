@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { connection } from 'next/server';
 
 import { AccountSlot } from '@/components/raisonne/auth/account-slot';
 import { SiteJsonLd } from '@/components/raisonne/seo/json-ld';
@@ -43,7 +44,11 @@ export function generateMetadata(): Metadata {
  * handed to both the header and the footer, so a section that does not exist
  * cannot be linked from either.
  */
-export default function RootLayout({ children }: LayoutProps<'/'>) {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
+  // An install's fixture files are mounted and updated at run time. Waiting
+  // for a request keeps the shell and its navigation in step with those
+  // files instead of freezing the build-time fixture into the image.
+  await connection();
   const data = getSiteData();
   const { artist, settings, landing } = data;
   // An install can keep its shop in a fixture of its own, which the pure nav
