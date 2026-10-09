@@ -221,6 +221,15 @@ const nextConfig: NextConfig = {
   // client bundle and the header menus never attach.
   allowedDevOrigins: ['127.0.0.1'],
   images: {
+    /**
+     * Hosted installs mount each artist's fixture after this image has been
+     * built, so its media hosts cannot be known safely at build time. Serve
+     * those validated HTTPS URLs directly in the browser instead of turning
+     * this shared server into an open image proxy. The fixture-derived
+     * patterns remain useful documentation for installs that choose to
+     * restore optimization in a tenant-specific build.
+     */
+    unoptimized: true,
     remotePatterns: remotePatterns(),
   },
   async redirects() {
